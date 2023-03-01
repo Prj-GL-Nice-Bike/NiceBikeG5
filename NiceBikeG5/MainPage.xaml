@@ -1,41 +1,95 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NiceBikeG5.MainPage">
+             x:Class="NiceBikeG5.MainPage"
+             BackgroundColor="DarkGray">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
 
-            <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
+    <!--CHOOSE PROFILE-->
 
+    <VerticalStackLayout
+        TranslationY="100"
+        Spacing="150">
+
+        <Border Stroke="Dimgray"
+                StrokeThickness="5"
+                StrokeShape="Rectangle"
+                BackgroundColor="LightGray">
             <Label
-                Text="Hello, World!"
-                SemanticProperties.HeadingLevel="Level1"
-                FontSize="32"
-                HorizontalOptions="Center" />
+                Text="CHOOSE YOUR PROFILE" TextColor="#323332"
+                FontSize="55" FontFamily="Raleway-Medium"
+                HorizontalOptions="Center">
+            </Label>
+        </Border>
 
-            <Label
-                Text="Welcome to .NET Multi-platform App UI"
-                SemanticProperties.HeadingLevel="Level2"
-                SemanticProperties.Description="Welcome to dot net Multi platform App U I"
-                FontSize="18"
-                HorizontalOptions="Center" />
+        <!--PROFILES-->
+
+        <FlexLayout
+            Direction="Row"
+            HeightRequest="80"
+            JustifyContent="SpaceEvenly">
+
+            <!--SR'S PROFILE-->
 
             <Button
-                x:Name="CounterBtn"
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+                Text="          SALES REPRESENTATIVE" TextColor="Black"
+                LineBreakMode="WordWrap"
+                FontSize="50" FontFamily="Raleway-Bold"
+                WidthRequest="500" HeightRequest="500"
+                BackgroundColor= "#B6E1A7" BorderColor="#67835D" CornerRadius="250" BorderWidth="6"
+                FlexLayout.Basis="33.33%"
+                Clicked="Session_SR">
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="20,20"
+                            Radius="20"
+                            Opacity="0.6" />
+                </Button.Shadow>
 
+            </Button>
+
+            <!--ASSEMBLER'S PROFILE-->
+
+            <Button
+                Text="ASSEMBLER" TextColor="Black"
+                FontSize="50" FontFamily="Raleway-Bold"
+                WidthRequest="500" HeightRequest="500"
+                BackgroundColor="LightBlue" BorderColor="CornflowerBlue" CornerRadius="250" BorderWidth="6"
+                FlexLayout.Basis="33.33%"
+                Clicked="Session_Assembler">
+
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="20,20"
+                            Radius="20"
+                            Opacity="0.6" />
+                </Button.Shadow>
+
+            </Button>
+
+            <!--PM'S PROFILE-->
+
+            <Button
+                Text="PRODUCT MANAGER" TextColor="Black"
+                FontSize="50" FontFamily="Raleway-Bold"
+                WidthRequest="500" HeightRequest="500"
+                BackgroundColor="#DBBEF2" BorderColor="MediumPurple" CornerRadius="250" BorderWidth="6"
+                FlexLayout.Basis="33.33%"
+                Clicked="Session_PM">
+                
+                <Button.Shadow>
+                    <Shadow Brush="Black"
+                            Offset="20,20"
+                            Radius="20"
+                            Opacity="0.6" />
+                </Button.Shadow>
+
+            </Button>
+
+        </FlexLayout>
+
+    </VerticalStackLayout>
 </ContentPage>
+
+

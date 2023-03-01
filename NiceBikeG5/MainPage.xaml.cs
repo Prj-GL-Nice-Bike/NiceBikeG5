@@ -2,23 +2,25 @@
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
 
 	public MainPage()
 	{
 		InitializeComponent();
 	}
 
-	private void OnCounterClicked(object sender, EventArgs e)
+    //BUTTONS LEADING TO SESSION OF USER'S PROFILE
+
+	private async void Session_SR(object sender, EventArgs e)
 	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
-	}
+        await Navigation.PushAsync(new Session_SR());
+    }
+    private async void Session_PM(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Session_PM());
+    }
+    private async void Session_Assembler(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Session_Assembler());
+    }
 }
 
