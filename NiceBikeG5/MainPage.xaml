@@ -8,16 +8,16 @@
     <!--CHOOSE PROFILE-->
 
     <VerticalStackLayout
-        TranslationY="100"
-        Spacing="150">
+        Spacing="50"
+        VerticalOptions="Start">
 
         <Border Stroke="Dimgray"
-                StrokeThickness="5"
+                StrokeThickness="8"
                 StrokeShape="Rectangle"
                 BackgroundColor="LightGray">
             <Label
-                Text="CHOOSE YOUR PROFILE" TextColor="#323332"
-                FontSize="55" FontFamily="Raleway-Medium"
+                Text="Choose your profile" TextColor="#323332"
+                FontSize="55" FontFamily="Raleway-SemiBold"
                 HorizontalOptions="Center">
             </Label>
         </Border>
@@ -26,7 +26,6 @@
 
         <FlexLayout
             Direction="Row"
-            HeightRequest="80"
             JustifyContent="SpaceEvenly">
 
             <!--SR'S PROFILE-->
@@ -36,7 +35,7 @@
                 LineBreakMode="WordWrap"
                 FontSize="50" FontFamily="Raleway-Bold"
                 WidthRequest="500" HeightRequest="500"
-                BackgroundColor= "#B6E1A7" BorderColor="#67835D" CornerRadius="250" BorderWidth="6"
+                BackgroundColor= "#B6E1A7" BorderColor="#67835D" CornerRadius="250" BorderWidth="8"
                 FlexLayout.Basis="33.33%"
                 Clicked="Session_SR">
 
@@ -55,7 +54,7 @@
                 Text="ASSEMBLER" TextColor="Black"
                 FontSize="50" FontFamily="Raleway-Bold"
                 WidthRequest="500" HeightRequest="500"
-                BackgroundColor="LightBlue" BorderColor="CornflowerBlue" CornerRadius="250" BorderWidth="6"
+                BackgroundColor="LightBlue" BorderColor="CornflowerBlue" CornerRadius="250" BorderWidth="8"
                 FlexLayout.Basis="33.33%"
                 Clicked="Session_Assembler">
 
@@ -72,9 +71,10 @@
 
             <Button
                 Text="PRODUCT MANAGER" TextColor="Black"
+                LineBreakMode="WordWrap"
                 FontSize="50" FontFamily="Raleway-Bold"
                 WidthRequest="500" HeightRequest="500"
-                BackgroundColor="#DBBEF2" BorderColor="MediumPurple" CornerRadius="250" BorderWidth="6"
+                BackgroundColor="#DBBEF2" BorderColor="MediumPurple" CornerRadius="250" BorderWidth="8"
                 FlexLayout.Basis="33.33%"
                 Clicked="Session_PM">
                 

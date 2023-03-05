@@ -53,7 +53,8 @@
                 IsPassword="True"
                 FontFamily="Raleway-Light"
                 FontSize="50"
-                WidthRequest="500"/>
+                WidthRequest="500"
+                Completed="OnEntryCompleted"/>
 
                 <Button
                 Text="LOG IN"
