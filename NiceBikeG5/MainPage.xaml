@@ -48,15 +48,16 @@
 
             </Button>
 
-            <!--ASSEMBLER'S PROFILE-->
+            <!--PM'S PROFILE-->
 
             <Button
-                Text="ASSEMBLER" TextColor="Black"
+                Text="PRODUCTION MANAGER" TextColor="Black"
+                LineBreakMode="WordWrap"
                 FontSize="50" FontFamily="Raleway-Bold"
                 WidthRequest="500" HeightRequest="500"
-                BackgroundColor="LightBlue" BorderColor="CornflowerBlue" CornerRadius="250" BorderWidth="8"
+                BackgroundColor="#DBBEF2" BorderColor="MediumPurple" CornerRadius="250" BorderWidth="8"
                 FlexLayout.Basis="33.33%"
-                Clicked="Session_Assembler">
+                Clicked="Session_PM">
 
                 <Button.Shadow>
                     <Shadow Brush="Black"
@@ -67,17 +68,16 @@
 
             </Button>
 
-            <!--PM'S PROFILE-->
+            <!--ASSEMBLER'S PROFILE-->
 
             <Button
-                Text="PRODUCT MANAGER" TextColor="Black"
-                LineBreakMode="WordWrap"
+                Text="ASSEMBLER" TextColor="Black"
                 FontSize="50" FontFamily="Raleway-Bold"
                 WidthRequest="500" HeightRequest="500"
-                BackgroundColor="#DBBEF2" BorderColor="MediumPurple" CornerRadius="250" BorderWidth="8"
+                BackgroundColor="LightBlue" BorderColor="CornflowerBlue" CornerRadius="250" BorderWidth="8"
                 FlexLayout.Basis="33.33%"
-                Clicked="Session_PM">
-                
+                Clicked="Session_Assembler">
+
                 <Button.Shadow>
                     <Shadow Brush="Black"
                             Offset="20,20"

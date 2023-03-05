@@ -15,28 +15,29 @@ public partial class Session_SR: ContentPage
         await Navigation.PushAsync(new MainPage());
     }
 
+
     /*FCT BUTTON LOGIN*/
-    
-    async void OnEntryCompleted(object sender, EventArgs e)
-    {
-        password = ((Entry)sender).Text;
-
-        if (password == "123")
-        {await Navigation.PushAsync(new SR_Menu());}
-
-        else
-        {await DisplayAlert("Error", "Incorrect password", "OK");}
-
-    }
+    //CLICK ON THE BUTTON
     private void OnButton_LogIn(object sender, EventArgs e)
     {
-        password = PasswordEntry.Text;
+        password= PasswordEntry.Text;
         //If Password: Next Page
-        if (password=="123")
+        if(password=="123")
         {Navigation.PushAsync(new SR_Menu());}
         //If not Password: Error Message
         else
         {DisplayAlert("ERROR", "Incorrect password", "OK");}
     }
-    
+
+    //ENTER
+    async void OnEntryCompleted(object sender, EventArgs e)
+    {
+        password= ((Entry)sender).Text;
+        //If Password: Next Page
+        if(password=="123")
+        {await Navigation.PushAsync(new SR_Menu());}
+        //If not Password: Error Message
+        else
+        {await DisplayAlert("ERROR", "Incorrect password", "OK");}
+    }   
 }
