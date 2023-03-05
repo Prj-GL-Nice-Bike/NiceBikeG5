@@ -7,10 +7,186 @@
     
     
     
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView Margin="0,0,0,25">
+        <!--NAVIGATION BAR-->
+        <VerticalStackLayout>
+            <Grid HeightRequest="50"
+                  BackgroundColor="#790B29">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!--IMAGE HOME TO CATALOGUE-->
+                <ImageButton 
+                Source="maison.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Margin="0,0,50,0"/>
+
+                <!--IMAGE CART TO CART-->
+                <ImageButton 
+                Source="panier.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Margin="50,0,0,0"
+                Clicked="OnButton_CartCatalogue"/>
+            </Grid>
+
+
+
+            <HorizontalStackLayout HorizontalOptions="Start">
+                <!--BUTTON BACK TO MENU-->
+                <ImageButton
+                Source="bouton_back.png"
+                BackgroundColor="DarkGray"
+                HeightRequest="160"
+                Margin="0,0,355,0"            
+                Clicked="OnButton_Back"/>
+
+                <!--TITLE PAGE-->
+                <Label
+                Text="NICEBIKE"
+                TextColor="Black"
+                FontFamily="Raleway-Light"
+                FontSize="120"                
+                FontAttributes="Bold"
+                TextDecorations="Underline"               
+                Margin="0,0,300,0"/>
+            </HorizontalStackLayout>
+
+        
+            <!--3 BIKES OF THE CATALOGUE (TITLE+IMAGE+DESCRIPTION)-->
+                <HorizontalStackLayout>
+                    <!--BIKE N°1 (=Label_Title+Border(=Image_Bike+Label_Description))-->
+                    <VerticalStackLayout Margin="50,0,20,0">
+                        <Label 
+                        Text="City"
+                        TextColor="Black"
+                        FontFamily="Raleway-Light"
+                        FontSize="65"                                                
+                        FontAttributes="Bold"
+                        TextDecorations="Underline"
+                        HorizontalOptions="Center">
+                        </Label>
+
+                        <Border
+                        Stroke="Black"
+                        StrokeThickness="8"
+                        StrokeShape="Rectangle">
+                            <VerticalStackLayout>
+                                <ImageButton
+                                Source="velo1.jpg"
+                                Clicked="OnButton_Bike1"/>
+
+                                <Label
+                                TextColor="Black"
+                                FontSize="25"                                                                                   
+                                WidthRequest="450"
+                                Padding="4">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Simple bike for daily rides in the city." FontFamily="Raleway-Light"/>
+                                            <Span Text="&#x0a;Characteristics:" FontFamily="Raleway-Light" FontSize="Large" FontAttributes="Bold" TextDecorations="Underline"/>
+                                            <Span Text="&#x0a;➣Equipped with lights" FontFamily="Raleway-Light"/>
+                                            <Span Text="&#x0a;➣Equipped with mudguards" FontFamily="Raleway-Light"/>
+                                    </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+
+                    
+                    <!--BIKE N°2 (=Label_Title+Border(=Image_Bike+Label_Description))-->
+                    <VerticalStackLayout Margin="0,0,20,0">
+                        <Label 
+                        Text="Explorer"
+                        TextColor="Black"
+                        FontFamily="Raleway-Light"
+                        FontSize="65"
+                        FontAttributes="Bold"
+                        TextDecorations="Underline"
+                        HorizontalOptions="Center">
+                        </Label>
+
+                        <Border
+                        Stroke="Black"
+                        StrokeThickness="8"
+                        StrokeShape="Rectangle">
+                            <VerticalStackLayout>
+                                <ImageButton 
+                                Source="velo2.jpg"
+                                Clicked="OnButton_Bike2"/>
+
+                                <Label
+                                TextColor="Black"
+                                FontSize="25"                                                                                   
+                                WidthRequest="450"
+                                Padding="4">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Perfect bike to explore the mountains or forest trails." FontFamily="Raleway-Light"/>
+                                            <Span Text="&#x0a;Characteristics:" FontFamily="Raleway-Light" FontSize="Large" FontAttributes="Bold" TextDecorations="Underline"/>
+                                            <Span Text="&#x0a;➣Equipped with lights" FontFamily="Raleway-Light"/>
+                                            <Span Text="&#x0a;➣Equipped with adapted mudguards" FontFamily="Raleway-Light"/>
+                                        <Span Text="&#x0a;➣Equipped with wide and grooved tires&#x0a;    to ride on rough terrain and cross&#x0a;    dirt roads." FontFamily="Raleway-Light"/>
+                                    </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+
+
+                <!--BIKE N°3 (=Label_Title+Border(=Image_Bike+Label_Description))-->
+                    <VerticalStackLayout >
+                        <Label 
+                        Text="Adventure"
+                        TextColor="Black"
+                        FontFamily="Raleway-Light"
+                        FontSize="65"
+                        FontAttributes="Bold"
+                        TextDecorations="Underline"
+                        HorizontalOptions="Center">
+                        </Label>
+
+                        <Border
+                        Stroke="Black"
+                        StrokeThickness="8"
+                        StrokeShape="Rectangle">
+                            <VerticalStackLayout>
+                                <ImageButton 
+                                Source="velo3.png"
+                                Clicked="OnButton_Bike3"/>
+
+                                <Label
+                                TextColor="Black"
+                                FontSize="25"                                                                                   
+                                WidthRequest="450"
+                                Padding="4">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="Perfect bike to explore the mountains or forest trails." FontFamily="Raleway-Light"/>
+                                            <Span Text="&#x0a;Characteristics:" FontFamily="Raleway-Light" FontSize="Large" FontAttributes="Bold" TextDecorations="Underline"/>
+                                            <Span Text="&#x0a;➣Equipped with a reinforced fram" FontFamily="Raleway-Light"/>
+                                            <Span Text="&#x0a;➣Not equipped with light, mudguards,&#x0a;    luggage rack" FontFamily="Raleway-Light"/>
+                                    </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </VerticalStackLayout>
+                        </Border>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
