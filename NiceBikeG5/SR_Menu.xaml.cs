@@ -6,4 +6,16 @@ public partial class SR_Menu: ContentPage
 	{
 		InitializeComponent();
 	}
+
+    /*FCT BUTTON LOGOUT*/
+    private async void OnButton_LogOut(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Session_SR());
+    }
+
+    /*FCT BUTTON CATALOGUE*/
+    private async void OnButton_Catalogue(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new SR_Catalogue());
+    }
 }

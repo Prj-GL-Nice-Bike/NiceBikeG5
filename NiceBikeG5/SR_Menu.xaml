@@ -4,13 +4,71 @@
              x:Class="NiceBikeG5.SR_Menu"
              Title="SR_Menu"
              BackgroundColor="DarkGray">
-    
-    
-    
+
+
+
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <HorizontalStackLayout HorizontalOptions="End">
+            <!--BUBBLE PROFIL-->
+            <Button
+            Text="SR"
+            BackgroundColor="Green"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="50"            
+            FontAttributes="Bold"            
+            BorderColor="#0F3907"
+            BorderWidth="6"
+            CornerRadius="250"
+            HeightRequest="83"
+            HorizontalOptions="Center"
+            Padding="8,2,8,0"            
+            Margin="330,20,10,0"/>
+
+            <!--BUTTON LOGOUT TO LOGIN-->
+            <Button
+            Text="LOG OUT"
+            BackgroundColor="DarkRed"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="50"           
+            FontAttributes="Bold"            
+            BorderColor="Black"
+            BorderWidth="6"
+            CornerRadius="0"
+            HeightRequest="68"
+            Padding="5,5,5,0"
+            Margin="0,20,20,0"
+            Clicked="OnButton_LogOut"/>
+        </HorizontalStackLayout>
+
+        <VerticalStackLayout VerticalOptions="Center" Margin="430,160,500,150" Spacing="15">
+            <!--BUTTON CATALOGUE TO CATALOGUE-->
+            <Button
+            Text="Catalogue"
+            BackgroundColor="DimGray"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="65"            
+            FontAttributes="Bold"            
+            BorderColor="Black"
+            BorderWidth="10"
+            Padding="5"
+            Margin="10,10,10,0"           
+            Clicked="OnButton_Catalogue"/>
+
+            <!--BUTTON LIST OF ORDERS TO LIST-->
+            <Button
+            Text="List of orders"
+            BackgroundColor="DimGray"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="65"            
+            FontAttributes="Bold"            
+            BorderColor="Black"
+            BorderWidth="10"
+            Padding="5"
+            Margin="10,10,10,0"/>
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
