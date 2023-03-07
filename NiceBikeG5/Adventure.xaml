@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NiceBikeG5.Adventure"
+             Title="Adventure"
+             BackgroundColor="DarkGray">
+
+
+    <VerticalStackLayout
+        Spacing="100">
+
+
+        <FlexLayout Direction="Row"
+                    JustifyContent="SpaceBetween">
+
+            <ImageButton Source="bouton_back.png"
+                         BackgroundColor="DarkGray"
+                         HeightRequest="100" WidthRequest="100"
+                         Margin="0,0,355,0"  
+                         Clicked="OnButton_Back"/>
+            <ImageButton Source="panier.png"
+                         BackgroundColor= "DarkGray"
+                         HeightRequest="100" WidthRequest="100"
+                         Clicked="GoToCart"/>
+
+        </FlexLayout>
+
+
+        <Image Source="velo3.png"
+               HorizontalOptions="Start"/>
+
+        <Label Text="Color" TextColor="Black"
+               FontSize="30" FontFamily="Raleway-Medium"
+               HorizontalOptions="End" Margin="20"/>
+        <Label Text="Size" TextColor="Black"
+               FontSize="30" FontFamily="Raleway-Medium"
+               HorizontalOptions="End" Margin="20"/>
+    
+        <FlexLayout Direction="Row"
+                    JustifyContent="SpaceBetween">
+
+        <Label Text="Quantity" TextColor="Black"
+               FontSize="30" FontFamily="Raleway-Medium"/>
+
+        <Label Text="Total" TextColor="Black"
+               FontSize="30" FontFamily="Raleway-Medium"/>
+
+        <Button Text="+ Add to cart" TextColor="Black"
+                FontSize="30" FontFamily="Raleway-Medium" 
+                HeightRequest="80" WidthRequest="300" 
+                HorizontalOptions="End" Margin="50"
+                BackgroundColor= "LightGray" BorderColor="Black" CornerRadius="0" BorderWidth="4"
+                Clicked="AddToCart">
+
+
+        </Button>
+
+        </FlexLayout>
+
+
+
+    </VerticalStackLayout>
+</ContentPage>
+
