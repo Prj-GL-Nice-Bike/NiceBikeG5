@@ -16,6 +16,7 @@ public partial class SR_Catalogue: ContentPage
     /*FCT BUTTON CART*/
     private async void OnButton_CartCatalogue(object sender, EventArgs e)
     {
+        await Navigation.PushAsync(new Cart());
     }
 
     /*FCT IMAGEBUTTON BIKE N°1*/

@@ -31,7 +31,7 @@
             <!--SR'S PROFILE-->
 
             <Button
-                Text="          SALES REPRESENTATIVE" TextColor="Black"
+                Text="         SALES &#x0a;REPRESENTATIVE" TextColor="Black"
                 LineBreakMode="WordWrap"
                 FontSize="50" FontFamily="Raleway-Bold"
                 WidthRequest="500" HeightRequest="500"
@@ -51,7 +51,7 @@
             <!--PM'S PROFILE-->
 
             <Button
-                Text="PRODUCTION MANAGER" TextColor="Black"
+                Text="PRODUCTION &#x0a;   MANAGER" TextColor="Black"
                 LineBreakMode="WordWrap"
                 FontSize="50" FontFamily="Raleway-Bold"
                 WidthRequest="500" HeightRequest="500"

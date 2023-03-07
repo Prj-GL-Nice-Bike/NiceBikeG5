@@ -5,8 +5,6 @@
              Title="SR_Menu"
              BackgroundColor="DarkGray">
 
-
-
     <VerticalStackLayout>
         <HorizontalStackLayout HorizontalOptions="End">
             <!--BUBBLE PROFIL-->
@@ -68,7 +66,8 @@
             BorderColor="Black"
             BorderWidth="10"
             Padding="5"
-            Margin="10,10,10,0"/>
+            Margin="10,10,10,0"
+                Clicked="ListOrder"/>
         </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
