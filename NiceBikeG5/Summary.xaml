@@ -75,7 +75,10 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button
+
+            </StackLayout>
+        </Border>
+        <Button
                 Text="Confirm Order"
                 BackgroundColor="White"
                 HorizontalOptions="End"
@@ -86,10 +89,8 @@
                 HeightRequest="60"
                 VerticalOptions="Start">
 
-                </Button>
-            </StackLayout>
-        </Border>
-            
+        </Button>
+
 
 
     </VerticalStackLayout>
