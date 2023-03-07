@@ -28,6 +28,8 @@ public partial class SRNewClient : ContentPage
         //myListOfClients.clientInfos["Emails"].Add(Email.Text);
         //myListOfClients.clientInfos["TVAS"].Add(TVA.Text);
 
-        await Navigation.PushAsync(new SRListOfClients());
+        //await Navigation.PushAsync(new SRListOfClients())
+        await Navigation.PushAsync(new Summary());
+        
     }
 }
