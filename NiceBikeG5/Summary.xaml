@@ -75,10 +75,19 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
+                <Button
+                Text="Confirm Order"
+                BackgroundColor="White"
+                HorizontalOptions="End"
+                Clicked="Confirm"
+                Margin="0,10,0,0"
+                BorderColor="Black"
+                BorderWidth="2"
+                HeightRequest="60"
+                VerticalOptions="Start">
 
-
+                </Button>
             </StackLayout>
-               
         </Border>
             
 

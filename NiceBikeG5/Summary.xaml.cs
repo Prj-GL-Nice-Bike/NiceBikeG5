@@ -12,6 +12,10 @@ public partial class Summary : ContentPage
     {
         await Shell.Current.GoToAsync(nameof(SRSellers));
     }
+    private async void Confirm(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(nameof(SRSellers));
+    }
     private async void LogOut(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new SRSellers());

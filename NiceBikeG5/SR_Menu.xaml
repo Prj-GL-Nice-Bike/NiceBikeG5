@@ -5,8 +5,6 @@
              Title="SR_Menu"
              BackgroundColor="DarkGray">
 
-
-
     <VerticalStackLayout>
         <HorizontalStackLayout HorizontalOptions="End">
             <!--BUBBLE PROFIL-->

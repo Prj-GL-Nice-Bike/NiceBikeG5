@@ -34,7 +34,7 @@
                    Grid.Column="1" 
                    FontSize="50" 
                    TextColor="Black"
-                   BackgroundColor="Darkgray"
+                   BackgroundColor="DarkGray"
                    HorizontalOptions="Center"
                    HeightRequest="150">
             </Label>
@@ -127,8 +127,8 @@
                                         <Button ImageSource="{Binding Image}"
                                                     Grid.Column="4"
                                                     Margin="0"
-                                                    BackgroundColor="Darkgray"
-												    BorderColor="Darkgray"
+                                                    BackgroundColor="DarkGray"
+												    BorderColor="DarkGray"
                                                     WidthRequest="60"
                                                     HeightRequest="40"
                                                     Command="{Binding DeleteCommand}"
