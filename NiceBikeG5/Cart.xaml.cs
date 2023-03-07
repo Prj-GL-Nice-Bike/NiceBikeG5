@@ -14,10 +14,10 @@ public partial class Cart : ContentPage
     
     private async void ReturnPrevious(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(SR_Menu)); 
+        await Shell.Current.GoToAsync(nameof(SR_Catalogue)); 
     }
     private async void GotoClients(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(SR_Menu));
+        await Shell.Current.GoToAsync(nameof(SRSellers));
     }
 }
