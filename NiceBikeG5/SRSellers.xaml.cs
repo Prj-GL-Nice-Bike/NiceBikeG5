@@ -8,7 +8,7 @@ public partial class SRSellers : ContentPage
 	}
     private async void BackClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new MainPage());
+        await Shell.Current.GoToAsync(nameof(Cart));
     }
 
     private async void NewClientClicked(object sender, EventArgs e)

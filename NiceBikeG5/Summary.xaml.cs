@@ -10,7 +10,7 @@ public partial class Summary : ContentPage
 	}
     private async void BackClicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(SRNewClient));
+        await Shell.Current.GoToAsync(nameof(SRSellers));
     }
     private async void LogOut(object sender, EventArgs e)
     {

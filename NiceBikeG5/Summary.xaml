@@ -18,28 +18,6 @@
                 VerticalOptions="Start">
                 
             </Button>
-            <StackLayout HorizontalOptions="End"
-                         Margin="1338,10,10,0">
-                <Button
-                    BackgroundColor="LightGreen"
-                    Text="CR"
-                    BorderWidth="2"
-                    Padding="2"
-                    BorderColor="Black"
-                    Margin="0,0,0,2"
-                    HeightRequest="60"
-                    >
-                </Button>
-                <Button 
-                    BackgroundColor="White"
-                    Text="Log out"
-                    BorderColor="Black"
-                    BorderWidth="2"
-                    Clicked="LogOut"
-                    HeightRequest="60">
-                    
-                </Button>
-            </StackLayout>
         </HorizontalStackLayout>
 
         <Label Text="Clients Details"

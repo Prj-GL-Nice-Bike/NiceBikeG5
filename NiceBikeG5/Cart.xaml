@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:NiceBikeG5"
              x:Class="NiceBikeG5.Cart"
              Title=""
-             Background="White">
+             Background="Darkgray">
     
     <ContentPage.BindingContext>
         <local:ViewBike/>
@@ -34,7 +34,7 @@
                    Grid.Column="1" 
                    FontSize="50" 
                    TextColor="Black"
-                   BackgroundColor="White"
+                   BackgroundColor="Darkgray"
                    HorizontalOptions="Center"
                    HeightRequest="150">
             </Label>
@@ -106,7 +106,7 @@
                                                         WidthRequest="70"  
                                                         IsVisible="True" 
                                                         TitleColor="Blue" 
-                                                        BackgroundColor="LightGray" >
+                                                        BackgroundColor="Black" >
                                                 <Picker.ItemsSource >
                                                     <x:Array Type="{x:Type x:Int32}">
                                                         <x:Int32>1</x:Int32>
@@ -127,7 +127,8 @@
                                         <Button ImageSource="{Binding Image}"
                                                     Grid.Column="4"
                                                     Margin="0"
-                                                    BackgroundColor="White"
+                                                    BackgroundColor="Darkgray"
+												    BorderColor="Darkgray"
                                                     WidthRequest="60"
                                                     HeightRequest="40"
                                                     Command="{Binding DeleteCommand}"
