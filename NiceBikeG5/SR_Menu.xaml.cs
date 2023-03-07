@@ -1,4 +1,4 @@
-using Projet_Beau_vélo.View;
+using NiceBikeG5;
 using Microsoft.Maui.Controls;
 
 namespace NiceBikeG5;
