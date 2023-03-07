@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBikeG5.SRNewClient"
-             Title="SRNewClient">
+             Title="">
+    
+    
+    
     <VerticalStackLayout>
         <Button x:Name="BackBtn"
                Text="Back" FontSize="22" TextColor="Black"
