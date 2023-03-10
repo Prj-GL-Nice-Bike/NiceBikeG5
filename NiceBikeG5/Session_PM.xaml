@@ -2,11 +2,76 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBikeG5.Session_PM"
-             Title="Login">
+             Title=""
+             BackgroundColor="DarkGray">
+
+
+
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <HorizontalStackLayout>
+            <!--BUTTON BACK TO MAIN HOME-->
+            <ImageButton
+            Source="bouton_back.png"
+            BackgroundColor="DarkGray"
+            HeightRequest="160"
+            Margin="0"            
+            Clicked="OnButton_Back"/>
+
+            <!--TITLE PAGE-->
+            <Button
+            Text="PRODUCTION MANAGER"            
+            BackgroundColor="Purple"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="75"            
+            FontAttributes="Bold"            
+            BorderColor="Black"
+            BorderWidth="10"
+            CornerRadius="0"
+            HeightRequest="90"
+            Padding="5,5,5,0"            
+            Margin="185,0,0,0"/>
+        </HorizontalStackLayout>
+
+
+        <!--FORM WITH PASSWORD-->
+        <VerticalStackLayout Margin="430,140,500,150">
+            <Label
+            Text="PASSWORD"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="55"            
+            FontAttributes="Bold"/>
+
+            <HorizontalStackLayout>
+                <Entry
+                x:Name="PasswordEntry"
+                BackgroundColor="White"
+                Placeholder="Enter your password"
+                PlaceholderColor="DimGray"
+                TextColor="Black"
+                IsPassword="True"
+                FontFamily="Raleway-Light"
+                FontSize="50"
+                WidthRequest="500"
+                Completed="OnEntryCompleted"/>
+
+                <Button
+                Text="LOG IN"
+                BackgroundColor="MediumPurple"
+                TextColor="Black"
+                FontFamily="Raleway-Light"
+                FontSize="55"
+                FontAttributes="Bold"
+                BorderColor="Black"
+                BorderWidth="6"
+                CornerRadius="0"
+                HeightRequest="70"
+                WidthRequest="215"    
+                Padding="5,5,5,0"
+                Margin="15,0,0,0"
+                Clicked="OnButton_LogIn"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>
