@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ViewBike="clr-namespace:NiceBikeG5"
              x:Class="NiceBikeG5.Summary"
+             
              Title="Summary"
              BackgroundColor="DarkGray">
+
+    <ContentPage.BindingContext>
+        <ViewBike:ViewBike/>
+    </ContentPage.BindingContext>
+    
     <VerticalStackLayout>
         <HorizontalStackLayout Margin="20,10,0,0">
             <Button
@@ -16,8 +23,8 @@
                 BorderWidth="2"
                 HeightRequest="60"
                 VerticalOptions="Start">
-                
             </Button>
+            
         </HorizontalStackLayout>
 
         <Label Text="Clients Details"
@@ -69,13 +76,15 @@
                         <FormattedString>
                             <Span Text="Total : " TextColor="Black" FontSize="20"/>
                             <Span Text="                            " FontSize="14">
-
                             </Span>
                             <Span Text="€" TextColor="Black" FontSize="20" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button
+                
+            </StackLayout>
+        </Border>
+        <Button
                 Text="Confirm Order"
                 BackgroundColor="White"
                 HorizontalOptions="End"
@@ -86,10 +95,8 @@
                 HeightRequest="60"
                 VerticalOptions="Start">
 
-                </Button>
-            </StackLayout>
-        </Border>
-            
+        </Button>
+
 
 
     </VerticalStackLayout>

@@ -106,19 +106,25 @@
                                                         WidthRequest="70"  
                                                         IsVisible="True" 
                                                         TitleColor="Blue" 
-                                                        BackgroundColor="Black" >
+                                                        BackgroundColor="Black"
+                                                        TextColor="White"
+                                                        x:Name="base"
+                                                        
+                                                        
+                                                        >
                                                 <Picker.ItemsSource >
-                                                    <x:Array Type="{x:Type x:Int32}">
+                                                    <x:Array  Type="{x:Type x:Int32}">
+
                                                         <x:Int32>1</x:Int32>
-                                                        <x:Int32>2</x:Int32>
-                                                        <x:Int32>3</x:Int32>
-                                                        <x:Int32>4</x:Int32>
-                                                        <x:Int32>5</x:Int32>
-                                                        <x:Int32>6</x:Int32>
-                                                        <x:Int32>7</x:Int32>
-                                                        <x:Int32>8</x:Int32>
-                                                        <x:Int32>9</x:Int32>
-                                                        <x:Int32>10</x:Int32>
+                                                            <x:Int32>2</x:Int32>
+                                                            <x:Int32>3</x:Int32>
+                                                            <x:Int32>4</x:Int32>
+                                                            <x:Int32>5</x:Int32>
+                                                            <x:Int32>6</x:Int32>
+                                                            <x:Int32>7</x:Int32>
+                                                            <x:Int32>8</x:Int32>
+                                                            <x:Int32>9</x:Int32>
+                                                            <x:Int32>10</x:Int32>
                                                     </x:Array>
                                                 </Picker.ItemsSource>
                                             </Picker>

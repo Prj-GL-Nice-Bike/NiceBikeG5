@@ -2,12 +2,13 @@ namespace NiceBikeG5;
 
 public partial class Summary : ContentPage
 {
-	public Summary()
-	{
-		InitializeComponent();
+    public Summary()
+    {
+        InitializeComponent();
 
-        
-	}
+
+    }
+    
     private async void BackClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync(nameof(SRSellers));
@@ -20,4 +21,5 @@ public partial class Summary : ContentPage
     {
         await Navigation.PushAsync(new SRSellers());
     }
+   
 }

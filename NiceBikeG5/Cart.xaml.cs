@@ -10,7 +10,9 @@ public partial class Cart : ContentPage
     public Cart()
 	{
         InitializeComponent();
+       
     }
+    
     
     private async void ReturnPrevious(object sender, EventArgs e)
     {
