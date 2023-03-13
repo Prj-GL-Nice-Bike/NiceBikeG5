@@ -5,12 +5,15 @@
              Title="Assembler_Bikes"
              BackgroundColor="DarkGray">
     <Grid x:Name="ListGrid" ColumnDefinitions="60, *, *, *, *, *, 50, 50">
+        
         <BoxView Grid.Column="0" Grid.ColumnSpan="8" Grid.Row="0"
                  Color="Gray" />
+        
         <Label Text="Ordered Bikes" FontSize="36"
                Grid.ColumnSpan="8"
                HorizontalOptions="Center"
                VerticalOptions="Center" />
+
         <Button x:Name="BackBtn"
                Text="Back" FontSize="22" TextColor="Black"
                SemanticProperties.Hint="Create the new client"
@@ -20,46 +23,55 @@
                Margin="30, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center" />
-        <Label Text="Connected as Assembler #1" FontSize="20"
+
+        <Label Text="{Binding ConnectionMessage}" FontSize="20" x:Name="AssemblerConnected"
                Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="0"
                Margin="100, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        
         <Label Text="N°" FontSize="20"
                Grid.Column="0" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        
         <Label Text="Bike" FontSize="20"
                Grid.Column="1" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        
         <Label Text="Size" FontSize="20"
                Grid.Column="2" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        
         <Label Text="Color" FontSize="20"
                Grid.Column="3" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        
         <Label Text="Order N°" FontSize="20"
                Grid.Column="4" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        
         <Label Text="Assembler" FontSize="20"
                Grid.Column="5" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        
         <Label Text="V" FontSize="20"
                Grid.Column="6" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        
         <Label Text="X" FontSize="20"
                Grid.Column="7" Grid.Row="1"
                Margin="20, 0, 0, 0"

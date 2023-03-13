@@ -2,9 +2,11 @@ namespace NiceBikeG5;
 
 public partial class Assembler_Bikes : ContentPage
 {
-	public Assembler_Bikes()
+    public Assembler_Bikes(string assemblerName)
 	{
 		InitializeComponent();
+
+        AssemblerConnected.Text = $"Connecté en tant que {assemblerName}";
 
         Grid ListGrid = (Grid)this.FindByName("ListGrid");
 
