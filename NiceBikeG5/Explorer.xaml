@@ -52,7 +52,7 @@
 
             </Grid>
 
-        <Label  Text="Adventure" x:Name="type"
+        <Label  Text="Explorer" x:Name="type"
                 Padding="50,50,0,100"
                 FontSize="75" FontFamily="Raleway-BoldItalic"
                 TextColor="Black"
