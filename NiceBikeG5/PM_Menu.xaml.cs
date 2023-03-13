@@ -16,7 +16,7 @@ public partial class PM_Menu : ContentPage
     /*FCT BUTTON LIST OF ORDERS*/
     private async void OnButton_ListOrders(object sender, EventArgs e)
     {
-        
+        await Navigation.PushAsync(new PM_ListOrders());
     }
 
     /*FCT BUTTON INVENTORY*/

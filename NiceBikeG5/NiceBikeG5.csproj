@@ -49,6 +49,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="PM_ListOrders.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PM_Menu.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
