@@ -19,18 +19,21 @@ public partial class SR_Catalogue: ContentPage
         await Navigation.PushAsync(new Cart());
     }
 
-    /*FCT IMAGEBUTTON BIKE N°1*/
+    /*FCT IMAGEBUTTON BIKE Nï¿½1*/
     private async void OnButton_Bike1(object sender, EventArgs e)
     {
+        await Navigation.PushAsync(new City());
     }
 
-    /*FCT IMAGEBUTTON BIKE N°2*/
+    /*FCT IMAGEBUTTON BIKE Nï¿½2*/
     private async void OnButton_Bike2(object sender, EventArgs e)
     {
+        await Navigation.PushAsync(new Explorer());
     }
 
-    /*FCT IMAGEBUTTON BIKE N°3*/
+    /*FCT IMAGEBUTTON BIKE Nï¿½3*/
     private async void OnButton_Bike3(object sender, EventArgs e)
     {
+        await Navigation.PushAsync(new Adventure());
     }
 }
