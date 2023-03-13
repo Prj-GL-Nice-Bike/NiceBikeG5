@@ -1,171 +1,125 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:NiceBikeG5"
              x:Class="NiceBikeG5.Cart"
              Title=""
              Background="Darkgray">
-    
-    <ContentPage.BindingContext>
-        <local:ViewBike/>
-    </ContentPage.BindingContext>
-
 
     <VerticalStackLayout >
-        <!--Haut de la page-->
-        <Grid ColumnDefinitions="50,*" ColumnSpacing="50">
+        <!--NAVIGATION BAR-->
+        <Grid HeightRequest="50"
+                  BackgroundColor="#790B29">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Button Text="Return"
-                    Grid.Column="0"
-                    FontSize="20"
-                    Margin="20"
-                    TextColor="Black"
-                    BackgroundColor="White"
-                    WidthRequest="100"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Start"
-                    BorderColor="Black"
-                    BorderWidth="2"
-                    CornerRadius="0"
-                    Clicked="ReturnPrevious">
-            </Button>
-
-            <Label Text="Cart" 
-                   Grid.Column="1" 
-                   FontSize="50" 
-                   TextColor="Black"
-                   BackgroundColor="DarkGray"
-                   HorizontalOptions="Center"
-                   HeightRequest="150">
-            </Label>
-
-
+                <!--IMAGE BACK TO CATALOGUE?-->
+                <ImageButton
+                Source="bouton_back.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                Margin="-120"
+                Clicked="ReturnPrevious"/>
+                
+                <!--IMAGE HOME TO CATALOGUE-->
+                <ImageButton 
+                Source="maison.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
         </Grid>
+
+        <Label Text="Cart" 
+        Grid.Column="1" 
+        FontSize="75" FontFamily="Raleway-BoldItalic"
+        TextColor="Black"
+        BackgroundColor="DarkGray"
+        HorizontalOptions="Start"
+        Padding="50,50,0,100">
+        </Label>
+
         <HorizontalStackLayout HorizontalOptions="Center">
             <VerticalStackLayout HorizontalOptions="Center">
 
-                <!--Row of Titles-->
-                <Border WidthRequest="550" Margin="-3" >
-                    <Grid ColumnDefinitions="100,100,100,100,100" WidthRequest="450" Margin="3" >
-                        <Label  Text="Bikes"  Padding="5" Grid.Column="0" TextColor="Black"/>
-                        <Label  Text="Size"  Padding="5" Grid.Column="1" TextColor="Black"/>
-                        <Label  Text="Color"  Padding="5"  Grid.Column="2" TextColor="Black"/>
-                        <Label  Text="Quantity"  Padding="5" Grid.Column="3" TextColor="Black"/>
+                <!--ROW OF TITLES-->
+                <Border WidthRequest="600" Margin="-3" BackgroundColor="#790B29" Stroke="Black" StrokeThickness="8">
+                    <Grid ColumnDefinitions="150,100,100,100,100" WidthRequest="500" Margin="3" BackgroundColor="#790B29">
+                        <Label  Text="Bikes"  Padding="5" HorizontalTextAlignment="Start" Grid.Column="0" TextColor="White" FontSize="20" FontFamily="Raleway-Bold" />
+                        <Label  Text="Size"  Padding="5" Grid.Column="1" TextColor="White" FontSize="20" FontFamily="Raleway-Bold" />
+                        <Label  Text="Color"  Padding="5"  Grid.Column="2" TextColor="White" FontSize="20" FontFamily="Raleway-Bold" />
+                        <Label  Text="Quantity"  Padding="5" Grid.Column="3" TextColor="White" FontSize="20" FontFamily="Raleway-Bold" />
                     </Grid>
                 </Border>
-                <!--List of Bikes-->
-                <Border WidthRequest="550" HeightRequest="400">
+                <!--LIST OF BIKES-->
+                <Border WidthRequest="600" HeightRequest="400" BackgroundColor="LightGray" Stroke="Black" StrokeThickness="8">
                     <ScrollView HorizontalOptions="Center" Orientation="Vertical">
-                        <CollectionView
-                            Margin="2"
-                            HorizontalOptions="Center"
-                            ItemsSource="{Binding Bikes}">
-                            <CollectionView.ItemTemplate >
-                                <DataTemplate  >
-                                    <Grid  ColumnDefinitions="100,100,100,100,100" RowDefinitions="45" Margin="0">
-
-                                        <StackLayout 
-                                            Grid.Column="0"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Center"
-                                            Orientation="Horizontal">
-                                            <Label  Text="{Binding Type}"   TextColor="Black"/>
+                        <!--DATABASE-->
+                        <ListView x:Name="listView" ItemsSource="{Binding Orders}" BackgroundColor="LightGray">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                                            <Label Text="{Binding ProductName}" WidthRequest="160" Padding="50,0,0,0" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                            <Label Text="{Binding ProductSize}" WidthRequest="110" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                            <Label Text="{Binding ProductColor}" WidthRequest="120" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                            <Label Text="{Binding ProductQuantity}" WidthRequest="100" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                            <Button Text="Delete" WidthRequest="80" TextColor="Black" FontSize="15" FontFamily="Raleway-SemiBold"
+                                                    Clicked="DeleteOrder" CommandParameter="{Binding .}" />
                                         </StackLayout>
+                                    </ViewCell>
 
-                                        <StackLayout
-                                    
-                                            Grid.Column="1"
-                                            Padding="10"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Center"
-                                            Orientation="Horizontal">
-                                            <Label  Text="{Binding Size} " Padding="5" TextColor="Black"/>
-                                        </StackLayout>
-
-                                        <StackLayout
-                                            Margin="-5"
-                                            Grid.Column="2"
-                                            Padding="10"
-                                            VerticalOptions="Center"
-                                            HorizontalOptions="Center"
-                                            Orientation="Horizontal">
-
-                                            <Label Text="{Binding Color}" 
-                                                   Padding="5" 
-                                                   TextColor="Black"/>
-
-                                        </StackLayout>
-
-
-                                        <StackLayout Grid.Column="3"  
-                                                     VerticalOptions="Center" 
-                                                     HorizontalOptions="Center"
-                                                     Orientation="Horizontal">
-
-                                            <Picker FontSize="12"  
-                                                        WidthRequest="70"  
-                                                        IsVisible="True" 
-                                                        TitleColor="Blue" 
-                                                        BackgroundColor="Black" >
-                                                <Picker.ItemsSource >
-                                                    <x:Array Type="{x:Type x:Int32}">
-                                                        <x:Int32>1</x:Int32>
-                                                        <x:Int32>2</x:Int32>
-                                                        <x:Int32>3</x:Int32>
-                                                        <x:Int32>4</x:Int32>
-                                                        <x:Int32>5</x:Int32>
-                                                        <x:Int32>6</x:Int32>
-                                                        <x:Int32>7</x:Int32>
-                                                        <x:Int32>8</x:Int32>
-                                                        <x:Int32>9</x:Int32>
-                                                        <x:Int32>10</x:Int32>
-                                                    </x:Array>
-                                                </Picker.ItemsSource>
-                                            </Picker>
-                                        </StackLayout>
-
-                                        <Button ImageSource="{Binding Image}"
-                                                    Grid.Column="4"
-                                                    Margin="0"
-                                                    BackgroundColor="DarkGray"
-												    BorderColor="DarkGray"
-                                                    WidthRequest="60"
-                                                    HeightRequest="40"
-                                                    Command="{Binding DeleteCommand}"
-                                                    VerticalOptions="Center"
-                                                    HorizontalOptions="Center"/>
-                                        
-                                    </Grid>
                                 </DataTemplate>
-                            </CollectionView.ItemTemplate>
-                        </CollectionView>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        
                     </ScrollView>
                 </Border>
             </VerticalStackLayout>
 
-            <VerticalStackLayout Padding="10" Margin="-12"  VerticalOptions="Start">
-                <!--Total price-->
-                <Border WidthRequest="200" Margin="-1">
-                    <Label Text="Total" FontAttributes="Bold" FontSize="19" TextColor="Black" Margin="3.9" HorizontalOptions="Center"/>
+            <VerticalStackLayout VerticalOptions="Start">
+                <!--TOTAL PRICE-->
+                <Border WidthRequest="150" Margin="-3" BackgroundColor="#790B29" Stroke="Black" StrokeThickness="8">
+                    <Grid ColumnDefinitions="100" Margin="3" BackgroundColor="#790B29">
+                        <Label  Text="Total"  Padding="5" HorizontalTextAlignment="Center" Grid.Column="0" TextColor="White" FontSize="20" FontFamily="Raleway-Bold" />
+                        
+                    </Grid>
+                </Border>
+                <Border WidthRequest="150" HeightRequest="400" BackgroundColor="LightGray" Stroke="Black" StrokeThickness="8">
+                    <ScrollView HorizontalOptions="Center" Orientation="Vertical">
+                    </ScrollView>
                 </Border>
 
-                <Border WidthRequest="200" HeightRequest="355">
-
-                    <Button ImageSource="{Binding Image}"
-                            BackgroundColor="Black"
-                            WidthRequest="60"
-                            HeightRequest="40"       
-                            Command="{Binding DeleteCommand}"
-                            VerticalOptions="Center"
-                            HorizontalOptions="Center"/>
-
-                </Border>
-                <!--Finalize Button-->
-                <Button Text="Finalise" TextColor="Black" BorderColor="Black" BorderWidth="2"  CornerRadius="0" VerticalOptions="End"  Clicked="GotoClients"  >
+                <!--FINALISE BUTTON-->
+                <Button
+                    Text="Finalise" TextColor="White"
+                    FontSize="20" FontFamily="Raleway-Bold" 
+                    BackgroundColor="#790B29"
+                    BorderColor="Black" BorderWidth="3"
+                    VerticalOptions="End"  Clicked="GotoClients">
 
                 </Button>
-                
+
             </VerticalStackLayout>
         </HorizontalStackLayout>
+
+        <!--DESIGN: END OF PAGE-->
+        <VerticalStackLayout HeightRequest="50"
+                             BackgroundColor="#790B29"
+                             VerticalOptions="EndAndExpand"
+                             TranslationY="300">
+        </VerticalStackLayout>
+
     </VerticalStackLayout>
 </ContentPage>

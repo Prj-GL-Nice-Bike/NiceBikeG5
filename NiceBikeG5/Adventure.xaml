@@ -43,8 +43,7 @@
                 <ImageButton 
                 Source="panier.png"
                 BackgroundColor="#790B29"
-                Grid.Row="0"
-                Grid.Column="2"
+                Grid.Row="0" Grid.Column="2"
                 HeightRequest="50"
                 HorizontalOptions="Start"
                 VerticalOptions="Center"
@@ -52,7 +51,8 @@
                 Clicked="GoToCart"/>
 
             </Grid>
-        <Label  Text="Adventure"
+
+        <Label  Text="Adventure" x:Name="type"
                 Padding="50,50,0,100"
                 FontSize="75" FontFamily="Raleway-BoldItalic"
                 TextColor="Black"
@@ -81,14 +81,14 @@
                         <Span Text="&#x0a;Characteristics:" FontFamily="Raleway-SemiBold" TextDecorations="Underline"/>
                         <Span Text="&#x0a;➣ Equipped with a reinforced fram" FontFamily="Raleway-Medium"/>
                         <Span Text="&#x0a;➣ Not equipped with light, mudguards, luggage rack" FontFamily="Raleway-Medium"/>
-                </FormattedString>
+                    </FormattedString>
                 </Label.FormattedText>
             </Label>
         </HorizontalStackLayout>
         </Border>
 
             <!--LABELS: COLOR, SIZE-->
-            <VerticalStackLayout VerticalOptions="Center" TranslationX="250">
+            <VerticalStackLayout VerticalOptions="Center" TranslationX="100">
                     <Label Text="Color" TextColor="Black" 
                            FontSize="30" FontFamily="Raleway-SemiBold"
                            HorizontalOptions="Start" Margin="20"/>
@@ -97,10 +97,10 @@
                            HorizontalOptions="Start" Margin="20"/>
             </VerticalStackLayout>
  
-            <VerticalStackLayout Spacing="20" Margin="20" VerticalOptions="Center" TranslationX="250">
+            <VerticalStackLayout Spacing="20" Margin="20" VerticalOptions="Center" TranslationX="100">
 
                     <!--PICKER: COLORS-->
-                    <Picker x:Name="colorPicker"
+                    <Picker x:Name="colorPicker" Title="Select a color"
                             FontSize="20" TextColor="Black" FontFamily="Raleway-Medium"
                             WidthRequest="100" HeightRequest="40"
                             HorizontalTextAlignment="Center"
@@ -109,13 +109,13 @@
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                             <x:String>Green</x:String>
-                            <x:String>Blue</x:String>
+                            <x:String>Black</x:String>
                             </x:Array>
                         </Picker.ItemsSource>
                     </Picker>
-
+                
                     <!--PICKER: SIZES-->
-                    <Picker x:Name="sizePicker"
+                    <Picker x:Name="sizePicker" Title="Select a size (inches)"
                             FontSize="20" TextColor="Black" FontFamily="Raleway-Medium"
                             WidthRequest="100" HeightRequest="40"
                             HorizontalTextAlignment="Center"
@@ -133,8 +133,7 @@
         </HorizontalStackLayout>
         
         <!--FORM-->
-        <FlexLayout Direction="Row"
-                    JustifyContent="SpaceBetween">
+        <HorizontalStackLayout>
 
         <!--LABEL,PICKER: QUANTITY-->
         <HorizontalStackLayout Padding="0,100,0,0">
@@ -143,7 +142,7 @@
                VerticalOptions="Center"
                Padding="20,0,30,0"/>
                <Picker
-                    x:Name="quantityPicker"
+                    x:Name="quantityPicker" Title="Select a quantity"
                     SelectedIndexChanged="TotalPrice"
                     FontSize="30" TextColor="Black" FontFamily="Raleway-Medium"
                     HorizontalTextAlignment="Center"
@@ -169,7 +168,7 @@
 
 
         <!--LABEL: TOTAL-->
-        <HorizontalStackLayout Padding="0,100,0,0">
+        <HorizontalStackLayout Padding="100,100,0,0">
         <Label Text="Total : " TextColor="Black"
                FontSize="30" FontFamily="Raleway-SemiBold"
                VerticalOptions="Center"/>
@@ -183,12 +182,12 @@
         <Button Text="+ Add to cart" TextColor="Black"
                 FontSize="30" FontFamily="Raleway-Bold" 
                 HeightRequest="80" WidthRequest="300" 
-                HorizontalOptions="End" Margin="0,55,50,0"
-                BackgroundColor= "LightGray" BorderColor="#790B29" BorderWidth="4"
+                HorizontalOptions="End" Margin="200,55,50,0"
+                BackgroundColor= "LightGray" BorderColor="#790B29" BorderWidth="4" 
                 Clicked="AddToCart">
         </Button>
 
-        </FlexLayout>
+        </HorizontalStackLayout>
 
         <!--DESIGN: END OF PAGE-->
         <VerticalStackLayout HeightRequest="50"
@@ -200,5 +199,7 @@
         
     </ScrollView>
 </ContentPage>
+
+
 
 

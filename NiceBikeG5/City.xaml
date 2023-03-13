@@ -100,7 +100,7 @@
             <VerticalStackLayout Spacing="20" Margin="20" VerticalOptions="Center" TranslationX="350">
 
                     <!--PICKER: COLORS-->
-                    <Picker x:Name="colorPicker"
+                    <Picker x:Name="colorPicker" Title="Select a color"
                             FontSize="20" TextColor="Black" FontFamily="Raleway-Medium"
                             WidthRequest="100" HeightRequest="40"
                             HorizontalTextAlignment="Center"
@@ -115,7 +115,7 @@
                     </Picker>
                 
                     <!--PICKER: SIZES-->
-                    <Picker x:Name="sizePicker"
+                    <Picker x:Name="sizePicker" Title="Select a size (inches)"
                             FontSize="20" TextColor="Black" FontFamily="Raleway-Medium"
                             WidthRequest="100" HeightRequest="40"
                             HorizontalTextAlignment="Center"
@@ -133,8 +133,7 @@
         </HorizontalStackLayout>
         
         <!--FORM-->
-        <FlexLayout Direction="Row"
-                    JustifyContent="SpaceBetween">
+        <HorizontalStackLayout>
 
         <!--LABEL,PICKER: QUANTITY-->
         <HorizontalStackLayout Padding="0,100,0,0">
@@ -143,7 +142,7 @@
                VerticalOptions="Center"
                Padding="20,0,30,0"/>
                <Picker
-                    x:Name="quantityPicker"
+                    x:Name="quantityPicker" Title="Select a quantity"
                     SelectedIndexChanged="TotalPrice"
                     FontSize="30" TextColor="Black" FontFamily="Raleway-Medium"
                     HorizontalTextAlignment="Center"
@@ -169,7 +168,7 @@
 
 
         <!--LABEL: TOTAL-->
-        <HorizontalStackLayout Padding="0,100,0,0">
+        <HorizontalStackLayout Padding="100,100,0,0">
         <Label Text="Total : " TextColor="Black"
                FontSize="30" FontFamily="Raleway-SemiBold"
                VerticalOptions="Center"/>
@@ -183,12 +182,12 @@
         <Button Text="+ Add to cart" TextColor="Black"
                 FontSize="30" FontFamily="Raleway-Bold" 
                 HeightRequest="80" WidthRequest="300" 
-                HorizontalOptions="End" Margin="0,55,50,0"
+                HorizontalOptions="End" Margin="200,55,50,0"
                 BackgroundColor= "LightGray" BorderColor="#790B29" BorderWidth="4" 
                 Clicked="AddToCart">
         </Button>
 
-        </FlexLayout>
+        </HorizontalStackLayout>
 
         <!--DESIGN: END OF PAGE-->
         <VerticalStackLayout HeightRequest="50"
