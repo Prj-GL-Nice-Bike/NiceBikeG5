@@ -49,6 +49,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="MySql.Data" Version="8.0.32.1" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="PM_ListOrders.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NiceBikeG5.PM_OrderListBikes"
+             Title=""
+             BackgroundColor="Darkgray">
+
+    <VerticalStackLayout>
+
+        <ListView x:Name="listView" Margin="50" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout>
+                            <Label Text="{Binding Type}" FontSize="Medium" FontAttributes="Bold" />
+                            <Label Text="{Binding Size}" />
+                            <Label Text="{Binding Color}" />
+                            <Label Text="{Binding Quantity}" />
+                            <Label Text="{Binding Number}" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </VerticalStackLayout>
+</ContentPage>
