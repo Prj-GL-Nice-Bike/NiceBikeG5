@@ -3,6 +3,9 @@ using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
 using System;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
+using System.ComponentModel;
+
 
 
 namespace NiceBikeG5
@@ -23,9 +26,10 @@ namespace NiceBikeG5
         // DELETE BUTTON
         private async void DeleteOrder(object sender, EventArgs e)
         {
-            var button = (Button)sender;
+            // SENDER
+            var button = (ImageButton)sender;
 
-            // BINDS THE PARAMETERS OF THE CLASS ORDER
+            // RETREIVES ORDER ASSOCIATED WITH BUTTON
             var order = (Order)button.BindingContext;
 
             // CONNECTION WITH MYSQL
@@ -37,7 +41,9 @@ namespace NiceBikeG5
             using var command = new MySqlCommand(commandText, connection);
             await command.ExecuteNonQueryAsync();
 
-            _orders.Remove(order);
+            ((CartViewModel)BindingContext).Orders.Remove(order);
+            ((CartViewModel)BindingContext).UpdateTotal();
+
         }
         // NAVIGATION BUTTONS
         private async void ReturnPrevious(object sender, EventArgs e)
@@ -53,9 +59,32 @@ namespace NiceBikeG5
     }
 
     // VIEW MODEL
-    public class CartViewModel
+    public class CartViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Order> Orders { get; }
+        private ObservableCollection<Order> _orders;
+        public ObservableCollection<Order> Orders
+        {
+            get { return _orders; }
+            set { if (_orders != value)
+                    {
+                        _orders = value;
+                        OnPropertyChanged();
+                        UpdateTotal();
+                    }
+                }   
+        }
+
+        private double _total;
+        public double Total
+        {
+            get => _total;
+            set { if (value != _total)
+                    {
+                        _total = value;
+                        OnPropertyChanged();
+                    }
+                }
+        }
 
         public CartViewModel()
         {
@@ -82,20 +111,64 @@ namespace NiceBikeG5
                 var productSize = reader.GetDouble("Size");
                 var productColor = reader.GetString("Color");
                 var productQuantity = reader.GetDouble("Quantity");
-                Orders.Add(new Order { Id = id, ProductName = productName, ProductSize = productSize, ProductColor = productColor, ProductQuantity = productQuantity });
+                var productPrice = reader.GetDouble("Price");
+                Orders.Add(new Order { Id = id, ProductName = productName, ProductSize = productSize, ProductColor = productColor, ProductQuantity = productQuantity, ProductPrice = productPrice});
             }
+            UpdateTotal();
+            
+        }
+
+        public void UpdateTotal()
+        {
+            double totalPrice = 0;
+            foreach (Order order in Orders)
+            {
+                totalPrice += order.ProductPrice;
+            }
+            Total = totalPrice;
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void Order_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            UpdateTotal();
+        }
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 
     // PARAMETERS
-    public class Order
+    public class Order : INotifyPropertyChanged
     {
+        private double _productPrice;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public int Id { get; set; }
         public string ProductName { get; set; }
         public double ProductSize { get; set; }
         public string ProductColor { get; set; }
         public double ProductQuantity { get; set; }
+        public double ProductPrice
+        {
+            get { return _productPrice; }
+            set
+            {
+                if (_productPrice != value)
+                {
+                    _productPrice = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
-
 }
+
 

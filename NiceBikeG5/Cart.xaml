@@ -6,6 +6,7 @@
              Title=""
              Background="Darkgray">
 
+<ScrollView>
     <VerticalStackLayout >
         <!--NAVIGATION BAR-->
         <Grid HeightRequest="50"
@@ -66,7 +67,7 @@
                 <Border WidthRequest="600" HeightRequest="400" BackgroundColor="LightGray" Stroke="Black" StrokeThickness="8">
                     <ScrollView HorizontalOptions="Center" Orientation="Vertical">
                         <!--DATABASE-->
-                        <ListView x:Name="listView" ItemsSource="{Binding Orders}" BackgroundColor="LightGray">
+                        <ListView x:Name="listBikes" ItemsSource="{Binding Orders}" BackgroundColor="LightGray">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
@@ -75,11 +76,10 @@
                                             <Label Text="{Binding ProductSize}" WidthRequest="110" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
                                             <Label Text="{Binding ProductColor}" WidthRequest="120" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
                                             <Label Text="{Binding ProductQuantity}" WidthRequest="100" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
-                                            <Button Text="Delete" WidthRequest="80" TextColor="Black" FontSize="15" FontFamily="Raleway-SemiBold"
+                                            <ImageButton Source="delete.png" HeightRequest="25" BackgroundColor="LightGray"
                                                     Clicked="DeleteOrder" CommandParameter="{Binding .}" />
                                         </StackLayout>
                                     </ViewCell>
-
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
@@ -89,37 +89,57 @@
             </VerticalStackLayout>
 
             <VerticalStackLayout VerticalOptions="Start">
-                <!--TOTAL PRICE-->
+                <!--BIKE PRICE-->
                 <Border WidthRequest="150" Margin="-3" BackgroundColor="#790B29" Stroke="Black" StrokeThickness="8">
-                    <Grid ColumnDefinitions="100" Margin="3" BackgroundColor="#790B29">
+                    <Grid ColumnDefinitions="125" Margin="3" BackgroundColor="#790B29">
                         <Label  Text="Total"  Padding="5" HorizontalTextAlignment="Center" Grid.Column="0" TextColor="White" FontSize="20" FontFamily="Raleway-Bold" />
-                        
                     </Grid>
                 </Border>
                 <Border WidthRequest="150" HeightRequest="400" BackgroundColor="LightGray" Stroke="Black" StrokeThickness="8">
                     <ScrollView HorizontalOptions="Center" Orientation="Vertical">
+                        <ListView x:Name="listPrices" ItemsSource="{Binding Orders}" BackgroundColor="LightGray" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                                                <Label Text="{Binding ProductPrice,StringFormat='+ {0} €'}" WidthRequest="125" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                            </StackLayout>
+                                        </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>                      
                     </ScrollView>
                 </Border>
 
-                <!--FINALISE BUTTON-->
+                <!--TOTAL-->
+                <Border BackgroundColor="#790B29" Stroke="Black" StrokeThickness="8" Margin="3" WidthRequest="150">
+                <Label Text="{Binding Total, StringFormat='{0} €'}"
+                       WidthRequest="150" HorizontalTextAlignment="Center"
+                       TextColor="White" FontSize="25" FontFamily="Raleway-Bold"/>
+                </Border>
+                </VerticalStackLayout>
+
+        </HorizontalStackLayout>
+
+        <!--FINALISE BUTTON-->
                 <Button
                     Text="Finalise" TextColor="White"
-                    FontSize="20" FontFamily="Raleway-Bold" 
+                    FontSize="30" FontFamily="Raleway-Bold" 
                     BackgroundColor="#790B29"
-                    BorderColor="Black" BorderWidth="3"
-                    VerticalOptions="End"  Clicked="GotoClients">
+                    BorderColor="Black" BorderWidth="4"
+                    HeightRequest="80" WidthRequest="200" 
+                    Margin="200,55,200,0"
+                    HorizontalOptions="End"  Clicked="GotoClients">
 
                 </Button>
-
-            </VerticalStackLayout>
-        </HorizontalStackLayout>
 
         <!--DESIGN: END OF PAGE-->
         <VerticalStackLayout HeightRequest="50"
                              BackgroundColor="#790B29"
                              VerticalOptions="EndAndExpand"
-                             TranslationY="300">
+                             TranslationY="150">
         </VerticalStackLayout>
 
     </VerticalStackLayout>
+</ScrollView> 
 </ContentPage>
