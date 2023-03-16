@@ -5,23 +5,115 @@
              Title=""
              BackgroundColor="Darkgray">
 
+
+
     <VerticalStackLayout>
 
-        <ListView x:Name="listView" Margin="50" >
+        <Label 
+        x:Name="orderNumberLabel" 
+        Text="Type" 
+        TextColor="Black"
+        TextDecorations="Underline"
+        FontAttributes="Bold" 
+        FontSize="100"       
+        Margin="50,20,0,0"/>
+
+        <!--TITRE COLONNES-->
+        <HorizontalStackLayout Margin="50,10,350,0">
+            <Border
+                Stroke="Black"
+                StrokeThickness="8"
+                StrokeShape="Rectangle">
+
+                <HorizontalStackLayout>
+                    <Label 
+                    Text="Type" 
+                    FontAttributes="Bold" 
+                    FontSize="60" 
+                    TextColor="Black"
+                    BackgroundColor="White"
+                    VerticalTextAlignment="Center" 
+                    HorizontalTextAlignment="Center"
+                    WidthRequest="330"
+                    Margin="0"/>
+
+                    <Label 
+                    Text="Size" 
+                    FontAttributes="Bold" 
+                    FontSize="60" 
+                    TextColor="Black"
+                    BackgroundColor="White"
+                    VerticalTextAlignment="Center" 
+                    HorizontalTextAlignment="Center"
+                    WidthRequest="330"
+                    Margin="0"/>
+
+
+                    <Label 
+                    Text="Color" 
+                    FontAttributes="Bold" 
+                    FontSize="60" 
+                    TextColor="Black"
+                    BackgroundColor="White"
+                    VerticalTextAlignment="Center" 
+                    HorizontalTextAlignment="Center"
+                    WidthRequest="330"
+                    Margin="0"/>
+                </HorizontalStackLayout>
+            </Border>
+        </HorizontalStackLayout>
+           
+
+
+
+        <!--VELO DATABASE-->        
+        <ListView x:Name="listView" Margin="0" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
-                            <Label Text="{Binding Type}" FontSize="Medium" FontAttributes="Bold" />
-                            <Label Text="{Binding Size}" />
-                            <Label Text="{Binding Color}" />
-                            <Label Text="{Binding Quantity}" />
-                            <Label Text="{Binding Number}" />
-                        </StackLayout>
+
+                        <Border
+                        Stroke="Black"
+                        StrokeThickness="4"
+                        StrokeShape="Rectangle"
+                        Margin="38,0,480,0"
+                        BackgroundColor="Purple">
+                            <HorizontalStackLayout>
+
+                                <Label 
+                                Text="{Binding Type}"                                  
+                                FontSize="40" 
+                                TextColor="Black"                            
+                                VerticalTextAlignment="Center" 
+                                HorizontalTextAlignment="Center"
+                                WidthRequest="330"
+                                Margin="0"/>
+
+                                <Label
+                                Text="{Binding Size}"
+                                FontSize="40" 
+                                TextColor="Black"
+                                VerticalTextAlignment="Center" 
+                                HorizontalTextAlignment="Center"
+                                WidthRequest="330"
+                                Margin="0"/>
+
+                                <Label
+                                Text="{Binding Color}"
+                                FontSize="40" 
+                                TextColor="Black"                          
+                                VerticalTextAlignment="Center" 
+                                HorizontalTextAlignment="Center"
+                                WidthRequest="350"
+                                Margin="0"/>
+                            </HorizontalStackLayout>
+                        </Border>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        
     </VerticalStackLayout>
+
+
 </ContentPage>

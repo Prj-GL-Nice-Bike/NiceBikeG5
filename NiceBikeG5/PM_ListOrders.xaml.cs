@@ -3,7 +3,7 @@ using Microsoft.Maui.Controls;
 using MySql.Data.MySqlClient;
 using System.Collections.ObjectModel;
 
-public partial class PM_ListOrders : ContentPage
+public partial class PM_ListOrders: ContentPage
 {
     private ObservableCollection<string> _items;
 
@@ -30,7 +30,7 @@ public partial class PM_ListOrders : ContentPage
         while (reader.Read())
         {
             var number_order = reader.GetDouble("idorder");
-            _items.Add($"ORDER n°{number_order}");
+            _items.Add($"ORDER N°{number_order}");
         }
     }
 
@@ -38,7 +38,7 @@ public partial class PM_ListOrders : ContentPage
     {
         var button = sender as Button;
         var buttonText = button.Text;
-        var orderNumber = buttonText.Replace("ORDER n°", ""); // récupère l'identifiant de commande à partir du texte du bouton
+        var orderNumber = buttonText.Replace("ORDER N°", ""); // récupère l'identifiant de commande à partir du texte du bouton
         await Navigation.PushAsync(new PM_OrderListBikes(orderNumber)); // passe l'identifiant de commande à la deuxième page
     }
 }
