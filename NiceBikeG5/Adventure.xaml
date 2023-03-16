@@ -2,63 +2,203 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBikeG5.Adventure"
-             Title=""
              BackgroundColor="DarkGray">
 
+    <ScrollView>
+    <VerticalStackLayout>
+        <!--NAVIGATION BAR-->
+        <Grid HeightRequest="50"
+                  BackgroundColor="#790B29">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-    <VerticalStackLayout
-        Spacing="100">
+                <!--IMAGE BACK TO CATALOGUE?-->
+                <ImageButton
+                Source="bouton_back.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                Margin="-120"
+                Clicked="OnButton_Back"/>
+                
+                <!--IMAGE HOME TO CATALOGUE-->
+                <ImageButton 
+                Source="maison.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
 
+                <!--IMAGE CART TO CART-->
+                <ImageButton 
+                Source="panier.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0" Grid.Column="2"
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Margin="-20"
+                Clicked="GoToCart"/>
 
-        <FlexLayout Direction="Row"
-                    JustifyContent="SpaceBetween">
+            </Grid>
 
-            <ImageButton Source="bouton_back.png"
-                         BackgroundColor="DarkGray"
-                         HeightRequest="100" WidthRequest="100"
-                         Margin="0,0,355,0"  
-                         Clicked="OnButton_Back"/>
-            <ImageButton Source="panier.png"
-                         BackgroundColor= "DarkGray"
-                         HeightRequest="100" WidthRequest="100"
-                         Clicked="GoToCart"/>
+        <Label  Text="Adventure" x:Name="type"
+                Padding="50,50,0,100"
+                FontSize="75" FontFamily="Raleway-BoldItalic"
+                TextColor="Black"
+                BackgroundColor="DarkGray"
+                HorizontalOptions="Start">
+        </Label>
 
-        </FlexLayout>
+        <!--BIKE: PHOTO + DESCRIPTION -->
+        <HorizontalStackLayout Padding="20">
+        <Border Stroke="#790B29"
+                StrokeThickness="8"
+                StrokeShape="Rectangle"
+                Padding="20"
+                BackgroundColor="LightGray">
+        <HorizontalStackLayout>
+            
+            <Image Source="velo3.png"
+                   HorizontalOptions="Start"
+                   Aspect="AspectFill"/>
+            
+            <Label TextColor="Black" FontSize="25"                                                                                   
+                   Padding="50,0,0,0" LineHeight="1.5">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Perfect bike to explore the mountains or forest trails." FontFamily="Raleway-BoldItalic" FontSize="30"/>
+                        <Span Text="&#x0a;Characteristics:" FontFamily="Raleway-SemiBold" TextDecorations="Underline"/>
+                        <Span Text="&#x0a;➣ Equipped with a reinforced fram" FontFamily="Raleway-Medium"/>
+                        <Span Text="&#x0a;➣ Not equipped with light, mudguards, luggage rack" FontFamily="Raleway-Medium"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </HorizontalStackLayout>
+        </Border>
 
+            <!--LABELS: COLOR, SIZE-->
+            <VerticalStackLayout VerticalOptions="Center" TranslationX="100">
+                    <Label Text="Color" TextColor="Black" 
+                           FontSize="30" FontFamily="Raleway-SemiBold"
+                           HorizontalOptions="Start" Margin="20"/>
+                    <Label Text="Size" TextColor="Black"
+                           FontSize="30" FontFamily="Raleway-SemiBold"
+                           HorizontalOptions="Start" Margin="20"/>
+            </VerticalStackLayout>
+ 
+            <VerticalStackLayout Spacing="20" Margin="20" VerticalOptions="Center" TranslationX="100">
 
-        <Image Source="velo3.png"
-               HorizontalOptions="Start"/>
+                    <!--PICKER: COLORS-->
+                    <Picker x:Name="colorPicker" Title="Select a color"
+                            FontSize="20" TextColor="Black" FontFamily="Raleway-Medium"
+                            WidthRequest="100" HeightRequest="40"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="True" 
+                            BackgroundColor="LightGray" >
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                            <x:String>Green</x:String>
+                            <x:String>Black</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                
+                    <!--PICKER: SIZES-->
+                    <Picker x:Name="sizePicker" Title="Select a size (inches)"
+                            FontSize="20" TextColor="Black" FontFamily="Raleway-Medium"
+                            WidthRequest="100" HeightRequest="40"
+                            HorizontalTextAlignment="Center"
+                            IsVisible="True" 
+                            BackgroundColor="LightGray">
+                        <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:Int32}">
+                                <x:Int32>26</x:Int32>
+                                <x:Int32>28</x:Int32>
+                                </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+            </VerticalStackLayout>
 
-        <Label Text="Color" TextColor="Black"
-               FontSize="30" FontFamily="Raleway-Medium"
-               HorizontalOptions="End" Margin="20"/>
-        <Label Text="Size" TextColor="Black"
-               FontSize="30" FontFamily="Raleway-Medium"
-               HorizontalOptions="End" Margin="20"/>
-    
-        <FlexLayout Direction="Row"
-                    JustifyContent="SpaceBetween">
+        </HorizontalStackLayout>
+        
+        <!--FORM-->
+        <HorizontalStackLayout>
 
+        <!--LABEL,PICKER: QUANTITY-->
+        <HorizontalStackLayout Padding="0,100,0,0">
         <Label Text="Quantity" TextColor="Black"
-               FontSize="30" FontFamily="Raleway-Medium"/>
+               FontSize="30" FontFamily="Raleway-SemiBold"
+               VerticalOptions="Center"
+               Padding="20,0,30,0"/>
+               <Picker
+                    x:Name="quantityPicker" Title="Select a quantity"
+                    FontSize="30" TextColor="Black" FontFamily="Raleway-Medium"
+                    HorizontalTextAlignment="Center"
+                    WidthRequest="60" HeightRequest="40"
+                    IsVisible="True" VerticalOptions="Center"
+                    BackgroundColor="LightGray">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:Int32}">
+                        <x:Int32>1</x:Int32>
+                        <x:Int32>2</x:Int32>
+                        <x:Int32>3</x:Int32>
+                        <x:Int32>4</x:Int32>
+                        <x:Int32>5</x:Int32>
+                        <x:Int32>6</x:Int32>
+                        <x:Int32>7</x:Int32>
+                        <x:Int32>8</x:Int32>
+                        <x:Int32>9</x:Int32>
+                        <x:Int32>10</x:Int32>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+        </HorizontalStackLayout>
 
-        <Label Text="Total" TextColor="Black"
-               FontSize="30" FontFamily="Raleway-Medium"/>
 
+        <!--LABEL: TOTAL-->
+        <HorizontalStackLayout Padding="100,100,0,0">
+        <Label Text="Total : " TextColor="Black"
+               FontSize="30" FontFamily="Raleway-SemiBold"
+               VerticalOptions="Center"/>
+        <Label x:Name="totalLabel"
+               TextColor="Black"
+               FontSize="30" FontFamily="Raleway-SemiBold"
+               VerticalOptions="Center"/>
+        </HorizontalStackLayout>       
+
+        <!--BUTTON: ADD TO CART-->
         <Button Text="+ Add to cart" TextColor="Black"
-                FontSize="30" FontFamily="Raleway-Medium" 
+                FontSize="30" FontFamily="Raleway-Bold" 
                 HeightRequest="80" WidthRequest="300" 
-                HorizontalOptions="End" Margin="50"
-                BackgroundColor= "LightGray" BorderColor="Black" CornerRadius="0" BorderWidth="4"
+                HorizontalOptions="End" Margin="200,55,50,0"
+                BackgroundColor= "LightGray" BorderColor="#790B29" BorderWidth="4" 
                 Clicked="AddToCart">
-
-
         </Button>
 
-        </FlexLayout>
+        </HorizontalStackLayout>
 
-
-
+        <!--DESIGN: END OF PAGE-->
+        <VerticalStackLayout HeightRequest="50"
+                             BackgroundColor="#790B29"
+                             VerticalOptions="EndAndExpand"
+                             TranslationY="270">
+        </VerticalStackLayout>
     </VerticalStackLayout>
+        
+    </ScrollView>
 </ContentPage>
+
+
+
 
