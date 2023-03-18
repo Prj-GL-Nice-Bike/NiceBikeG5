@@ -49,6 +49,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <PackageReference Include="MySql.Data" Version="8.0.32.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="Bike Inventory.xaml.cs">
+	    <DependentUpon>Bike Inventory.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Bike Inventory.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PM_Menu.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
