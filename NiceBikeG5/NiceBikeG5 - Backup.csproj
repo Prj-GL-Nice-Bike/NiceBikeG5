@@ -53,25 +53,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Bikes_inventory.xaml.cs">
-	    <DependentUpon>Bike Inventory.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="Bikes_inventory.xaml.cs">
-	    <DependentUpon>Bikes_inventory.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Bikes_inventory.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Bikes_inventory.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Components_inventory.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="PM_Menu.xaml">
+	  <MauiXaml Update="Cart.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SR_Catalogue.xaml">
