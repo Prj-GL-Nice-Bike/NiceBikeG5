@@ -2,8 +2,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBikeG5.Binventory"
-             Title="Bike inventory"
+             xmlns:bike="clr-namespace:NiceBikeG5"
+             
              BackgroundColor="DarkGray">
+
+    <ContentPage.BindingContext>
+        <bike:Commands/>
+    </ContentPage.BindingContext>
+    
     <VerticalStackLayout>
         <Grid ColumnDefinitions="200,*,200" Padding="10">
 
@@ -138,24 +144,23 @@
                             HorizontalOptions="Center"
                             Clicked="Gotocomponents"/>
 
-                <Button Text="Bikes" 
-                        FontSize="25" 
-                        BackgroundColor="DarkRed" 
-                        TextColor="Black" 
-                        FontAttributes="Bold" 
-                        BorderWidth="2"
-                        BorderColor="Black" 
-                        CornerRadius="0" 
-                        WidthRequest="225"
-                        HeightRequest="60" 
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Margin="-5,0,0,0"
-                        IsEnabled="True"
-                            />
+                    <Button Text="Bikes" 
+                            FontSize="25" 
+                             BackgroundColor="Gray" 
+                            TextColor="Black" 
+                            FontAttributes="Bold" 
+                            BorderWidth="2"
+                            BorderColor="Black"
+                            CornerRadius="0" 
+                            WidthRequest="225"
+                            HeightRequest="60" 
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Margin="-2,0,0,0"
+                            Command="{Binding Bikecommand}"/>
 
-
-                </StackLayout>
+               
+            </StackLayout>
 
                 <Button Text="Order"
                         Padding="0"

@@ -2,8 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBikeG5.Cinventory"
-             Title="Components inventory"
+             xmlns:bike="clr-namespace:NiceBikeG5"
+             
              BackgroundColor="DarkGray">
+    <ContentPage.BindingContext>
+        <bike:Commands/>
+    </ContentPage.BindingContext>
     <VerticalStackLayout>
         <Grid ColumnDefinitions="200,*,200" Padding="10">
 
@@ -127,7 +131,7 @@
                              HorizontalOptions="Center" >
                 <Button Text="Components" 
                             FontSize="25" 
-                            BackgroundColor="DarkRed" 
+                            BackgroundColor="Gray"
                             TextColor="Black" 
                             FontAttributes="Bold" 
                             BorderWidth="2"
@@ -136,6 +140,7 @@
                             WidthRequest="225" 
                             HeightRequest="60" 
                             HorizontalOptions="Center"
+                            Command="{Binding Componentcommand}"
                             
                         />
 
@@ -152,9 +157,7 @@
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
                         Margin="-5,0,0,0"
-                        Clicked="Gotobikes"
-                        
-                            />
+                        Clicked="Gotobikes"/>
 
 
             </StackLayout>
