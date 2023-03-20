@@ -7,8 +7,9 @@ public partial class Cinventory : ContentPage
 	public Cinventory()
 	{
 		InitializeComponent();
+        BindingContext = new ComponentViewModel();
 
-	}
+    }
    
 
     private async void Logout(object sender, EventArgs e)
