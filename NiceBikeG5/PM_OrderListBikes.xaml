@@ -19,7 +19,7 @@
         Margin="50,20,0,0"/>
 
         <!--TITRE COLONNES-->
-        <HorizontalStackLayout Margin="50,10,350,0">
+        <HorizontalStackLayout Margin="50,10,0,0">
             <Border
                 Stroke="Black"
                 StrokeThickness="8"
@@ -71,48 +71,68 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
+                        <HorizontalStackLayout>
+                            <Border
+                            Stroke="Black"
+                            StrokeThickness="4"
+                            StrokeShape="Rectangle"
+                            Margin="38,0,0,0"
+                            BackgroundColor="Purple">
+                                <HorizontalStackLayout>
 
-                        <Border
-                        Stroke="Black"
-                        StrokeThickness="4"
-                        StrokeShape="Rectangle"
-                        Margin="38,0,480,0"
-                        BackgroundColor="Purple">
-                            <HorizontalStackLayout>
+                                    <Label 
+                                    Text="{Binding Type}"                                  
+                                    FontSize="40" 
+                                    TextColor="Black"                            
+                                    VerticalTextAlignment="Center" 
+                                    HorizontalTextAlignment="Center"
+                                    WidthRequest="330"
+                                    Margin="0"/>
 
-                                <Label 
-                                Text="{Binding Type}"                                  
-                                FontSize="40" 
-                                TextColor="Black"                            
-                                VerticalTextAlignment="Center" 
-                                HorizontalTextAlignment="Center"
-                                WidthRequest="330"
-                                Margin="0"/>
+                                    <Label
+                                    Text="{Binding Size}"
+                                    FontSize="40" 
+                                    TextColor="Black"
+                                    VerticalTextAlignment="Center" 
+                                    HorizontalTextAlignment="Center"
+                                    WidthRequest="330"
+                                    Margin="0"/>
 
-                                <Label
-                                Text="{Binding Size}"
-                                FontSize="40" 
-                                TextColor="Black"
-                                VerticalTextAlignment="Center" 
-                                HorizontalTextAlignment="Center"
-                                WidthRequest="330"
-                                Margin="0"/>
+                                    <Label
+                                    Text="{Binding Color}"
+                                    FontSize="40" 
+                                    TextColor="Black"                          
+                                    VerticalTextAlignment="Center" 
+                                    HorizontalTextAlignment="Center"
+                                    WidthRequest="338"
+                                    Margin="0"/>
+                                </HorizontalStackLayout>
+                            </Border>
+                            
+                            <Button 
+                            Text="SEND" 
+                            TextColor="Black"
+                            FontSize="40"
+                            BackgroundColor="DarkBlue"
+                            Margin="15,0,0,0"
+                                Clicked="OnSendClicked"/>
+                        </HorizontalStackLayout>
 
-                                <Label
-                                Text="{Binding Color}"
-                                FontSize="40" 
-                                TextColor="Black"                          
-                                VerticalTextAlignment="Center" 
-                                HorizontalTextAlignment="Center"
-                                WidthRequest="350"
-                                Margin="0"/>
-                            </HorizontalStackLayout>
-                        </Border>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
+
+        <Button
+            Text="ASSEMBLER"
+            FontSize="60"
+            TextColor="Black"
+            Clicked="ASSEMBLERPAGE"
+            Margin="10,50,50,50"
+            WidthRequest="500"
+            HeightRequest="100"
+            BackgroundColor="DodgerBlue"/>
+
     </VerticalStackLayout>
 
 
