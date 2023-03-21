@@ -7,7 +7,7 @@
     <Grid x:Name="ListGrid" ColumnDefinitions="60, *, *, *, *, *, 50, 50">
         
         <BoxView Grid.Column="0" Grid.ColumnSpan="8" Grid.Row="0"
-                 Color="Gray" />
+                 Color="DarkRed" />
         
         <Label Text="Ordered Bikes" FontSize="36"
                Grid.ColumnSpan="8"
@@ -29,48 +29,55 @@
                Margin="100, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
-        
+
         <Label Text="N°" FontSize="20"
                Grid.Column="0" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
-        
+        <BoxView Color="Black" WidthRequest="1" Grid.Column="0" Grid.Row="1" HorizontalOptions="End"/>
+
         <Label Text="Bike" FontSize="20"
                Grid.Column="1" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
-        
+        <BoxView Color="Black" WidthRequest="1" Grid.Column="1" Grid.Row="1" HorizontalOptions="End"/>
+
         <Label Text="Size" FontSize="20"
                Grid.Column="2" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        <BoxView Color="Black" WidthRequest="1" Grid.Column="2" Grid.Row="1" HorizontalOptions="End"/>
         
         <Label Text="Color" FontSize="20"
                Grid.Column="3" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        <BoxView Color="Black" WidthRequest="1" Grid.Column="3" Grid.Row="1" HorizontalOptions="End"/>
         
         <Label Text="Order N°" FontSize="20"
                Grid.Column="4" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        <BoxView Color="Black" WidthRequest="1" Grid.Column="4" Grid.Row="1" HorizontalOptions="End"/>
         
         <Label Text="Assembler" FontSize="20"
                Grid.Column="5" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        <BoxView Color="Black" WidthRequest="1" Grid.Column="5" Grid.Row="1" HorizontalOptions="End"/>
         
         <Label Text="V" FontSize="20"
                Grid.Column="6" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
+        <BoxView Color="Black" WidthRequest="1" Grid.Column="6" Grid.Row="1" HorizontalOptions="End"/>
         
         <Label Text="X" FontSize="20"
                Grid.Column="7" Grid.Row="1"
