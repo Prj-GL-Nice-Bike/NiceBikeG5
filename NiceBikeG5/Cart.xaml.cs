@@ -33,11 +33,11 @@ namespace NiceBikeG5
             var order = (Order)button.BindingContext;
 
             // CONNECTION WITH MYSQL
-            var connectionString = "Server=localhost;Database=bikes;Uid=root;Pwd=root;";
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
             using var connection = new MySqlConnection(connectionString);
             await connection.OpenAsync();
 
-            var commandText = $"DELETE FROM orders WHERE idorders = {order.Id};";
+            var commandText = $"DELETE FROM orders_sr WHERE idorders = {order.Id};";
             using var command = new MySqlCommand(commandText, connection);
             await command.ExecuteNonQueryAsync();
 
@@ -95,11 +95,11 @@ namespace NiceBikeG5
         private async void LoadData()
         {
             // CONNECTION WITH MYSQL
-            var connectionString = "Server=localhost;Database=bikes;Uid=root;Pwd=root;";
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
             using var connection = new MySqlConnection(connectionString);
             await connection.OpenAsync();
 
-            var commandText = "SELECT * FROM orders;";
+            var commandText = "SELECT * FROM orders_sr;";
             using var command = new MySqlCommand(commandText, connection);
             using var reader = command.ExecuteReader();
 

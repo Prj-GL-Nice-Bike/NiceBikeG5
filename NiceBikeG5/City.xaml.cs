@@ -44,11 +44,11 @@ public partial class City : ContentPage
         double productPrice = CalculateTotalPrice(productSize, productQuantity);
 
         // CONNECTION WITH MYSQL
-        var connectionString = "Server=localhost;Database=bikes;Uid=root;Pwd=root;";
+        var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
         using var connection = new MySqlConnection(connectionString);
         connection.Open();
         // INSERT NEW BIKE TO THE ORDERS TABLE
-        var commandText = $"INSERT INTO orders (Type, Size, Color, Quantity, Price) VALUES ('{productType}', '{productSize}', '{productColor}', '{productQuantity}', '{productPrice}')";
+        var commandText = $"INSERT INTO orders_sr (Type, Size, Color, Quantity, Price) VALUES ('{productType}', '{productSize}', '{productColor}', '{productQuantity}', '{productPrice}')";
         using var command = new MySqlCommand(commandText, connection);
         command.ExecuteNonQuery();
 
