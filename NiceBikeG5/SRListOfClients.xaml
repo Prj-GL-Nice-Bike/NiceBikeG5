@@ -1,63 +1,108 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBikeG5.SRListOfClients"
-             Title="SRListOfClients">
-    <Grid x:Name="ListGrid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <BoxView Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0"
-                 Color="Gray" />
-        <Label Text="List of clients" FontSize="36"
-               Grid.ColumnSpan="5"
-               HorizontalOptions="Center"
-               VerticalOptions="Center" />
-        <SearchBar Placeholder="Search client..." 
-               BackgroundColor="White"
-               TextColor="Black"
-               Grid.Column="4" Grid.Row="0"
-               WidthRequest="200"
-               Margin="0, 0, 30, 0"
-               HorizontalOptions="End"
-               VerticalOptions="Center"/>
-        <Button x:Name="BackBtn"
-               Text="Back" FontSize="22" TextColor="Black"
-               SemanticProperties.Hint="Create the new client"
-               Clicked="BackClicked"
-               Grid.Column="0" Grid.Row="0"
-               HeightRequest="40" WidthRequest="90"
-               Margin="30, 0, 0, 0"
-               HorizontalOptions="Start"
-               VerticalOptions="Center" />
-        <Label Text="Name" FontSize="20"
-               Grid.Column="0" Grid.Row="1"
-               Margin="20, 0, 0, 0"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"/>
-        <Label Text="Adress" FontSize="20"
-               Grid.Column="1" Grid.Row="1"
-               Margin="20, 0, 0, 0"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"/>
-        <Label Text="Phone" FontSize="20"
-               Grid.Column="2" Grid.Row="1"
-               Margin="20, 0, 0, 0"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"/>
-        <Label Text="Email" FontSize="20"
-               Grid.Column="3" Grid.Row="1"
-               Margin="20, 0, 0, 0"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"/>
-        <Label Text="TVA" FontSize="20"
-               Grid.Column="4" Grid.Row="1"
-               Margin="20, 0, 0, 0"
-               HorizontalOptions="Start"
-               VerticalOptions="Center"/>
-    </Grid>
+             Title="SRListOfClients"
+             BackgroundColor="DarkGray">
+    <VerticalStackLayout>
+        <!--NAVIGATION BAR-->
+        <Grid HeightRequest="50"
+                  BackgroundColor="#790B29">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--IMAGE BACK TO CATALOGUE?-->
+                <ImageButton
+                Source="bouton_back.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                Margin="-120"
+                Clicked="BackClicked"/>
+                
+                <!--IMAGE HOME TO CATALOGUE-->
+                <ImageButton 
+                Source="maison.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+        </Grid>
+
+        <Label Text="List Of Clients" 
+        Grid.Column="1" 
+        FontSize="75" FontFamily="Raleway-BoldItalic"
+        TextColor="Black"
+        BackgroundColor="DarkGray"
+        HorizontalOptions="Start"
+        Padding="20,20,0,30"/>
+    <VerticalStackLayout>
+    <HorizontalStackLayout HorizontalOptions="Center">
+        <Border WidthRequest="1500" BackgroundColor="#790B29" Stroke="Black" StrokeThickness="8">
+            <Grid ColumnDefinitions="200,250,150,400,150,280" WidthRequest="1400" Margin="3" BackgroundColor="#790B29">
+                <Label  Text="Name" Grid.Column="0" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                        HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                <Label  Text="Adress"  Grid.Column="1" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                        HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                <Label  Text="Phone" Grid.Column="2" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                        HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                <Label  Text="Email" Grid.Column="3" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                        HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                <Label  Text="TVA" Grid.Column="4" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                        HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                <SearchBar Placeholder="Search client..." PlaceholderColor="White" BackgroundColor="#790B29" Grid.Column="5"
+                           TextColor="White" FontSize="20" CancelButtonColor="Black"/>
+            </Grid>
+        </Border>
+    </HorizontalStackLayout>
+
+        <Border Stroke="Black" StrokeThickness="8" WidthRequest="1500" HeightRequest="600" BackgroundColor="LightGray" >
+        <ScrollView HorizontalOptions="Center" Orientation="Vertical">
+            <!--DATABASE-->
+            <ListView ItemsSource="{Binding Clients}" BackgroundColor="LightGray">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                                <Label Text="{Binding ClientName}" HeightRequest="80" WidthRequest="200"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="40,50,0,0"/>
+                                <Label Text="{Binding ClientAdress}" HeightRequest="80" WidthRequest="250"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,50,0,0"/>
+                                <Label Text="{Binding ClientPhone}" HeightRequest="80" WidthRequest="150"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,50,0,0"/>
+                                <Label Text="{Binding ClientEmail}" HeightRequest="80" WidthRequest="400"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,50,0,0"/>
+                                <Label Text="{Binding ClientTVA}" HeightRequest="80" WidthRequest="150"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,50,0,0"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        </Border>
+        </VerticalStackLayout>
+    <!--DESIGN: END OF PAGE-->
+    <VerticalStackLayout HeightRequest="50"
+                            BackgroundColor="#790B29"
+                            VerticalOptions="EndAndExpand"
+                            TranslationY="210">
+    </VerticalStackLayout>
+</VerticalStackLayout>
 </ContentPage>

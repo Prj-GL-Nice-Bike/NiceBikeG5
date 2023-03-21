@@ -1,77 +1,125 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:NiceBikeG5"
              x:Class="NiceBikeG5.Summary"
-             Title="Summary"
              BackgroundColor="DarkGray">
-    <VerticalStackLayout>
-        <HorizontalStackLayout Margin="20,10,0,0">
-            <Button
-                Text="Return"
-                BackgroundColor="White"
-                HorizontalOptions="Start"
-                Clicked="BackClicked"
-                Margin="0,10,0,0"
-                BorderColor="Black"
-                BorderWidth="2"
-                HeightRequest="60"
-                VerticalOptions="Start">
-                
-            </Button>
-        </HorizontalStackLayout>
 
-        <Label Text="Clients Details"
-               FontSize="40"
+    <ContentPage.BindingContext>
+        <viewmodels:SummaryViewModel/>
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout>
+        <!--NAVIGATION BAR-->
+        <Grid HeightRequest="50"
+              BackgroundColor="#790B29">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--IMAGE BACK TO CATALOGUE?-->
+                <ImageButton
+                Source="bouton_back.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                Margin="-120"
+                Clicked="BackClicked"/>
+                
+                <!--IMAGE HOME TO CATALOGUE-->
+                <ImageButton 
+                Source="maison.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+        </Grid>
+
+        <Label Text="Client's Details"
+               FontSize="30" FontFamily="Raleway-Bold"
                TextColor="Black"
-               Margin="20,0,20,0"
-               
-               />
-        <Border HeightRequest="200"
-                WidthRequest="1000"
-                HorizontalOptions="Start"
-                Margin="20,0,20,0"/>
-        <Border HeightRequest="120"
-                WidthRequest="1000"
-                HorizontalOptions="Start"
-                Margin="20,10,20,0">
-            <VerticalStackLayout>
-                <Label Text="Order n°102"    
-                       TextDecorations="Underline"
-                       FontSize="30"
-                       FontAttributes="Italic"
-                       Padding="0"
-                       TextColor="Black"
-                       VerticalOptions="Start"
-                       Margin="5,5,0,0"
-                       >
-                </Label>
-                <Grid ColumnDefinitions="300,200,300,200" Margin="5,30,0,0">
-                    <Label  Text="Bikes"  Padding="5" Margin="5,0,0,0" Grid.Column="0" TextColor="Black" FontSize="20"/>
-                    <Label  Text="Size"  Padding="5" Grid.Column="1" TextColor="Black" FontSize="20"/>
-                    <Label  Text="Color"  Padding="5"  Grid.Column="2" TextColor="Black" FontSize="20"/>
-                    <Label  Text="Quantity"  Padding="5" Grid.Column="3" TextColor="Black" FontSize="20"/>
+               Margin="20"/>
+
+        <Border HeightRequest="300" WidthRequest="1000"
+                StrokeThickness="8" Stroke="#790B29" 
+                HorizontalOptions="Start" 
+                Margin="20,0,20,0" BackgroundColor="LightGray"> 
+                <ScrollView BackgroundColor="LightGray">
+                <!--DATABASE-->
+                <ListView ItemsSource="{Binding Clients}" BackgroundColor="LightGray" SeparatorVisibility="Default">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical" BackgroundColor="LightGray">
+                                    <Label Text="{Binding ClientName, StringFormat='Name : {0}'}" HeightRequest="60" Margin="20,10,0,0"
+                                           TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                    <Label Text="{Binding ClientAdress, StringFormat='Adress : {0}'}" HeightRequest="60" Margin="20,0,0,0"
+                                           TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                    <Label Text="{Binding ClientPhone, StringFormat='Phone : {0}'}" HeightRequest="60" Margin="20,0,0,0"
+                                           TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                    <Label Text="{Binding ClientEmail, StringFormat='Email : {0}'}" HeightRequest="60" Margin="20,0,0,0"
+                                           TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                    <Label Text="{Binding ClientTVA, StringFormat='TVA : {0}'}" HeightRequest="60" Margin="20,0,0,0"
+                                           TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Border>
+        <Label Text="Order n°102"    
+                FontSize="30" FontFamily="Raleway-SemiBold"
+                TextColor="Black"
+                VerticalOptions="Start"
+                Margin="20,50,0,20"/>
+
+        <Border HeightRequest="80" WidthRequest="1000"
+                StrokeThickness="5" Stroke="Black"
+                HorizontalOptions="Start" 
+                Margin="20,10,20,0" BackgroundColor="#790B29" >
+            <VerticalStackLayout VerticalOptions="Center">
+                <Grid ColumnDefinitions="250,250,250,250">
+                    <Label  Text="Bikes" Grid.Column="0" TextColor="White" HorizontalOptions="Center"
+                            FontSize="25" FontFamily="Raleway-SemiBold"/>
+                    <Label  Text="Size" Grid.Column="1" TextColor="White" HorizontalOptions="Center"
+                            FontFamily="Raleway-SemiBold" FontSize="25"/>
+                    <Label  Text="Color"  Grid.Column="2" TextColor="White" HorizontalOptions="Center"
+                            FontSize="25" FontFamily="Raleway-SemiBold"/>
+                    <Label  Text="Quantity" Grid.Column="3" TextColor="White" HorizontalOptions="Center"
+                            FontSize="25" FontFamily="Raleway-SemiBold"/>
                 </Grid>
             </VerticalStackLayout>
         </Border >
-        <Border HeightRequest="120"
-                WidthRequest="1000"
-                HorizontalOptions="Start"
+        <Border HeightRequest="300" WidthRequest="1000"
+                StrokeThickness="5" Stroke="Black"
+                HorizontalOptions="Start" BackgroundColor="LightGray"
                 Margin="20,-1.5,20,0">
         </Border>
-        <Border HeightRequest="50"
-                WidthRequest="200"
-                Margin="30,15,0,0"
-                HorizontalOptions="Start"
-                >
+        <HorizontalStackLayout>
+        <Border HeightRequest="60" 
+                WidthRequest="300" StrokeThickness="5"
+                Margin="20,15,0,0" Stroke="Black"
+                HorizontalOptions="Start">
+        
             <StackLayout VerticalOptions="Center" Margin="10,-3,5,0">
                 <Label>
                     <Label.FormattedText >
                         <FormattedString>
-                            <Span Text="Total : " TextColor="Black" FontSize="20"/>
-                            <Span Text="                            " FontSize="14">
+                            <Span Text="Total : " TextColor="Black" FontSize="30" FontFamily="Raleway-Medium"/>
+                            <Span Text="                         " FontSize="28">
 
                             </Span>
-                            <Span Text="€" TextColor="Black" FontSize="20" />
+                            <Span Text="€" TextColor="Black" FontSize="30" />
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
@@ -79,18 +127,22 @@
             </StackLayout>
         </Border>
         <Button
-                Text="Confirm Order"
-                BackgroundColor="White"
-                HorizontalOptions="End"
+                Text="Confirm Order" FontSize="30"
+                BackgroundColor="#790B29" TextColor="White"
                 Clicked="Confirm"
-                Margin="0,10,0,0"
+                Margin="1200,10,200,0"
                 BorderColor="Black"
                 BorderWidth="2"
                 HeightRequest="60"
                 VerticalOptions="Start">
 
         </Button>
-
+        </HorizontalStackLayout>
+        <VerticalStackLayout HeightRequest="50"
+                             BackgroundColor="#790B29"
+                             VerticalOptions="EndAndExpand"
+                             TranslationY="80">
+        </VerticalStackLayout>
 
 
     </VerticalStackLayout>

@@ -56,7 +56,7 @@ public partial class City : ContentPage
     }
 
     // TOTAL CALCULATION METHOD
-    private double CalculateTotalPrice(double size, double quantity)
+    static private double CalculateTotalPrice(double size, double quantity)
     {
         if (size == 26) {
             double total = quantity * 200;

@@ -1,58 +1,93 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBikeG5.SRNewClient"
-             Title="SRNewClient">
+             BackgroundColor="LightGray">
+    <ScrollView>
     <VerticalStackLayout>
-        <Button x:Name="BackBtn"
-               Text="Back" FontSize="22" TextColor="Black"
-               SemanticProperties.Hint="Go back to the sellers page"
-               Clicked="BackClicked"
-               HeightRequest="38" WidthRequest="90"
-               Margin="10, 10, 0, 0"
-               HorizontalOptions="Start"
-               VerticalOptions="Center" />
+        <!--NAVIGATION BAR-->
+        <Grid HeightRequest="50"
+                  BackgroundColor="#790B29">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--IMAGE BACK TO CATALOGUE?-->
+                <ImageButton
+                Source="bouton_back.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                Margin="-120"
+                Clicked="BackClicked"/>
+                
+                <!--IMAGE HOME TO CATALOGUE-->
+                <ImageButton 
+                Source="maison.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HeightRequest="50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+        </Grid>
         <Label 
-            Text="New Client"
-            FontSize="20"
+            Text="New Client" TextColor="Black"
+            FontSize="30" FontFamily="Raleway-Bold"
             VerticalOptions="Center" 
             HorizontalOptions="Start"
-            Margin="10"/>
+            Margin="30"/>
         <Entry
-            x:Name="Name"
+            x:Name="Name" TextColor="Black"
+            FontSize="20" FontFamily="Raleway-Medium"
             Placeholder="Name : "
             Margin="10"/>
         <Entry
-            x:Name="Adress"
+            x:Name="Adress" TextColor="Black"
+            FontSize="20" FontFamily="Raleway-Medium"
             Placeholder="Adress : "
             Margin="10"/>
         <Entry
-            x:Name="Phone"
+            x:Name="Phone" TextColor="Black"
+            FontSize="20" FontFamily="Raleway-Medium"
             Placeholder="Phone Number : "
             Margin="10"/>
         <Entry
-            x:Name="Email"
+            x:Name="Email" TextColor="Black"
+            FontSize="20" FontFamily="Raleway-Medium"
             Placeholder="E-mail : "
             Margin="10"/>
         <Entry
-            x:Name="TVA"
+            x:Name="TVA" TextColor="Black"
+            FontSize="20" FontFamily="Raleway-Medium"
             Placeholder="TVA : "
             Margin="10"/>
         <Button
                 x:Name="AddClientBtn"
-                Text="Add client"
+                Text="+ Add client" 
                 BackgroundColor="White"
                 TextColor="Black"
-                FontSize="20"
-                WidthRequest="140"
-                HeightRequest="60"  
+                FontSize="30" FontFamily="Raleway-Bold"
+                WidthRequest="240" HeightRequest="60"  
                 CornerRadius="0"
                 BorderColor="Black"
                 BorderWidth="2"
                 SemanticProperties.Hint="Create the new client"
                 Clicked="AddClientClicked"
                 HorizontalOptions="End"
-                Margin="30"/>
-
+                Margin="50"/>
+        <VerticalStackLayout HeightRequest="50"
+                             BackgroundColor="#790B29"
+                             VerticalOptions="EndAndExpand"
+                             TranslationY="270">
+        </VerticalStackLayout>
     </VerticalStackLayout>
+        </ScrollView>
 </ContentPage>

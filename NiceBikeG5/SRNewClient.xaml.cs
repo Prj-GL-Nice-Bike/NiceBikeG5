@@ -1,35 +1,46 @@
+using MySql.Data.MySqlClient;
+using Microsoft.Maui.Controls;
 
-using static NiceBikeG5.SRListOfClients;
-
-namespace NiceBikeG5;
-
-public partial class SRNewClient : ContentPage
+namespace NiceBikeG5
 {
-    SRListOfClients myListOfClients = new SRListOfClients();
-
-    public SRNewClient()
-	{
-
-		InitializeComponent();
-	}
-    private async void BackClicked(object sender, EventArgs e)
+    public partial class SRNewClient : ContentPage
     {
-        await Navigation.PushAsync(new SRSellers());
-    }
-    private async void AddClientClicked(object sender, EventArgs e)
-    {
-        //MyDictionarySingleton.Instance.AddToDictionary("Names", Name.Text);
+        public SRNewClient()
+        {
+            InitializeComponent();
+        }
 
-        //myListOfClients.AddName(Name.Text);
+        private async void BackClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SRSellers());
+        }
 
-        //myListOfClients.clientInfos["Names"].Add(Name.Text);
-        //myListOfClients.clientInfos["Adresses"].Add(Adress.Text);
-        //myListOfClients.clientInfos["Phones"].Add(Phone.Text);
-        //myListOfClients.clientInfos["Emails"].Add(Email.Text);
-        //myListOfClients.clientInfos["TVAS"].Add(TVA.Text);
+        private async void AddClientClicked(object sender, EventArgs e)
+        {
+            // ENTRY DATA
+            string clientName = Name.Text;
+            string clientAdress = Adress.Text;
+            string clientPhone = Phone.Text;
+            string clientEmail = Email.Text;
+            string clientTVA = TVA.Text;
 
-        //await Navigation.PushAsync(new SRListOfClients())
-        await Navigation.PushAsync(new Summary());
-        
+            // CONNECTION WITH MYSQL
+            var connectionString = "Server=localhost;Database=bikes;Uid=root;Pwd=root;";
+            using var connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            // INSERT NEW CLIENT TO THE CLIENTS TABLE USING PARAMETERIZED QUERY
+            var commandText = $"INSERT INTO clients (Name, Adress, Phone, Email, TVA) VALUES (@Name, @Adress, @Phone, @Email, @TVA)";
+            using var command = new MySqlCommand(commandText, connection);
+            command.Parameters.AddWithValue("@Name", clientName);
+            command.Parameters.AddWithValue("@Adress", clientAdress);
+            command.Parameters.AddWithValue("@Phone", clientPhone);
+            command.Parameters.AddWithValue("@Email", clientEmail);
+            command.Parameters.AddWithValue("@TVA", clientTVA);
+            command.ExecuteNonQuery();
+
+            await Navigation.PushAsync(new Summary());
+         
+        }
     }
 }

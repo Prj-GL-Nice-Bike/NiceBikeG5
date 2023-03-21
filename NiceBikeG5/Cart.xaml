@@ -77,7 +77,7 @@
                                             <Label Text="{Binding ProductColor}" WidthRequest="120" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
                                             <Label Text="{Binding ProductQuantity}" WidthRequest="100" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
                                             <ImageButton Source="delete.png" HeightRequest="25" BackgroundColor="LightGray"
-                                                    Clicked="DeleteOrder" CommandParameter="{Binding .}" />
+                                                    Clicked="DeleteOrder" />
                                         </StackLayout>
                                     </ViewCell>
                                 </DataTemplate>
