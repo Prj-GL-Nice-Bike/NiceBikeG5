@@ -33,20 +33,21 @@ namespace NiceBikeG5
             Bikes = new ObservableCollection<Bike>();
             //UpdateQuantity();
             LoadData();
+
             
         }
+
         private async void LoadData()
         {
             // CONNECTION WITH MYSQL
-            var connectionString = "Server=localhost;Database=nicebike;Uid=root;Pwd=root;";
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
             using var connection = new MySqlConnection(connectionString);
             await connection.OpenAsync();
 
-            var commandText = "SELECT * FROM stockbikes;";
+            var commandText = "SELECT * FROM stockbikes_pm;";
             
             using var command = new MySqlCommand(commandText, connection);
             using var reader = command.ExecuteReader();
-            
 
             // READS LINE BY LINE IN MYSQL DATABASE
             while (await reader.ReadAsync())
@@ -57,52 +58,42 @@ namespace NiceBikeG5
                 var Size = reader.GetDouble("size");
                 var Color = reader.GetString("color");
                 var Quantity = reader.GetDouble("quantity");
-                foreach (Bike bike in Bikes)
-                {
-                    if (bike.Quantity != reader.GetDouble("quantity"))
-                    {
-                       
-                        var commande = "UPDATE `nicebike`.`stockbikes` SET `quantity` = '20' WHERE(`idstockbikes` = '1');";
-                        using var commandu = new MySqlCommand(commande, connection);
-                    }
-                }
 
                     
                 Bikes.Add(new Bike {Id = id, Type = Type, Size = Size, Color = Color, Quantity = Quantity});
-                
-            }
+               
 
-           
+            }
         }
         
 
         public async void UpdateQuantity()
         {
-            var connectionString = "Server=localhost;Database=nicebike;Uid=root;Pwd=root;";
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
             using var connection = new MySqlConnection(connectionString);
             await connection.OpenAsync();
-            var commandText = "UPDATE `nicebike`.`stockbikes` SET `quantity` = '10' WHERE(`idstockbikes` = '1');";
+            var commandText = "UPDATE `nicebike`.`stockbikes_pm` SET `quantity` = '10' WHERE(`idstockbikes` = '1');";
             
 
 
             using var command = new MySqlCommand(commandText, connection);
-            using var reader = command.ExecuteReader();
-            foreach (Bike bike in Bikes)
-            {
-                 bike.Quantity = reader.GetDouble("quantity");
-                //var commandText = "UPDATE `nicebike`.`stockbikes` SET `quantity` = 10 WHERE (`idstockbikes` = 1);";
+            //using var reader = command.ExecuteReader();
+            //foreach (Bike bike in Bikes)
+            //{
+            //     bike.Quantity = reader.GetDouble("quantity");
+            //    //var commandText = "UPDATE `nicebike`.`stockbikes` SET `quantity` = 10 WHERE (`idstockbikes` = 1);";
 
-                //using var command = new MySqlCommand(commandText, connection);
-                //using var reader = command.ExecuteReader();
-                //command.Parameters.AddWithValue("@Quantity", 10);
-                //command.Parameters.AddWithValue("@Id", 1);
+            //    //using var command = new MySqlCommand(commandText, connection);
+            //    //using var reader = command.ExecuteReader();
+            //    //command.Parameters.AddWithValue("@Quantity", 10);
+            //    //command.Parameters.AddWithValue("@Id", 1);
 
 
-            }
-            
-           
-            
-            //using var command = new MySqlCommand("UPDATE `nicebike`.`stockbikes` SET `quantity` = '1' WHERE(`idstockbikes` = '1');", new MySqlConnection("Server=localhost;Database=nicebike;Uid=root;Pwd=root;"));
+            //}
+                
+
+
+                //using var command = new MySqlCommand("UPDATE `nicebike`.`stockbikes` SET `quantity` = '1' WHERE(`idstockbikes` = '1');", new MySqlConnection("Server=localhost;Database=nicebike;Uid=root;Pwd=root;"));
         }
 
     }

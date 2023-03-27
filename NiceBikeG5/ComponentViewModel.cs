@@ -57,16 +57,6 @@ namespace NiceBikeG5
                 var Size = reader.GetString("Size");
                 var Color = reader.GetString("Color");
                 var Quantity = reader.GetDouble("Quantity");
-                //foreach (Component bike in Components)
-                //{
-                //    if (bike.Quantity != reader.GetDouble("quantity"))
-                //    {
-
-                //        var commande = "UPDATE `nicebike`.`stockbikes` SET `quantity` = '20' WHERE(`idstockbikes` = '1');";
-                //        using var commandu = new MySqlCommand(commande, connection);
-                //    }
-                //}
-
                 Components.Add(new Component { Id = id, Name = Name, City = City, Explorer = Explorer,Adventure=Adventure, Size = Size, Color = Color, Quantity = Quantity });
 
             }

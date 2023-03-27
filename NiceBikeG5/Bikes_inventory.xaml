@@ -20,28 +20,26 @@
                     WidthRequest="90"
                     HorizontalOptions="Start"
                     VerticalOptions="Center"
-                    TextColor="Black"
+                    TextColor="White"
                     BackgroundColor="DarkRed" 
                     BorderWidth="2"
                     CornerRadius="0" 
                     BorderColor="Black"
-                    Clicked="BacktoMenu" />
-            <Border Grid.Column="1"
-                    HeightRequest="80"
-                    WidthRequest="450"
-                    VerticalOptions="Start"
+                    Clicked="BacktoMenu"/>
+
+            <Label  Text="Bike's Inventory"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontSize="40"
+                    TextDecorations="Underline"
+                    Grid.Column="1"   
+                    HorizontalOptions="Center"
+                    FontAttributes="Bold"
+                    FontFamily="Raleway-Light"
+                    TextColor="Black"
                     Padding="0"
-                    BackgroundColor="DarkRed">
-                <Label Text="Bike's Inventory"
-                           HorizontalTextAlignment="Center"
-                           VerticalTextAlignment="Center"
-                           FontSize="30"
-                           HorizontalOptions="Center"
-                           FontAttributes="Bold"
-                           TextColor="Black"
-                       Padding="0"
-                       Margin="-20"/>
-            </Border>
+                    Margin="-20"/>
+
 
             <StackLayout Grid.Column="2"
                          HorizontalOptions="End">
@@ -61,7 +59,7 @@
                 <Button Text="Log out"
                         WidthRequest="100"
                         HeightRequest="40"
-                         TextColor="Black"
+                         TextColor="White"
                         BackgroundColor="DarkRed" 
                         BorderWidth="2"
                         CornerRadius="0" 
@@ -85,7 +83,7 @@
                     <Label Text="Bikes"
                        VerticalOptions="Center"
                        HorizontalOptions="Center"  
-                       TextColor="Black"
+                       TextColor="White"
                        FontSize="20"/>
                 </Border>
                 <Border  BackgroundColor="DarkRed"
@@ -93,9 +91,9 @@
                          Margin="0,0,-2,0"
 >
                     <Grid ColumnDefinitions="*,*,*"  VerticalOptions="Center" >
-                        <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Type" FontSize="20"  Padding="5" Grid.Column="0" TextColor="Black"/>
-                        <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Size"  FontSize="20" Padding="5" Grid.Column="1" TextColor="Black"/>
-                        <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Color" FontSize="20" Padding="5"  Grid.Column="2" TextColor="Black"/>
+                        <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Type" FontSize="20"  Padding="5" Grid.Column="0" TextColor="White"/>
+                        <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Size"  FontSize="20" Padding="5" Grid.Column="1" TextColor="White"/>
+                        <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Color" FontSize="20" Padding="5"  Grid.Column="2" TextColor="White"/>
                     </Grid>
                 </Border>
             <Border  BackgroundColor="DarkRed"
@@ -107,7 +105,7 @@
                        Text="Quantity" 
                        FontSize="20" 
                        Padding="5"  
-                       TextColor="Black"/>
+                       TextColor="White"/>
             </Border>
         </Grid>
 
@@ -155,7 +153,7 @@
                         <Button Text="Components" 
                                         FontSize="25" 
                                         BackgroundColor="DarkRed" 
-                                        TextColor="Black" 
+                                        TextColor="White" 
                                         FontAttributes="Bold" 
                                         BorderWidth="2"
                                         BorderColor="Black" 
@@ -185,7 +183,7 @@
 
                     <Button Text="Order"
                                     Padding="0"
-                                    TextColor="Black"
+                                    TextColor="White"
                                     BackgroundColor="DarkRed" 
                                     BorderWidth="2"
                                     CornerRadius="0" 
