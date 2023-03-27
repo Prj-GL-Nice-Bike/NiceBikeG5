@@ -190,11 +190,11 @@ public partial class PM_OrderListBikes: ContentPage
             await command.ExecuteNonQueryAsync();
         }
     }
-  
 
 
-    //private async void ASSEMBLERPAGE(object sender, EventArgs e)
-    //{
-    //    await Navigation.PushAsync(new ASSEMBLER_PAGE());
-    //}
+
+    private async void ASSEMBLERPAGE(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ASSEMBLER_PAGE());
+    }
 }

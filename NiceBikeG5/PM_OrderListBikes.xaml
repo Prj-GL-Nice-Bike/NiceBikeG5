@@ -482,7 +482,7 @@
 
 
 
-            <!--<Button
+            <Button
             Text="ASSEMBLER"
             FontSize="60"
             TextColor="Black"
@@ -490,7 +490,7 @@
             Margin="10,50,50,50"
             WidthRequest="500"
             HeightRequest="100"
-            BackgroundColor="DodgerBlue"/>-->
+            BackgroundColor="DodgerBlue"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
