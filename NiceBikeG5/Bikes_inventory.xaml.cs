@@ -9,16 +9,22 @@ using Mysqlx.Crud;
 
 public partial class Binventory : ContentPage
 {
+    
 	public Binventory()
 	{
 		InitializeComponent();
         BindingContext = new BikeViewModel();
+         
 
-
+    }
+    public void Update()
+    {
+        ((BikeViewModel)BindingContext).UpdateQuantity();
     }
     private async void Logout(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Session_PM());
+        
     }
     private async void BacktoMenu(object sender, EventArgs e)
     {
@@ -26,7 +32,9 @@ public partial class Binventory : ContentPage
     }
     private async void Gotocomponents(object sender, EventArgs e)
     {
+        Update();
         await Navigation.PushAsync(new Cinventory());
+        
     }
    
 }
