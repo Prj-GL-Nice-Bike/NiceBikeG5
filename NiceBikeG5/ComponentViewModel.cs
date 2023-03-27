@@ -63,5 +63,24 @@ namespace NiceBikeG5
 
 
         }
+        public async void UpdateQuantity()
+        {
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+            using var connection = new MySqlConnection(connectionString);
+            await connection.OpenAsync();
+
+            var commandText = "SELECT * FROM stockcomponents_pm;";
+
+            using var command = new MySqlCommand(commandText, connection);
+
+            foreach (Component component in Components)
+            {
+                var commandText1 = "UPDATE `nicebike`.`stockcomponents_pm` SET `quantity` = @Quantity WHERE (`idcomponentstock` = @Id);";
+                using var commande = new MySqlCommand(commandText1, connection);
+                commande.Parameters.AddWithValue("@Quantity", component.Quantity);
+                commande.Parameters.AddWithValue("@Id", component.Id);
+                commande.ExecuteNonQuery();
+            }
+        }
     }
 }

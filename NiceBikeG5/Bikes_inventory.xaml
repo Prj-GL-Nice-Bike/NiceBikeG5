@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBikeG5.Binventory"
              xmlns:local="clr-namespace:NiceBikeG5"
-             x:Name="Bikeinventory"
-             
+             x:Name="Bikeinventory" 
              BackgroundColor="DarkGray">
 
     <ContentPage.BindingContext>
@@ -126,13 +125,15 @@
                                                     <Label Text="{Binding Color}" Grid.Column="2"  TextColor="Black" FontSize="15"  Padding="5" HorizontalOptions="Center"  VerticalOptions="Center"/>
                                                 </Grid>
                                             </Border>
-                                            <Border Grid.Column="2" BackgroundColor="DarkGray" Margin="-1,0,0.5,0">
-                                                <Label Text="{Binding Quantity}"  TextColor="Black" FontSize="15" HorizontalOptions="Center"  VerticalOptions="Center"/>
+                                            <Border Grid.Column="2" BackgroundColor="DarkGray" Margin="-1,0,0.5,1">
+                                                <Grid>
+                                                    <Label Text="{Binding Quantity}" TextColor="Black" FontSize="15" HorizontalOptions="Center"  VerticalOptions="Center"/>
+                                                </Grid>
                                             </Border>
                                         </Grid>
                                    
                                     <StackLayout  VerticalOptions="Center" WidthRequest="130" BackgroundColor="DarkGray" Grid.Column="1" HorizontalOptions="Center" HeightRequest="40">
-                                        <Stepper x:Name="stepper" BackgroundColor="Gray" Minimum="0" Maximum="50" Value="{Binding Quantity}" />
+                                        <Stepper x:Name="stepper"  BackgroundColor="Gray" Minimum="0" Maximum="50" Value="{Binding Quantity}" />
 
                                     </StackLayout>
                                     

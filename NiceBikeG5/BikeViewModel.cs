@@ -61,8 +61,6 @@ namespace NiceBikeG5
 
                     
                 Bikes.Add(new Bike {Id = id, Type = Type, Size = Size, Color = Color, Quantity = Quantity});
-               
-
             }
         }
         
@@ -72,29 +70,19 @@ namespace NiceBikeG5
             var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
             using var connection = new MySqlConnection(connectionString);
             await connection.OpenAsync();
-            var commandText = "UPDATE `nicebike`.`stockbikes_pm` SET `quantity` = '10' WHERE(`idstockbikes` = '1');";
-            
 
+            var commandText = "SELECT * FROM stockbikes_pm;";
 
             using var command = new MySqlCommand(commandText, connection);
-            //using var reader = command.ExecuteReader();
-            //foreach (Bike bike in Bikes)
-            //{
-            //     bike.Quantity = reader.GetDouble("quantity");
-            //    //var commandText = "UPDATE `nicebike`.`stockbikes` SET `quantity` = 10 WHERE (`idstockbikes` = 1);";
 
-            //    //using var command = new MySqlCommand(commandText, connection);
-            //    //using var reader = command.ExecuteReader();
-            //    //command.Parameters.AddWithValue("@Quantity", 10);
-            //    //command.Parameters.AddWithValue("@Id", 1);
-
-
-            //}
-                
-
-
-                //using var command = new MySqlCommand("UPDATE `nicebike`.`stockbikes` SET `quantity` = '1' WHERE(`idstockbikes` = '1');", new MySqlConnection("Server=localhost;Database=nicebike;Uid=root;Pwd=root;"));
+            foreach (Bike bike in Bikes)
+            {
+                var commandText1 = "UPDATE `nicebike`.`stockbikes_pm` SET `quantity` = @Quantity WHERE (`idstockbikes` = @Id);";
+                using var commande = new MySqlCommand(commandText1, connection);
+                commande.Parameters.AddWithValue("@Quantity", bike.Quantity);
+                commande.Parameters.AddWithValue("@Id", bike.Id);
+                commande.ExecuteNonQuery();
+            }
         }
-
     }
 }

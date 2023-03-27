@@ -10,42 +10,27 @@ public partial class Cinventory : ContentPage
 	{
 		InitializeComponent();
         BindingContext = new ComponentViewModel();
-        
 
     }
-   public async void UpdateQuantity()
+    public void Update()
     {
-            var connectionString = "Server=localhost;Database=nicebike;Uid=root;Pwd=root;";
-            using var connection = new MySqlConnection(connectionString);
-            await connection.OpenAsync();
-            var commandText = "SELECT * FROM stockcomponents;";
-
-            using var command = new MySqlCommand(commandText, connection);
-            using var reader = command.ExecuteReader();
-
-        //foreach (Component bike in Components)
-        //{
-        //    if (bike.Quantity != reader.GetDouble("quantity"))
-        //    {
-
-        //        var commande = "UPDATE `nicebike`.`stockbikes` SET `quantity` = '20' WHERE(`idstockbikes` = '1');";
-        //        using var commandu = new MySqlCommand(commande, connection);
-        //    }
-        //}
-
-
+        ((ComponentViewModel)BindingContext).UpdateQuantity();
     }
-   
+
     private async void Logout(object sender, EventArgs e)
     {
+        Update();
         await Navigation.PushAsync(new Session_PM());
     }
     private async void BacktoMenu(object sender, EventArgs e)
     {
+        Update();
         await Navigation.PushAsync(new PM_Menu());
     }
     private async void Gotobikes(object sender, EventArgs e)
     {
+        Update();
         await Navigation.PushAsync(new Binventory());
+        
     }
 }
