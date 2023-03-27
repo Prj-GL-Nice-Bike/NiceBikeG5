@@ -6,33 +6,154 @@
              BackgroundColor="Darkgray">
 
 
-    <VerticalStackLayout>
 
-        <ListView x:Name="listView" Margin="50,35,50,50" >
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout>
+    <ScrollView>
+        <VerticalStackLayout>
+            <!--NAVIGATION BAR-->
+            <Grid HeightRequest="60"
+                  BackgroundColor="#790B29">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--BUTTON BACK TO MENU-->
+                <ImageButton
+                Source="bouton_back.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="0"                
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                Margin="10,0,100,0"
+                Clicked="OnButton_Back"/>
+
+
+                <!--IMAGE ORDERS TO LIST OF ORDERS-->
+                <ImageButton 
+                Source="listoforders.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="-250,0,0,0"/>
+
+
+                <!--IMAGE STOCK TO INVENTORY-->
+                <ImageButton 
+                Source="inventory.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="0,0,0,0"
+                Clicked="OnButton_Inventory"/>
+
+
+                <!--IMAGE DELIVERY TO DELIVERY-->
+                <ImageButton 
+                Source="livraison.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="300,0,0,0"
+                Clicked="OnButton_Delivery"/>
+
+
+                <!--IMAGE HISTORY TO HISTORY-->
+                <ImageButton 
+                Source="history.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="2"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="0,0,10,0"
+                Clicked="OnButton_History"/>
+            </Grid>
+
+
+            
+            <!--TITLE PAGE-->
+            <HorizontalStackLayout>
+                <Label
+                Text="LIST OF ORDERS"
+                TextColor="Black"
+                FontFamily="Raleway-Light"
+                FontSize="120"                
+                FontAttributes="Bold"
+                TextDecorations="Underline" 
+                HorizontalOptions="Center"
+                Padding="70,0,200,0"
+                Margin="250,10,80,20"/>
+            </HorizontalStackLayout>
+
+            
+
+            <!--LIST OF ORDERS WITH DATABASE-->
+            <ListView x:Name="listView" Margin="60,35,60,50">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
                             <Button 
                             Text="{Binding}"
-                            BackgroundColor="DarkRed"
-                            TextColor="Black"
+                            BackgroundColor="#790B29"
+                            TextColor="White"
                             FontFamily="Raleway-Light"
                             FontSize="75"            
                             FontAttributes="Bold"            
                             BorderColor="Black"
                             BorderWidth="10"
                             CornerRadius="0"
-                            HeightRequest="120"
-                            WidthRequest="600"
-                            Margin="0,15,0,15"
-                            Clicked="OnButtonClicked"/>
-
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-
-    </VerticalStackLayout>
+                            Padding="470,0,470,0"
+                            Margin="0,15,0,15"                                                         
+                            Clicked="OnButton_OrderNumber"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
+
+
+
+
+<!--<Button 
+    Text="{Binding}"
+    BackgroundColor="#790B29"
+    TextColor="White"
+    FontFamily="Raleway-Light"
+    FontSize="75"            
+    FontAttributes="Bold"            
+    BorderColor="Black"
+    BorderWidth="10"
+    CornerRadius="0"
+    Margin="0,15,0,15"
+    Padding="360,0,360,0"                             
+    Clicked="OnButtonClicked"/>
+
+    <Button
+        Text="SEND"
+        BackgroundColor="Violet"
+        TextColor="Black"
+        Margin="20,20,0,20"
+        FontSize="55"
+        Padding="5,0,5,0"
+        CornerRadius="0"
+        BorderColor="Black"
+        BorderWidth="5"
+        Clicked="OnButtonChanged"/>-->

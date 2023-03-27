@@ -12,6 +12,8 @@ public partial class ASSEMBLER_PAGE : ContentPage
     }
 
 
+
+
     public class Bike
     {
         public string Type {get; set;}
@@ -23,11 +25,10 @@ public partial class ASSEMBLER_PAGE : ContentPage
 
     public void LoadData()
     {
-        // Charger les données de la table bike_assembler
-        var connectionString = "Server=localhost;Database=orders;Uid=root;Pwd=root;";
+        var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
         using var connection = new MySqlConnection(connectionString);
         connection.Open();
-        var commandText = "SELECT * FROM bike_assembler";
+        var commandText = "SELECT * FROM bike_pm WHERE State='SEND'";
         using var command = new MySqlCommand(commandText, connection);
         using var reader = command.ExecuteReader();
 
@@ -41,10 +42,32 @@ public partial class ASSEMBLER_PAGE : ContentPage
 
             bikes.Add(new Bike { Type = bikeType, Size = bikeSize, Color = bikeColor, IdOrder = bikeIdOrder });
         }
-
-        // Afficher les données dans une ListView
         listView.ItemsSource = bikes;
     }
 
 
+    private async void OnSendClicked(object sender, EventArgs e)
+    {
+        bool answer = await Application.Current.MainPage.DisplayAlert(
+        "YES",
+        "Do you want to perform this action?",
+        "Yes",
+        "No");
+
+        if (answer == true)
+        {
+            ((Button)sender).BackgroundColor = Color.FromRgb(128, 128, 128);
+            ((Button)sender).IsEnabled = false;
+
+
+            var bike = ((Button)sender).BindingContext as Bike;
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+            using var connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            var commandText = $"UPDATE bike_pm SET State='FINISH' WHERE idorder='{bike.IdOrder}' AND Type='{bike.Type}' AND Size='{bike.Size}' AND Color='{bike.Color}'";
+            using var command = new MySqlCommand(commandText, connection);
+            await command.ExecuteNonQueryAsync();
+        }
+    }
 }

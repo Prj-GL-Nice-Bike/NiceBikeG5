@@ -3,42 +3,89 @@ using Microsoft.Maui.Controls;
 using MySql.Data.MySqlClient;
 using System.Collections.ObjectModel;
 
+
+
 public partial class PM_ListOrders: ContentPage
 {
     private ObservableCollection<string> _items;
+    //private int clickCount= 0;
 
     public PM_ListOrders()
     {
         InitializeComponent();
-        _items = new ObservableCollection<string>();
-        listView.ItemsSource = _items;
+        _items= new ObservableCollection<string>();
+        listView.ItemsSource= _items;
         LoadData();
     }
 
 
-    /*FCT DATABASE WITH BUTTONS ORDER*/
+    /*FCT BUTTON BACK*/
+    private async void OnButton_Back(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new PM_Menu());
+    }
+
+    /*FCT BUTTON INVENTORY*/
+    private async void OnButton_Inventory(object sender, EventArgs e)
+    {        
+    }
+
+    /*FCT BUTTON DELIVERY*/
+    private async void OnButton_Delivery(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new PM_ListDelivery());
+    }
+
+    /*FCT BUTTON HISTORY*/
+    private async void OnButton_History(object sender, EventArgs e)
+    {
+    }
+
+
+
+    /*FCT DATABASE SHOWS BUTTON ORDERS*/
     public void LoadData()
     {
-        var connectionString = "Server=localhost;Database=orders;Uid=root;Pwd=root;";
-        using var connection = new MySqlConnection(connectionString);
+        var connectionString= "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+        using var connection= new MySqlConnection(connectionString);
         connection.Open();
 
-        var commandText = "SELECT * FROM `order`;";
-        using var command = new MySqlCommand(commandText, connection);
-        using var reader = command.ExecuteReader();
+        var commandText= "SELECT * FROM `order_pm` WHERE State IS NULL;";
+        using var command= new MySqlCommand(commandText, connection);
+        using var reader= command.ExecuteReader();
 
-        while (reader.Read())
+        while(reader.Read())
         {
-            var number_order = reader.GetDouble("idorder");
+            var number_order= reader.GetDouble("idorder_pm");
             _items.Add($"ORDER N°{number_order}");
         }
     }
 
-    private async void OnButtonClicked(object sender, EventArgs e)
+
+    /*FCT BUTTON SEND THE NUMBER OF ORDER TO THE PAGE WITH DETAILS*/
+    private async void OnButton_OrderNumber(object sender, EventArgs e)
     {
-        var button = sender as Button;
-        var buttonText = button.Text;
-        var orderNumber = buttonText.Replace("ORDER N°", ""); // récupère l'identifiant de commande à partir du texte du bouton
-        await Navigation.PushAsync(new PM_OrderListBikes(orderNumber)); // passe l'identifiant de commande à la deuxième page
+        var button= sender as Button;
+        var buttonText= button.Text;
+        var orderNumber= buttonText.Replace("ORDER N°", "");
+        await Navigation.PushAsync(new PM_OrderListBikes(orderNumber));
     }
 }
+
+
+
+
+//private async void OnButtonChanged(object sender, EventArgs e)
+//{
+//    Button button = (Button)sender;
+//    clickCount++;
+
+//    if (clickCount == 2)
+//    {
+//        button.IsEnabled = false;
+//        ((Button)sender).BackgroundColor = Color.FromRgb(128, 128, 128);
+//        clickCount = 0;
+//    }
+
+//    button.Text = "DELIVERED";
+//}

@@ -49,11 +49,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="PM_ListDelivery.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\inventory.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\inventory.jpg" />
+	  <None Remove="Resources\Images\Livraison.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="MySql.Data" Version="8.0.32.1" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Update="ASSEMBLER_PAGE.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PM_ListDelivery.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PM_ListOrders.xaml">
