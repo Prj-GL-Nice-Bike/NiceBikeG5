@@ -11,11 +11,11 @@ public partial class PM_OrderListBikes: ContentPage
     public PM_OrderListBikes(string orderNumber)
     {
         InitializeComponent();
-        OrderNumber = orderNumber;
+        OrderNumber= orderNumber;
         LoadData(orderNumber);
         LoadData2(orderNumber);
         LoadData3(orderNumber);
-        orderNumberLabel.Text = $"ORDER N°{orderNumber}";
+        orderNumberLabel.Text= $"ORDER N°{orderNumber}";
     }
 
 
@@ -39,12 +39,13 @@ public partial class PM_OrderListBikes: ContentPage
     /*FCT BUTTON DELIVERY*/
     private async void OnButton_Delivery(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new PM_ListDelivery());
+        await Navigation.PushAsync(new PM_DeliveryOrders());
     }
 
     /*FCT BUTTON HISTORY*/
     private async void OnButton_History(object sender, EventArgs e)
     {
+        await Navigation.PushAsync(new PM_ArchiveOrders());
     }
 
 
@@ -89,7 +90,7 @@ public partial class PM_OrderListBikes: ContentPage
 
 
     /*FCT BUTTON SEND -CHANGE BIKE'S STATE "NULL" TO "SEND"*/
-    private async void OnSendClicked(object sender, EventArgs e)
+    private async void OnButton_SendToAssembler(object sender, EventArgs e)
     {
         var bike= ((Button)sender).BindingContext as Bike;
 
@@ -158,7 +159,7 @@ public partial class PM_OrderListBikes: ContentPage
 
             bikes.Add(new Bike {Type= bikeType, Size= bikeSize, Color= bikeColor, IdOrder= bikeIdOrder, State= bikeState });
         }
-        listView3.ItemsSource = bikes;
+        listView3.ItemsSource= bikes;
     }
 
 
@@ -174,19 +175,19 @@ public partial class PM_OrderListBikes: ContentPage
         "YES",
         "NO");
 
-        if (answer == true)
+        if (answer==true)
         {
             ((Button)sender).BackgroundColor= Color.FromRgb(128, 128, 128);
             ((Button)sender).IsEnabled= false;
 
 
-            var bike = ((Button)sender).BindingContext as Bike;
-            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
-            using var connection = new MySqlConnection(connectionString);
+            var bike= ((Button)sender).BindingContext as Bike;
+            var connectionString= "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+            using var connection= new MySqlConnection(connectionString);
             connection.Open();
 
-            var commandText = $"UPDATE order_pm SET State='FINISH' WHERE idorder_pm='{OrderNumber}'";
-            using var command = new MySqlCommand(commandText, connection);
+            var commandText= $"UPDATE order_pm SET State='FINISH' WHERE idorder_pm='{OrderNumber}'";
+            using var command= new MySqlCommand(commandText, connection);
             await command.ExecuteNonQueryAsync();
         }
     }

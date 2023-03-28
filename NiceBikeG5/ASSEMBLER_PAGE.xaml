@@ -18,7 +18,7 @@
                             <Label Text="{Binding Color}" FontSize="20" VerticalOptions="Center" Margin="20,0,0,0"/>
                             <Label Text="{Binding IdOrder}" FontSize="20" VerticalOptions="Center" Margin="20,0,0,0"/>
                             <Button 
-                            Text="SEND" 
+                            Text="FINISHED" 
                             TextColor="White"
                             FontSize="40"
                             BackgroundColor="#790B29"

@@ -5,12 +5,13 @@ using System.Collections.ObjectModel;
 
 
 
-public partial class PM_ListOrders: ContentPage
+public partial class PM_DeliveryOrders: ContentPage
 {
     private ObservableCollection<string> _items;
+    public double OrderNumber;
     //private int clickCount= 0;
 
-    public PM_ListOrders()
+    public PM_DeliveryOrders()
     {
         InitializeComponent();
         _items= new ObservableCollection<string>();
@@ -22,7 +23,13 @@ public partial class PM_ListOrders: ContentPage
     /*FCT BUTTON BACK*/
     private async void OnButton_Back(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new PM_Menu());
+        await Navigation.PushAsync(new PM_ListOrders());
+    }
+
+    /*FCT BUTTON LIST OF ORDERS*/
+    private async void OnButton_ListOrders(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new PM_ListOrders());
     }
 
     /*FCT BUTTON INVENTORY*/
@@ -44,6 +51,21 @@ public partial class PM_ListOrders: ContentPage
 
 
 
+
+
+
+    /*CLASS BIKE FOR DATABASE*/
+    public class Bike
+    {
+        public string Type {get; set;}
+        public string Size {get; set;}
+        public string Color {get; set;}
+        public string IdOrder {get; set;}
+        public string State {get; set;}
+    }
+
+
+
     /*FCT DATABASE SHOWS BUTTON ORDERS*/
     public void LoadData()
     {
@@ -51,14 +73,14 @@ public partial class PM_ListOrders: ContentPage
         using var connection= new MySqlConnection(connectionString);
         connection.Open();
 
-        var commandText= "SELECT * FROM `order_pm` WHERE State IS NULL;";
+        var commandText= "SELECT * FROM `order_pm` WHERE State='FINISH';";
         using var command= new MySqlCommand(commandText, connection);
         using var reader= command.ExecuteReader();
 
         while(reader.Read())
         {
-            var number_order= reader.GetDouble("idorder_pm");
-            _items.Add($"ORDER N°{number_order}");
+            OrderNumber= reader.GetDouble("idorder_pm");
+            _items.Add($"ORDER N°{OrderNumber}");
         }
     }
 
@@ -70,6 +92,33 @@ public partial class PM_ListOrders: ContentPage
         var buttonText= button.Text;
         var orderNumber= buttonText.Replace("ORDER N°", "");
         await Navigation.PushAsync(new PM_OrderListBikes(orderNumber));
+    }
+
+
+    /*FCT BUTTON FINALIZE -CHANGE ORDER'S STATE "NULL" TO "DELIVERED"*/
+    private async void OnButton_Delivered(object sender, EventArgs e)
+    {
+        bool answer= await Application.Current.MainPage.DisplayAlert(
+        "ARE YOU SURE?",
+        "This action confirms that the order has been delivered",
+        "YES",
+        "NO");
+
+        if (answer==true)
+        {
+            ((Button)sender).BackgroundColor= Color.FromRgb(128, 128, 128);
+            ((Button)sender).IsEnabled= false;
+
+
+            var bike= ((Button)sender).BindingContext as Bike;
+            var connectionString= "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+            using var connection= new MySqlConnection(connectionString);
+            connection.Open();
+
+            var commandText= $"UPDATE order_pm SET State='DELIVERED' WHERE idorder_pm='{OrderNumber}'";
+            using var command= new MySqlCommand(commandText, connection);
+            await command.ExecuteNonQueryAsync();
+        }
     }
 }
 

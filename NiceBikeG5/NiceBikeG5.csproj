@@ -69,7 +69,10 @@
 	  <MauiXaml Update="ASSEMBLER_PAGE.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="PM_ListDelivery.xaml">
+	  <MauiXaml Update="PM_ArchiveOrders.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PM_DeliveryOrders.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PM_ListOrders.xaml">

@@ -222,7 +222,7 @@
                                 CornerRadius="0"                                
                                 Padding="5,0,5,-5"
                                 Margin="15,5,0,5"
-                                Clicked="OnSendClicked"/>
+                                Clicked="OnButton_SendToAssembler"/>
                             </HorizontalStackLayout>
                         </ViewCell>
                     </DataTemplate>
