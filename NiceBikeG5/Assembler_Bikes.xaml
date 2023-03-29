@@ -4,11 +4,11 @@
              x:Class="NiceBikeG5.Assembler_Bikes"
              Title="Assembler_Bikes"
              BackgroundColor="DarkGray">
-    <Grid x:Name="ListGrid" ColumnDefinitions="60, *, *, *, *, *, 50, 50">
-        
+    <!--<Grid x:Name="ListGrid" ColumnDefinitions="60, *, *, *, *, *, 50, 50">
+
         <BoxView Grid.Column="0" Grid.ColumnSpan="8" Grid.Row="0"
                  Color="DarkRed" />
-        
+
         <Label Text="Ordered Bikes" FontSize="36"
                Grid.ColumnSpan="8"
                HorizontalOptions="Center"
@@ -50,39 +50,181 @@
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
         <BoxView Color="Black" WidthRequest="1" Grid.Column="2" Grid.Row="1" HorizontalOptions="End"/>
-        
+
         <Label Text="Color" FontSize="20"
                Grid.Column="3" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
         <BoxView Color="Black" WidthRequest="1" Grid.Column="3" Grid.Row="1" HorizontalOptions="End"/>
-        
+
         <Label Text="Order N°" FontSize="20"
                Grid.Column="4" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
         <BoxView Color="Black" WidthRequest="1" Grid.Column="4" Grid.Row="1" HorizontalOptions="End"/>
-        
+
         <Label Text="Assembler" FontSize="20"
                Grid.Column="5" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
         <BoxView Color="Black" WidthRequest="1" Grid.Column="5" Grid.Row="1" HorizontalOptions="End"/>
-        
+
         <Label Text="V" FontSize="20"
                Grid.Column="6" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
         <BoxView Color="Black" WidthRequest="1" Grid.Column="6" Grid.Row="1" HorizontalOptions="End"/>
-        
+
         <Label Text="X" FontSize="20"
                Grid.Column="7" Grid.Row="1"
                Margin="20, 0, 0, 0"
                HorizontalOptions="Start"
                VerticalOptions="Center"/>
-    </Grid>
+
+        <Border Stroke="Black" StrokeThickness="8" WidthRequest="1500" HeightRequest="600" BackgroundColor="LightGray" Grid.Column="0" Grid.Row="2">
+            <ScrollView HorizontalOptions="Center" Orientation="Vertical">
+                DATABASE
+                <ListView ItemsSource="{Binding Clients}" BackgroundColor="LightGray">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                                    <Label Text="{Binding ClientName}" HeightRequest="80" WidthRequest="200"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="40,50,0,0"/>
+                                    <Label Text="{Binding ClientAdress}" HeightRequest="80" WidthRequest="250"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,50,0,0"/>
+                                    <Label Text="{Binding ClientPhone}" HeightRequest="80" WidthRequest="150"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,50,0,0"/>
+                                    <Label Text="{Binding ClientEmail}" HeightRequest="80" WidthRequest="400"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,50,0,0"/>
+                                    <Label Text="{Binding ClientTVA}" HeightRequest="80" WidthRequest="150"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,50,0,0"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </Border>
+    </Grid>-->
+    
+    
+    <VerticalStackLayout>
+        <!--NAVIGATION BAR-->
+        <Grid HeightRequest="50" BackgroundColor="#790B29">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--IMAGE BACK TO CATALOGUE?-->
+            <!--<ImageButton
+                Source="bouton_back.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                Margin="-120"
+                Clicked="BackClicked"/>-->
+            
+            <Button x:Name="BackBtn"
+               Text="Back" FontSize="22" TextColor="Black"
+               SemanticProperties.Hint="Create the new client"
+               Clicked="BackClicked"
+               Grid.Column="0" Grid.Row="0"
+               HeightRequest="40" WidthRequest="90"
+               Margin="30, 0, 0, 0"
+               HorizontalOptions="Start"
+               VerticalOptions="Center" />
+            
+            <Label Text="{Binding ConnectionMessage}" FontSize="20" x:Name="AssemblerConnected"
+               Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="0"
+               Margin="100, 0, 0, 0"
+               HorizontalOptions="Start"
+               VerticalOptions="Center"/>
+
+        </Grid>
+
+        <Label Text="Ordered Bikes" 
+        Grid.Column="1" 
+        FontSize="50" FontFamily="Raleway-BoldItalic"
+        TextColor="Black"
+        BackgroundColor="DarkGray"
+        HorizontalOptions="Start"
+        Padding="20,20,0,0"/>
+        <VerticalStackLayout>
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Border WidthRequest="1400" HeightRequest="50"  BackgroundColor="#790B29" Stroke="Black" StrokeThickness="1">
+                    <Grid x:Name="ListGrid" ColumnDefinitions="100, 300, 150, 250, 150, 250, 50, 50" WidthRequest="1400" Margin="3" BackgroundColor="#790B29">
+                        <Label  Text="N°" Grid.Column="0" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                        HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                        <Label  Text="Bikes"  Grid.Column="1" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                        HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                        <Label  Text="Size" Grid.Column="2" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                        HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                        <Label  Text="Color" Grid.Column="3" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                        HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                        <Label  Text="Order N°" Grid.Column="4" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                        HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                        <Label  Text="Assembler" Grid.Column="5" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                        HorizontalTextAlignment="Center" VerticalOptions="Center"/>
+                    </Grid>
+                </Border>
+            </HorizontalStackLayout>
+
+            <Border Stroke="Black" StrokeThickness="1" WidthRequest="1400" HeightRequest="500" BackgroundColor="LightGray" Margin="0, 5, 0, 0" Padding="0, 10, 0, 0">
+                <ScrollView HorizontalOptions="Center" Orientation="Vertical">
+                    <!--DATABASE-->
+                    <ListView ItemsSource="{Binding Orders}" BackgroundColor="LightGray">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                                        <Label Text="{Binding Id}" HeightRequest="50" WidthRequest="100"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="-10,0,0,0"/>
+                                        <Label Text="{Binding BikeType}" HeightRequest="50" WidthRequest="300"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
+                                        <Label Text="{Binding BikeSize}" HeightRequest="50" WidthRequest="150"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
+                                        <Label Text="{Binding BikeColor}" HeightRequest="50" WidthRequest="250"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
+                                        <Label Text="{Binding OrderNumber}" HeightRequest="50" WidthRequest="150"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
+                                        <Label Text="{Binding AssignedAssembler}" HeightRequest="50" WidthRequest="250"
+                                       TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
+                                       HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+            </Border>
+        </VerticalStackLayout>
+        
+        <!--DESIGN: END OF PAGE Meh.-->
+        <!--<VerticalStackLayout HeightRequest="50"
+                            BackgroundColor="#790B29"
+                            VerticalOptions="EndAndExpand">
+        </VerticalStackLayout>-->
+    </VerticalStackLayout>
 </ContentPage>
