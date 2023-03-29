@@ -23,7 +23,7 @@
 
                 <!--BUTTON BACK TO LIST OF ORDERS-->
                 <ImageButton
-                Source="bouton_back.png"
+                Source="button_back.png"
                 BackgroundColor="#790B29"
                 Grid.Row="0"
                 Grid.Column="0"                
@@ -61,7 +61,7 @@
 
                 <!--IMAGE DELIVERY TO DELIVERY-->
                 <ImageButton 
-                Source="livraison.png"
+                Source="delivery.png"
                 BackgroundColor="#790B29"
                 Grid.Row="0"
                 Grid.Column="1"
@@ -70,6 +70,19 @@
                 Padding="0"
                 Margin="300,0,0,0"
                 Clicked="OnButton_Delivery"/>
+
+
+                <!--IMAGE PLANNING TO PLANNING-->
+                <ImageButton 
+                Source="calendar.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="2"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="350,0,0,0"
+                Clicked="OnButton_Planning"/>
 
 
                 <!--IMAGE HISTORY TO HISTORY-->
@@ -121,7 +134,7 @@
                             CornerRadius="0"
                             Padding="350,0,350,0"
                             Margin="0,15,0,15"                                                     
-                            />
+                            Clicked="OnButton_OrderNumber"/>
 
 
                             <Button
@@ -144,7 +157,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

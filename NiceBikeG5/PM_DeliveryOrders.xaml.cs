@@ -43,6 +43,11 @@ public partial class PM_DeliveryOrders: ContentPage
         await Navigation.PushAsync(new PM_DeliveryOrders());
     }
 
+    /*FCT BUTTON PLANNING*/
+    private async void OnButton_Planning(object sender, EventArgs e)
+    {
+    }
+
     /*FCT BUTTON HISTORY*/
     private async void OnButton_History(object sender, EventArgs e)
     {
@@ -66,7 +71,7 @@ public partial class PM_DeliveryOrders: ContentPage
 
 
 
-    /*FCT DATABASE SHOWS BUTTON ORDERS*/
+    /*FCT DATABASE -SHOWS BUTTON ORDERS*/
     public void LoadData()
     {
         var connectionString= "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
@@ -85,17 +90,17 @@ public partial class PM_DeliveryOrders: ContentPage
     }
 
 
-    /*FCT BUTTON SEND THE NUMBER OF ORDER TO THE PAGE WITH DETAILS*/
+    /*FCT BUTTON -SENDS THE N°ORDER TO THE PAGE WITH DETAILS*/
     private async void OnButton_OrderNumber(object sender, EventArgs e)
     {
         var button= sender as Button;
         var buttonText= button.Text;
         var orderNumber= buttonText.Replace("ORDER N°", "");
-        await Navigation.PushAsync(new PM_OrderListBikes(orderNumber));
+        await Navigation.PushAsync(new PM_DeliveryDetails(orderNumber));
     }
 
 
-    /*FCT BUTTON FINALIZE -CHANGE ORDER'S STATE "NULL" TO "DELIVERED"*/
+    /*FCT BUTTON DELIVERED -ORDER'S STATE "NULL"-->"DELIVERED"*/
     private async void OnButton_Delivered(object sender, EventArgs e)
     {
         bool answer= await Application.Current.MainPage.DisplayAlert(

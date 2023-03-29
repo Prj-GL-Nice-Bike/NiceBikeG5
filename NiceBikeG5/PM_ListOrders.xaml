@@ -23,7 +23,7 @@
 
                 <!--BUTTON BACK TO MENU-->
                 <ImageButton
-                Source="bouton_back.png"
+                Source="button_back.png"
                 BackgroundColor="#790B29"
                 Grid.Row="0"
                 Grid.Column="0"                
@@ -42,7 +42,8 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 Padding="0"
-                Margin="-250,0,0,0"/>
+                Margin="-250,0,0,0"
+                Clicked="OnButton_ListOrders"/>
 
 
                 <!--IMAGE STOCK TO INVENTORY-->
@@ -60,7 +61,7 @@
 
                 <!--IMAGE DELIVERY TO DELIVERY-->
                 <ImageButton 
-                Source="livraison.png"
+                Source="delivery.png"
                 BackgroundColor="#790B29"
                 Grid.Row="0"
                 Grid.Column="1"
@@ -69,6 +70,19 @@
                 Padding="0"
                 Margin="300,0,0,0"
                 Clicked="OnButton_Delivery"/>
+
+
+                <!--IMAGE PLANNING TO PLANNING-->
+                <ImageButton 
+                Source="calendar.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="2"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="350,0,0,0"
+                Clicked="OnButton_Planning"/>
 
 
                 <!--IMAGE HISTORY TO HISTORY-->
@@ -85,7 +99,7 @@
             </Grid>
 
 
-            
+
             <!--TITLE PAGE-->
             <HorizontalStackLayout>
                 <Label
@@ -100,7 +114,7 @@
                 Margin="250,10,80,20"/>
             </HorizontalStackLayout>
 
-            
+
 
             <!--LIST OF ORDERS WITH DATABASE-->
             <ListView x:Name="listView" Margin="60,35,60,50">
@@ -124,36 +138,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
-
-
-
-
-<!--<Button 
-    Text="{Binding}"
-    BackgroundColor="#790B29"
-    TextColor="White"
-    FontFamily="Raleway-Light"
-    FontSize="75"            
-    FontAttributes="Bold"            
-    BorderColor="Black"
-    BorderWidth="10"
-    CornerRadius="0"
-    Margin="0,15,0,15"
-    Padding="360,0,360,0"                             
-    Clicked="OnButtonClicked"/>
-
-    <Button
-        Text="SEND"
-        BackgroundColor="Violet"
-        TextColor="Black"
-        Margin="20,20,0,20"
-        FontSize="55"
-        Padding="5,0,5,0"
-        CornerRadius="0"
-        BorderColor="Black"
-        BorderWidth="5"
-        Clicked="OnButtonChanged"/>-->

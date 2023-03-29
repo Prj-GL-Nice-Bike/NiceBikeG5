@@ -8,7 +8,6 @@ using System.Collections.ObjectModel;
 public partial class PM_ListOrders: ContentPage
 {
     private ObservableCollection<string> _items;
-    //private int clickCount= 0;
 
     public PM_ListOrders()
     {
@@ -25,6 +24,12 @@ public partial class PM_ListOrders: ContentPage
         await Navigation.PushAsync(new PM_Menu());
     }
 
+    /*FCT BUTTON LIST OF ORDERS*/
+    private async void OnButton_ListOrders(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new PM_ListOrders());
+    }
+
     /*FCT BUTTON INVENTORY*/
     private async void OnButton_Inventory(object sender, EventArgs e)
     {        
@@ -34,6 +39,11 @@ public partial class PM_ListOrders: ContentPage
     private async void OnButton_Delivery(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new PM_DeliveryOrders());
+    }
+
+    /*FCT BUTTON PLANNING*/
+    private async void OnButton_Planning(object sender, EventArgs e)
+    {        
     }
 
     /*FCT BUTTON HISTORY*/
@@ -63,7 +73,7 @@ public partial class PM_ListOrders: ContentPage
     }
 
 
-    /*FCT BUTTON SEND THE NUMBER OF ORDER TO THE PAGE WITH DETAILS*/
+    /*FCT BUTTON SENDS THE N°ORDER TO THE PAGE WITH DETAILS*/
     private async void OnButton_OrderNumber(object sender, EventArgs e)
     {
         var button= sender as Button;
@@ -72,21 +82,3 @@ public partial class PM_ListOrders: ContentPage
         await Navigation.PushAsync(new PM_OrderListBikes(orderNumber));
     }
 }
-
-
-
-
-//private async void OnButtonChanged(object sender, EventArgs e)
-//{
-//    Button button = (Button)sender;
-//    clickCount++;
-
-//    if (clickCount == 2)
-//    {
-//        button.IsEnabled = false;
-//        ((Button)sender).BackgroundColor = Color.FromRgb(128, 128, 128);
-//        clickCount = 0;
-//    }
-
-//    button.Text = "DELIVERED";
-//}

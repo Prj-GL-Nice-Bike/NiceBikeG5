@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System.Collections.ObjectModel;
 
 
+
 public partial class PM_OrderListBikes: ContentPage
 {
     public string OrderNumber;
@@ -40,6 +41,11 @@ public partial class PM_OrderListBikes: ContentPage
     private async void OnButton_Delivery(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new PM_DeliveryOrders());
+    }
+
+    /*FCT BUTTON PLANNING*/
+    private async void OnButton_Planning(object sender, EventArgs e)
+    {
     }
 
     /*FCT BUTTON HISTORY*/
@@ -89,7 +95,7 @@ public partial class PM_OrderListBikes: ContentPage
     }
 
 
-    /*FCT BUTTON SEND -CHANGE BIKE'S STATE "NULL" TO "SEND"*/
+    /*FCT BUTTON SEND -BIKE'S STATE "NULL"-->"SEND"*/
     private async void OnButton_SendToAssembler(object sender, EventArgs e)
     {
         var bike= ((Button)sender).BindingContext as Bike;
@@ -103,9 +109,9 @@ public partial class PM_OrderListBikes: ContentPage
         await command.ExecuteNonQueryAsync();
 
 
-        await DisplayAlert("Confirmation", "Le vélo a été ajouté à la liste d'assemblage.", "OK");
-        ((Button)sender).BackgroundColor= Color.FromRgb(128, 128, 128); // Changer la couleur du bouton en gris
-        ((Button)sender).IsEnabled= false; // Désactiver le bouton
+        await DisplayAlert("BIKE SENT", "The bike has been sent to the assemblers", "OK");
+        ((Button)sender).BackgroundColor= Color.FromRgb(128, 128, 128);
+        ((Button)sender).IsEnabled= false;
     }
 
 
@@ -166,7 +172,7 @@ public partial class PM_OrderListBikes: ContentPage
 
 
 
-    /*FCT BUTTON FINALIZE -CHANGE ORDER'S STATE "NULL" TO "FINISH"*/
+    /*FCT BUTTON FINALIZE -ORDER'S STATE "NULL"-->"FINISH"*/
     private async void OnButton_FinalizeOrder(object sender, EventArgs e)
     {
         bool answer= await Application.Current.MainPage.DisplayAlert(
@@ -194,8 +200,8 @@ public partial class PM_OrderListBikes: ContentPage
 
 
 
-    private async void ASSEMBLERPAGE(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new ASSEMBLER_PAGE());
-    }
+    //private async void ASSEMBLERPAGE(object sender, EventArgs e)
+    //{
+    //    await Navigation.PushAsync(new ASSEMBLER_PAGE());
+    //}
 }

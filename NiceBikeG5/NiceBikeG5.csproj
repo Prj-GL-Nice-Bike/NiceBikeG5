@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\calendar.png" />
 	  <None Remove="Resources\Images\inventory.jpg" />
 	  <None Remove="Resources\Images\Livraison.png" />
 	</ItemGroup>
@@ -69,7 +70,13 @@
 	  <MauiXaml Update="ASSEMBLER_PAGE.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PM_ArchiveDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PM_ArchiveOrders.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PM_DeliveryDetails.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PM_DeliveryOrders.xaml">
