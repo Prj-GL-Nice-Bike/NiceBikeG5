@@ -70,7 +70,10 @@
         <Border Stroke="Black" StrokeThickness="8" WidthRequest="1500" HeightRequest="600" BackgroundColor="LightGray" >
         <ScrollView HorizontalOptions="Center" Orientation="Vertical">
             <!--DATABASE-->
-            <ListView ItemsSource="{Binding Clients}" BackgroundColor="LightGray">
+            <ListView ItemsSource="{Binding Clients}"
+                      ItemSelected="GoToSummary"
+                      BackgroundColor="LightGray"
+                      SeparatorColor="#790B29">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

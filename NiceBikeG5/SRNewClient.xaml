@@ -36,7 +36,8 @@
                 Grid.Column="1"
                 HeightRequest="50"
                 HorizontalOptions="Center"
-                VerticalOptions="Center"/>
+                VerticalOptions="Center"
+                Clicked="GoHome"/>
         </Grid>
         <Label 
             Text="New Client" TextColor="Black"
@@ -72,17 +73,13 @@
         <Button
                 x:Name="AddClientBtn"
                 Text="+ Add client" 
-                BackgroundColor="White"
-                TextColor="Black"
+                BackgroundColor="White" TextColor="Black"
                 FontSize="30" FontFamily="Raleway-Bold"
                 WidthRequest="240" HeightRequest="60"  
-                CornerRadius="0"
-                BorderColor="Black"
-                BorderWidth="2"
+                CornerRadius="0" BorderColor="Black" BorderWidth="2"
                 SemanticProperties.Hint="Create the new client"
                 Clicked="AddClientClicked"
-                HorizontalOptions="End"
-                Margin="50"/>
+                HorizontalOptions="End" Margin="50"/>
         <VerticalStackLayout HeightRequest="50"
                              BackgroundColor="#790B29"
                              VerticalOptions="EndAndExpand"

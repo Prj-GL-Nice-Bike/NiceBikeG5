@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using MySql.Data.MySqlClient;
 
+
 namespace NiceBikeG5;
 
 public partial class SRListOfClients : ContentPage
@@ -11,11 +12,17 @@ public partial class SRListOfClients : ContentPage
     {
         InitializeComponent();
         BindingContext = new ClientsViewModel();
+
     }
 
     private async void BackClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new SRSellers());
+    }
+
+    private async void GoToSummary(object sender, SelectedItemChangedEventArgs args)
+    {
+        await Navigation.PushAsync(new Summary());
     }
 }
 // VIEW MODEL
@@ -51,6 +58,7 @@ public class ClientsViewModel
             var clientTVA = reader.GetString("TVA");
             Clients.Add(new Client { Id = id, ClientName = clientName, ClientAdress = clientAdress, ClientPhone = clientPhone, ClientEmail = clientEmail, ClientTVA = clientTVA });
         }
+
     }
 }
 

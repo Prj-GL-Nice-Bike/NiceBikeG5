@@ -14,6 +14,10 @@ namespace NiceBikeG5
         {
             await Navigation.PushAsync(new SRSellers());
         }
+        private async void GoHome(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SR_Catalogue());
+        }
 
         private async void AddClientClicked(object sender, EventArgs e)
         {
@@ -25,12 +29,12 @@ namespace NiceBikeG5
             string clientTVA = TVA.Text;
 
             // CONNECTION WITH MYSQL
-            var connectionString = "Server=localhost;Database=bikes;Uid=root;Pwd=root;";
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
             using var connection = new MySqlConnection(connectionString);
             connection.Open();
 
             // INSERT NEW CLIENT TO THE CLIENTS TABLE USING PARAMETERIZED QUERY
-            var commandText = $"INSERT INTO clients (Name, Adress, Phone, Email, TVA) VALUES (@Name, @Adress, @Phone, @Email, @TVA)";
+            var commandText = $"INSERT INTO clients_sr (Name, Adress, Phone, Email, TVA) VALUES (@Name, @Adress, @Phone, @Email, @TVA)";
             using var command = new MySqlCommand(commandText, connection);
             command.Parameters.AddWithValue("@Name", clientName);
             command.Parameters.AddWithValue("@Adress", clientAdress);
@@ -39,7 +43,7 @@ namespace NiceBikeG5
             command.Parameters.AddWithValue("@TVA", clientTVA);
             command.ExecuteNonQuery();
 
-            await Navigation.PushAsync(new Summary());
+            await Navigation.PushAsync(new SRListOfClients());
          
         }
     }

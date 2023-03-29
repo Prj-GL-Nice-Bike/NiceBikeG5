@@ -77,7 +77,7 @@
                 </ListView>
             </ScrollView>
         </Border>
-        <Label Text="Order n°102"    
+        <Label Text="Order"    
                 FontSize="30" FontFamily="Raleway-SemiBold"
                 TextColor="Black"
                 VerticalOptions="Start"
@@ -104,28 +104,35 @@
                 StrokeThickness="5" Stroke="Black"
                 HorizontalOptions="Start" BackgroundColor="LightGray"
                 Margin="20,-1.5,20,0">
+            <ScrollView HorizontalOptions="Center" Orientation="Vertical">
+                <!--DATABASE-->
+                <ListView x:Name="listBikes" ItemsSource="{Binding Orders}" BackgroundColor="LightGray">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" BackgroundColor="LightGray">
+                                    <Label Text="{Binding ProductName}" WidthRequest="250" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                    <Label Text="{Binding ProductSize}" WidthRequest="250" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                    <Label Text="{Binding ProductColor}" WidthRequest="250" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                    <Label Text="{Binding ProductQuantity}" WidthRequest="250" HorizontalTextAlignment="Center" TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                        
+            </ScrollView>
         </Border>
         <HorizontalStackLayout>
         <Border HeightRequest="60" 
                 WidthRequest="300" StrokeThickness="5"
                 Margin="20,15,0,0" Stroke="Black"
-                HorizontalOptions="Start">
-        
-            <StackLayout VerticalOptions="Center" Margin="10,-3,5,0">
-                <Label>
-                    <Label.FormattedText >
-                        <FormattedString>
-                            <Span Text="Total : " TextColor="Black" FontSize="30" FontFamily="Raleway-Medium"/>
-                            <Span Text="                         " FontSize="28">
-
-                            </Span>
-                            <Span Text="€" TextColor="Black" FontSize="30" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-
-            </StackLayout>
+                HorizontalOptions="Start" BackgroundColor="#790B29">
+                <Label Text="{Binding Total, StringFormat='{0} €'}"
+                       WidthRequest="150" HorizontalTextAlignment="Center"
+                       TextColor="White" FontSize="25" FontFamily="Raleway-Bold"/>
         </Border>
+
         <Button
                 Text="Confirm Order" FontSize="30"
                 BackgroundColor="#790B29" TextColor="White"
