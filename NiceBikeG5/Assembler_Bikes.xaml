@@ -223,7 +223,7 @@
                                         TextColor="White"
                                         VerticalOptions="Start"
                                         HorizontalOptions="Center"
-                                        Clicked="ChooseBike"/>
+                                        Clicked="CancelBike"/>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

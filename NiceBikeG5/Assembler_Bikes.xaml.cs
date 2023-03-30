@@ -25,9 +25,6 @@ public partial class Assembler_Bikes : ContentPage
 
         // ID de la ligne à mettre à jour
         int id_ligne = dataObject.Id;
-
-        // ID de la ligne à mettre à jour
-        //int id_ligne = 1;
         string assemblerNumber;
 
         // Nouvelle valeur pour la colonne "Assembler"
@@ -49,6 +46,70 @@ public partial class Assembler_Bikes : ContentPage
 
         // Ajouter des paramètres pour la nouvelle valeur de la colonne "Assembler" et l'ID de la ligne
         command.Parameters.AddWithValue("@Assembler", assemblerNumber);
+        command.Parameters.AddWithValue("@id_ligne", id_ligne);
+
+        await connection.OpenAsync();
+
+        // Exécuter la commande MySQL pour mettre à jour la ligne spécifiée
+        int rowsAffected = await command.ExecuteNonQueryAsync();
+
+        connection.Close();
+
+        string AssemblerName = "ASSEMBLER #" + assemblerNumber;
+        await Navigation.PushAsync(new Assembler_Bikes(AssemblerName));
+    }
+    private async void CancelBike(object sender, EventArgs e)
+    {
+        // Récupérer l'objet de données de la ligne correspondante
+        var button = sender as Button;
+        var dataObject = button.BindingContext as Client;
+
+        // ID de la ligne à mettre à jour
+        int id_ligne = dataObject.Id;
+
+        string assembler_ligne = dataObject.AssignedAssembler;
+        string assemblerNumber;
+
+        // Nouvelle valeur pour la colonne "Assembler"
+        if (AssemblerConnected.Text == "Connected as ASSEMBLER #1") 
+            { 
+                assemblerNumber = "1";
+                if (assembler_ligne == "1")
+                {
+                    assembler_ligne = "";
+                }
+            }
+        else if (AssemblerConnected.Text == "Connected as ASSEMBLER #2") 
+            { 
+                assemblerNumber = "2";
+                if (assembler_ligne == "2")
+                {
+                    assembler_ligne = "";
+                }
+        }
+        else 
+            { 
+                assemblerNumber = "3";
+                if (assembler_ligne == "3")
+                {
+                    assembler_ligne = "";
+                }
+        }
+
+        // Chaîne de connexion MySQL
+        var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+
+        // Requête SQL pour mettre à jour la colonne "Assembler" dans la ligne spécifiée
+        string sql = "UPDATE bike_pm SET Assembler = @Assembler WHERE idbike_pm = @id_ligne";
+
+        // Créer un objet de connexion MySQL
+        using var connection = new MySqlConnection(connectionString);
+
+        // Créer un objet de commande MySQL avec la requête SQL et la connexion associée
+        using var command = new MySqlCommand(sql, connection);
+
+        // Ajouter des paramètres pour la nouvelle valeur de la colonne "Assembler" et l'ID de la ligne
+        command.Parameters.AddWithValue("@Assembler", assembler_ligne);
         command.Parameters.AddWithValue("@id_ligne", id_ligne);
 
         await connection.OpenAsync();
