@@ -51,9 +51,9 @@
             Placeholder="Name : "
             Margin="10"/>
         <Entry
-            x:Name="Adress" TextColor="Black"
+            x:Name="Address" TextColor="Black"
             FontSize="20" FontFamily="Raleway-Medium"
-            Placeholder="Adress : "
+            Placeholder="Address : "
             Margin="10"/>
         <Entry
             x:Name="Phone" TextColor="Black"

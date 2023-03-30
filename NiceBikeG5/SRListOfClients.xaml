@@ -53,7 +53,7 @@
             <Grid ColumnDefinitions="200,250,150,400,150,280" WidthRequest="1400" Margin="3" BackgroundColor="#790B29">
                 <Label  Text="Name" Grid.Column="0" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
                         HorizontalTextAlignment="Center" VerticalOptions="Center"/>
-                <Label  Text="Adress"  Grid.Column="1" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
+                <Label  Text="Address"  Grid.Column="1" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
                         HorizontalTextAlignment="Center" VerticalOptions="Center"/>
                 <Label  Text="Phone" Grid.Column="2" TextColor="White" FontSize="20" FontFamily="Raleway-Bold"
                         HorizontalTextAlignment="Center" VerticalOptions="Center"/>
@@ -68,7 +68,6 @@
     </HorizontalStackLayout>
 
         <Border Stroke="Black" StrokeThickness="8" WidthRequest="1500" HeightRequest="600" BackgroundColor="LightGray" >
-        <ScrollView HorizontalOptions="Center" Orientation="Vertical">
             <!--DATABASE-->
             <ListView ItemsSource="{Binding Clients}"
                       ItemSelected="GoToSummary"
@@ -81,7 +80,7 @@
                                 <Label Text="{Binding ClientName}" HeightRequest="80" WidthRequest="200"
                                        TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
                                        HorizontalTextAlignment="Center" Margin="40,50,0,0"/>
-                                <Label Text="{Binding ClientAdress}" HeightRequest="80" WidthRequest="250"
+                                <Label Text="{Binding ClientAddress}" HeightRequest="80" WidthRequest="250"
                                        TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
                                        HorizontalTextAlignment="Center" Margin="0,50,0,0"/>
                                 <Label Text="{Binding ClientPhone}" HeightRequest="80" WidthRequest="150"
@@ -98,7 +97,6 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-        </ScrollView>
         </Border>
         </VerticalStackLayout>
     <!--DESIGN: END OF PAGE-->

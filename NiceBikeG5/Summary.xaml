@@ -55,14 +55,14 @@
                 Margin="20,0,20,0" BackgroundColor="LightGray"> 
                 <ScrollView BackgroundColor="LightGray">
                 <!--DATABASE-->
-                <ListView ItemsSource="{Binding Clients}" BackgroundColor="LightGray" SeparatorVisibility="Default">
+                <ListView ItemsSource="{Binding Clients}" BackgroundColor="LightGray" SeparatorColor="DarkGray">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Vertical" BackgroundColor="LightGray">
                                     <Label Text="{Binding ClientName, StringFormat='Name : {0}'}" HeightRequest="60" Margin="20,10,0,0"
                                            TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
-                                    <Label Text="{Binding ClientAdress, StringFormat='Adress : {0}'}" HeightRequest="60" Margin="20,0,0,0"
+                                    <Label Text="{Binding ClientAddress, StringFormat='Address : {0}'}" HeightRequest="60" Margin="20,0,0,0"
                                            TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
                                     <Label Text="{Binding ClientPhone, StringFormat='Phone : {0}'}" HeightRequest="60" Margin="20,0,0,0"
                                            TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"/>
@@ -104,7 +104,6 @@
                 StrokeThickness="5" Stroke="Black"
                 HorizontalOptions="Start" BackgroundColor="LightGray"
                 Margin="20,-1.5,20,0">
-            <ScrollView HorizontalOptions="Center" Orientation="Vertical">
                 <!--DATABASE-->
                 <ListView x:Name="listBikes" ItemsSource="{Binding Orders}" BackgroundColor="LightGray">
                     <ListView.ItemTemplate>
@@ -120,8 +119,6 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                        
-            </ScrollView>
         </Border>
         <HorizontalStackLayout>
         <Border HeightRequest="60" 

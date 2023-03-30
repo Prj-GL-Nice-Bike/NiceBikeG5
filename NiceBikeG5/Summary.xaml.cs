@@ -7,11 +7,14 @@ namespace NiceBikeG5;
 
 public partial class Summary : ContentPage
 {
-	public Summary()
-	{
-		InitializeComponent();
-        BindingContext = new SummaryViewModel();
+    private Client _client;
+
+    public Summary()
+    {
+        InitializeComponent();
     }
+
+    // BUTTONS
     private async void BackClicked(object sender, EventArgs e)
     {
         await Shell.Current.GoToAsync(nameof(SRSellers));
@@ -68,7 +71,6 @@ public class SummaryViewModel : INotifyPropertyChanged
         }
     }
 
-
     public SummaryViewModel() 
     {
         Clients = new ObservableCollection<Client>();
@@ -93,11 +95,11 @@ public class SummaryViewModel : INotifyPropertyChanged
         {
             var id = reader.GetInt32("idclients");
             var clientName = reader.GetString("Name");
-            var clientAdress = reader.GetString("Adress");
+            var clientAddress = reader.GetString("Address");
             var clientPhone= reader.GetString("Phone");
             var clientEmail = reader.GetString("Email");
             var clientTVA = reader.GetString("TVA");
-            Clients.Add(new Client { Id = id, ClientName = clientName, ClientAdress = clientAdress, ClientPhone = clientPhone, ClientEmail = clientEmail, ClientTVA = clientTVA });
+            Clients.Add(new Client { Id = id, ClientName = clientName, ClientAddress = clientAddress, ClientPhone = clientPhone, ClientEmail = clientEmail, ClientTVA = clientTVA });
         }
     }
 
@@ -106,11 +108,11 @@ public class SummaryViewModel : INotifyPropertyChanged
 
         public int Id { get; set; }
         public string ClientName { get; set; }
-        public string ClientAdress { get; set; }
+        public string ClientAddress { get; set; }
         public string ClientPhone { get; set; }
         public string ClientEmail { get; set; }
         public string ClientTVA { get; set; }
-        
+
     }
     public async void LoadData2()
     {

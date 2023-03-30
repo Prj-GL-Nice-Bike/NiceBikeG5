@@ -23,7 +23,7 @@ namespace NiceBikeG5
         {
             // ENTRY DATA
             string clientName = Name.Text;
-            string clientAdress = Adress.Text;
+            string clientAddress = Address.Text;
             string clientPhone = Phone.Text;
             string clientEmail = Email.Text;
             string clientTVA = TVA.Text;
@@ -34,10 +34,10 @@ namespace NiceBikeG5
             connection.Open();
 
             // INSERT NEW CLIENT TO THE CLIENTS TABLE USING PARAMETERIZED QUERY
-            var commandText = $"INSERT INTO clients_sr (Name, Adress, Phone, Email, TVA) VALUES (@Name, @Adress, @Phone, @Email, @TVA)";
+            var commandText = $"INSERT INTO clients_sr (Name, Address, Phone, Email, TVA) VALUES (@Name, @Address, @Phone, @Email, @TVA)";
             using var command = new MySqlCommand(commandText, connection);
             command.Parameters.AddWithValue("@Name", clientName);
-            command.Parameters.AddWithValue("@Adress", clientAdress);
+            command.Parameters.AddWithValue("@Address", clientAddress);
             command.Parameters.AddWithValue("@Phone", clientPhone);
             command.Parameters.AddWithValue("@Email", clientEmail);
             command.Parameters.AddWithValue("@TVA", clientTVA);
