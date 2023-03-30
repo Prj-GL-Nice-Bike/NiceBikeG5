@@ -71,6 +71,20 @@
             Padding="5"
             Margin="10,10,10,0"
             Clicked="OnButton_Inventory"/>
+
+            <Button
+            Text="Planning"
+            BackgroundColor="DimGray"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="65"            
+            FontAttributes="Bold"            
+            BorderColor="Black"
+            BorderWidth="10"
+            Padding="5"
+            Margin="10,10,10,0"
+            Clicked="OnButton_Planning"/>
+            
         </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

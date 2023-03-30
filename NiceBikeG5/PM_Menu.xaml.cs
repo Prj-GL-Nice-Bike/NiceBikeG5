@@ -24,4 +24,8 @@ public partial class PM_Menu : ContentPage
     {
         await Navigation.PushAsync(new Binventory());
     }
+    private async void OnButton_Planning(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Production_Planning());
+    }
 }

@@ -20,13 +20,13 @@ public partial class Session_PM : ContentPage
     //CLICK ON THE BUTTON
     private void OnButton_LogIn(object sender, EventArgs e)
     {
-        password= PasswordEntry.Text;
+        password = PasswordEntry.Text;
         //If Password: Next Page
-        if(password=="abc")
-        {Navigation.PushAsync(new PM_Menu());}
+        if (password == "abc")
+        { Navigation.PushAsync(new PM_Menu()); }
         //If not Password: Error Message
         else
-        {DisplayAlert("ERROR", "Incorrect password", "OK");}
+        { DisplayAlert("ERROR", "Incorrect password", "OK"); } 
     }
 
     //ENTER
