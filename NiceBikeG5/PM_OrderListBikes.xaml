@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NiceBikeG5.PM_OrderListBikes"
+             Title=""
+             BackgroundColor="Darkgray">
+
+    
+
+    <ScrollView Margin="0,0,0,20">
+        <VerticalStackLayout>
+            <!--NAVIGATION BAR-->
+            <Grid HeightRequest="60"
+                  BackgroundColor="#790B29">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--BUTTON BACK TO LIST OF ORDERS-->
+                <ImageButton
+                Source="button_back.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="0"                
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                Margin="10,0,100,0"
+                Clicked="OnButton_Back"/>
+
+
+                <!--IMAGE ORDERS TO LIST OF ORDERS-->
+                <ImageButton 
+                Source="listoforders.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="-250,0,0,0"
+                Clicked="OnButton_ListOrders"/>
+
+
+                <!--IMAGE STOCK TO INVENTORY-->
+                <ImageButton 
+                Source="inventory.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="0,0,0,0"
+                Clicked="OnButton_Inventory"/>
+
+
+                <!--IMAGE DELIVERY TO DELIVERY-->
+                <ImageButton 
+                Source="livraison.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="300,0,0,0"
+                Clicked="OnButton_Delivery"/>
+
+
+                <!--IMAGE PLANNING TO PLANNING-->
+                <ImageButton 
+                Source="calendar.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="2"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="350,0,0,0"
+                Clicked="OnButton_Planning"/>
+
+
+                <!--IMAGE HISTORY TO HISTORY-->
+                <ImageButton 
+                Source="history.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="2"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="0,0,10,0"
+                Clicked="OnButton_History"/>
+            </Grid>
+
+
+
+            <!--TITLE PAGE WITH THE N°ORDER-->            
+            <Label 
+            x:Name="orderNumberLabel" 
+            Text="Type" 
+            TextColor="Black"                
+            FontAttributes="Bold" 
+            FontSize="120"
+            TextDecorations="Underline"
+            Padding="0"
+            Margin="40,0,0,0"/>
+            
+
+            
+            
+
+           <!--PART1: TO SEND-->
+            <!--TITLE UNDERLINE WITH BULLET-->
+            <Label
+            TextColor="Black"
+            Padding="0" 
+            Margin="40,0,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                        Text="➢" 
+                        FontSize="75"/>
+                        <Span 
+                        Text="To Send"                                                                              
+                        FontSize="75"
+                        TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <!--TITLE COLUMNS-->
+            <HorizontalStackLayout Margin="112,0,0,0">
+                <Border
+                Stroke="Black"
+                StrokeThickness="8"
+                StrokeShape="Rectangle">
+
+                    <HorizontalStackLayout>
+                        <Label 
+                        Text="Type" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="60"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="330"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+
+                        <Label 
+                        Text="Size" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="60"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="330"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+
+                        <Label 
+                        Text="Color" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="60"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="330"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+                    </HorizontalStackLayout>
+                </Border>
+            </HorizontalStackLayout>
+
+
+            <!--LIST OF BIKES WITH DATABASE +BUTTON SEND TO "IN PROCESS" FOR EACH BIKE-->
+            <ListView x:Name="listView" Margin="0" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <HorizontalStackLayout>
+                                <Border
+                                Stroke="Black"
+                                StrokeThickness="4"
+                                StrokeShape="Rectangle"
+                                Margin="101,-10,0,0"
+                                BackgroundColor="#FF5050">
+                                    <HorizontalStackLayout>
+
+                                        <Label 
+                                        Text="{Binding Type}"                                  
+                                        TextColor="Black"  
+                                        FontSize="40" 
+                                        WidthRequest="330"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+
+                                        <Label
+                                        Text="{Binding Size}"
+                                        TextColor="Black"  
+                                        FontSize="40" 
+                                        WidthRequest="330"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+
+                                        <Label
+                                        Text="{Binding Color}"
+                                        TextColor="Black"  
+                                        FontSize="40" 
+                                        WidthRequest="336"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+                                    </HorizontalStackLayout>
+                                </Border>
+
+                                <Button 
+                                Text="SEND" 
+                                BackgroundColor="#790B29"
+                                TextColor="White"
+                                FontFamily="Raleway-Light"
+                                FontSize="40"                                   
+                                BorderColor="Black"
+                                BorderWidth="5"
+                                CornerRadius="0"                                
+                                Padding="5,0,5,-5"
+                                Margin="15,5,0,5"
+                                Clicked="OnButton_SendToAssembler"/>
+                            </HorizontalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+
+           <!--PART2: IN PROCESS-->
+            <!--TITLE UNDERLINE WITH BULLET-->
+            <Label
+            TextColor="Black"
+            Padding="0" 
+            Margin="40,0,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                        Text="➢" 
+                        FontSize="75"/>
+                        <Span 
+                        Text="In Process"                                                                              
+                        FontSize="75"
+                        TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <!--TITLE COLUMNS-->
+            <HorizontalStackLayout Margin="112,0,0,0">
+                <Border
+                Stroke="Black"
+                StrokeThickness="8"
+                StrokeShape="Rectangle">
+
+                    <HorizontalStackLayout>
+                        <Label 
+                        Text="Type" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="60"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="330"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+
+                        <Label 
+                        Text="Size" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="60"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="330"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+
+                        <Label 
+                        Text="Color" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="60"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="330"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+                    </HorizontalStackLayout>
+                </Border>
+            </HorizontalStackLayout>
+
+
+            <!--LIST OF BIKES WITH DATABASE-->
+            <ListView x:Name="listView2" Margin="0" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <HorizontalStackLayout>
+                                <Border
+                                Stroke="Black"
+                                StrokeThickness="4"
+                                StrokeShape="Rectangle"
+                                Margin="101,-10,0,0"
+                                BackgroundColor="#2DBFF5">
+                                    <HorizontalStackLayout>
+
+                                        <Label 
+                                        Text="{Binding Type}"                                  
+                                        TextColor="Black"  
+                                        FontSize="40" 
+                                        WidthRequest="330"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+
+                                        <Label
+                                        Text="{Binding Size}"
+                                        TextColor="Black"  
+                                        FontSize="40" 
+                                        WidthRequest="330"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+
+                                        <Label
+                                        Text="{Binding Color}"
+                                        TextColor="Black"  
+                                        FontSize="40" 
+                                        WidthRequest="336"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+                                    </HorizontalStackLayout>
+                                </Border>
+                            </HorizontalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+
+           <!--PART3: FINISH-->
+            <!--TITLE UNDERLINE WITH BULLET-->
+            <Label
+            TextColor="Black"
+            Padding="0" 
+            Margin="40,0,0,0">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                        Text="➢" 
+                        FontSize="75"/>
+                        <Span 
+                        Text="Finished"                                                                              
+                        FontSize="75"
+                        TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+
+            <!--TITLE COLUMNS-->
+            <HorizontalStackLayout Margin="112,0,0,0">
+                <Border
+                Stroke="Black"
+                StrokeThickness="8"
+                StrokeShape="Rectangle">
+
+                    <HorizontalStackLayout>
+                        <Label 
+                        Text="Type" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="60"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="330"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+
+                        <Label 
+                        Text="Size" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="60"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="330"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+
+                        <Label 
+                        Text="Color" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="60"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="330"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+                    </HorizontalStackLayout>
+                </Border>
+            </HorizontalStackLayout>
+
+
+            <!--LIST OF BIKES WITH DATABASE-->
+            <ListView x:Name="listView3" Margin="0" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <HorizontalStackLayout>
+                                <Border
+                                Stroke="Black"
+                                StrokeThickness="4"
+                                StrokeShape="Rectangle"
+                                Margin="101,-10,0,0"
+                                BackgroundColor="#50FF79">
+                                    <HorizontalStackLayout>
+                                        <Label 
+                                        Text="{Binding Type}"                                  
+                                        TextColor="Black"  
+                                        FontSize="40" 
+                                        WidthRequest="330"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+
+                                        <Label
+                                        Text="{Binding Size}"
+                                        TextColor="Black"  
+                                        FontSize="40" 
+                                        WidthRequest="330"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+
+                                        <Label
+                                        Text="{Binding Color}"
+                                        TextColor="Black"  
+                                        FontSize="40" 
+                                        WidthRequest="336"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+                                    </HorizontalStackLayout>
+                                </Border>
+                            </HorizontalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+
+            
+            <!--BUTTON FINALIZE TO DELIVERY-->
+            <Button 
+            Text="FINALIZE" 
+            TextColor="White"
+            FontSize="80"
+            BackgroundColor="#790B29"
+            CornerRadius="0"
+            BorderColor="Black"
+            BorderWidth="12"
+            HeightRequest="110"
+            WidthRequest="370"
+            HorizontalOptions="Start"
+            Margin="1150,50,0,5"
+            Padding="5,0,5,0"
+            Clicked="OnButton_FinalizeOrder"/>
+
+
+
+            <!--<Button
+            Text="ASSEMBLER"
+            TextColor="Black"
+            FontSize="60"
+            BackgroundColor="DodgerBlue"                        
+            WidthRequest="500"
+            HeightRequest="100"
+            Margin="10,50,50,50"
+            Clicked="ASSEMBLERPAGE"/>-->
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

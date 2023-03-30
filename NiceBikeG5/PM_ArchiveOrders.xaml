@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NiceBikeG5.PM_ArchiveOrders"
+             Title=""
+             BackgroundColor="DarkGray">
+
+
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <!--NAVIGATION BAR-->
+            <Grid HeightRequest="60"
+                  BackgroundColor="#790B29">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--BUTTON BACK TO LIST OF ORDERS-->
+                <ImageButton
+                Source="button_back.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="0"                
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                Margin="10,0,100,0"
+                Clicked="OnButton_Back"/>
+
+
+                <!--IMAGE ORDERS TO LIST OF ORDERS-->
+                <ImageButton 
+                Source="listoforders.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="-250,0,0,0"
+                Clicked="OnButton_ListOrders"/>
+
+
+                <!--IMAGE STOCK TO INVENTORY-->
+                <ImageButton 
+                Source="inventory.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="0,0,0,0"
+                Clicked="OnButton_Inventory"/>
+
+
+                <!--IMAGE DELIVERY TO DELIVERY-->
+                <ImageButton 
+                Source="delivery.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="300,0,0,0"
+                Clicked="OnButton_Delivery"/>
+
+
+                <!--IMAGE PLANNING TO PLANNING-->
+                <ImageButton 
+                Source="calendar.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="2"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="350,0,0,0"
+                Clicked="OnButton_Planning"/>
+
+
+                <!--IMAGE HISTORY TO HISTORY-->
+                <ImageButton 
+                Source="history.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="2"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Padding="0"
+                Margin="0,0,10,0"
+                Clicked="OnButton_History"/>
+            </Grid>
+
+
+            
+            
+
+            <!--TITLE PAGE-->
+            <HorizontalStackLayout>
+                <Label
+                Text="ARCHIVES"
+                TextColor="Black"
+                FontFamily="Raleway-Light"
+                FontSize="120"                
+                FontAttributes="Bold"
+                TextDecorations="Underline" 
+                HorizontalOptions="Center"
+                Padding="70,0,200,0"
+                Margin="420,10,80,20"/>
+            </HorizontalStackLayout>
+
+            
+            
+            <!--LIST OF ORDERS WITH DATABASE-->
+            <HorizontalStackLayout Margin="70,45,0,0">
+                <Border
+                Stroke="Black"
+                StrokeThickness="10"
+                StrokeShape="Rectangle">
+                    <HorizontalStackLayout>
+                        <Label 
+                        Text="N°ORDER" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="80"
+                        FontAttributes="Bold"
+                        HeightRequest="80"
+                        WidthRequest="1375"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        Padding="10,0,0,0"
+                        Margin="0"/>
+                    </HorizontalStackLayout>
+                </Border>
+            </HorizontalStackLayout>
+
+
+            
+            <!--LIST OF ORDERS WITH DATABASE-->
+            <ListView x:Name="listView" Margin="61,0,0,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <HorizontalStackLayout>
+                            <Button 
+                            Text="{Binding}"
+                            BackgroundColor="Wheat"
+                            TextColor="Black"
+                            FontFamily="Raleway-Light"
+                            FontSize="50"                                                    
+                            BorderColor="Black"
+                            BorderWidth="7"
+                            CornerRadius="0"
+                            Padding="10,0,1111,-7"
+                            Margin="0,-7,0,0"                                                     
+                            Clicked="OnButton_OrderNumber"/>
+                            </HorizontalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

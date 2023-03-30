@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NiceBikeG5.PM_Menu"
+             Title=""
+             BackgroundColor="DarkGray">
+    
+    
+    
+    <VerticalStackLayout>
+        <HorizontalStackLayout HorizontalOptions="End">
+            <!--BUBBLE PROFIL-->
+            <Button
+            Text="PM"
+            BackgroundColor="Purple"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="50"            
+            FontAttributes="Bold"            
+            BorderColor="#270739"
+            BorderWidth="6"
+            CornerRadius="400"
+            HeightRequest="90"
+            WidthRequest="96"
+            HorizontalOptions="Center"
+            Padding="8,8,8,8"            
+            Margin="330,20,10,0"/>
+
+            <!--BUTTON LOGOUT TO LOGIN-->
+            <Button
+            Text="LOG OUT"
+            BackgroundColor="DarkRed"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="50"           
+            FontAttributes="Bold"            
+            BorderColor="Black"
+            BorderWidth="6"
+            CornerRadius="0"
+            HeightRequest="68"
+            Padding="5,5,5,0"
+            Margin="0,20,20,0"
+            Clicked="OnButton_LogOut"/>
+        </HorizontalStackLayout>
+
+        <VerticalStackLayout VerticalOptions="Center" Margin="430,160,500,150" Spacing="15">
+            <!--BUTTON LIST OF ORDERS TO LIST-->
+            <Button
+            Text="List of orders"
+            BackgroundColor="DimGray"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="65"            
+            FontAttributes="Bold"            
+            BorderColor="Black"
+            BorderWidth="10"
+            Padding="5"
+            Margin="10,10,10,0"
+            Clicked="OnButton_ListOrders"/>
+
+            <!--BUTTON INVENTORY TO INVENTORY-->
+            <Button
+            Text="Inventory"
+            BackgroundColor="DimGray"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="65"            
+            FontAttributes="Bold"            
+            BorderColor="Black"
+            BorderWidth="10"
+            Padding="5"
+            Margin="10,10,10,0"
+            Clicked="OnButton_Inventory"/>
+
+            <Button
+            Text="Planning"
+            BackgroundColor="DimGray"
+            TextColor="Black"
+            FontFamily="Raleway-Light"
+            FontSize="65"            
+            FontAttributes="Bold"            
+            BorderColor="Black"
+            BorderWidth="10"
+            Padding="5"
+            Margin="10,10,10,0"
+            Clicked="OnButton_Planning"/>
+            
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

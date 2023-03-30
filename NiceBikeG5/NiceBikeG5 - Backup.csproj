@@ -49,46 +49,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="PM_ListDelivery.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiImage Remove="Resources\Images\inventory.jpg" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Resources\Images\calendar.png" />
-	  <None Remove="Resources\Images\inventory.jpg" />
-	  <None Remove="Resources\Images\Livraison.png" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <PackageReference Include="MySql.Data" Version="8.0.32.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="ASSEMBLER_PAGE.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="PM_ArchiveDetails.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="PM_ArchiveOrders.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="PM_DeliveryDetails.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="PM_DeliveryOrders.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="PM_ListOrders.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="PM_Menu.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Production_Planning.xaml">
+	  <MauiXaml Update="Cart.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SR_Catalogue.xaml">

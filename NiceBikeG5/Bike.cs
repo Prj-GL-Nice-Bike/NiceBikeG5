@@ -1,4 +1,8 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
@@ -36,7 +40,7 @@ namespace NiceBikeG5
         {
             if (Object.Equals(storage, value))
                 return false;
-
+        
             storage = value;
             OnPropertyChanged(propertyName);
             return true;
