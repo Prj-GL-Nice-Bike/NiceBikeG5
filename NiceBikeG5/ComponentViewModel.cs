@@ -35,11 +35,11 @@ namespace NiceBikeG5
         private async void LoadData()
         {
             // CONNECTION WITH MYSQL
-            var connectionString = "Server=localhost;Database=nicebike;Uid=root;Pwd=root;";
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
             using var connection = new MySqlConnection(connectionString);
             await connection.OpenAsync();
 
-            var commandText = "SELECT * FROM stockcomponents;";
+            var commandText = "SELECT * FROM stockcomponents_pm;";
 
             using var command = new MySqlCommand(commandText, connection);
             using var reader = command.ExecuteReader();
