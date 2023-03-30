@@ -19,8 +19,15 @@ public partial class Assembler_Bikes : ContentPage
     }
     private async void ChooseBike(object sender, EventArgs e)
     {
+        // Récupérer l'objet de données de la ligne correspondante
+        var button = sender as Button;
+        var dataObject = button.BindingContext as Client;
+
         // ID de la ligne à mettre à jour
-        int id_ligne = 1;
+        int id_ligne = dataObject.Id;
+
+        // ID de la ligne à mettre à jour
+        //int id_ligne = 1;
         string assemblerNumber;
 
         // Nouvelle valeur pour la colonne "Assembler"
@@ -50,6 +57,9 @@ public partial class Assembler_Bikes : ContentPage
         int rowsAffected = await command.ExecuteNonQueryAsync();
 
         connection.Close();
+
+        string AssemblerName = "ASSEMBLER #" + assemblerNumber;
+        await Navigation.PushAsync(new Assembler_Bikes(AssemblerName));
     }
 }
 public class OrdersViewModel

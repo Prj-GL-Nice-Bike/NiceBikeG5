@@ -186,7 +186,7 @@
                 </Border>
             </HorizontalStackLayout>
 
-            <Border Stroke="Black" StrokeThickness="1" WidthRequest="1400" HeightRequest="500" BackgroundColor="LightGray" Margin="0, 5, 0, 0" Padding="0, 10, 0, 0">
+            <Border Stroke="Black" StrokeThickness="1" WidthRequest="1400" HeightRequest="500" BackgroundColor="LightGray" Margin="0, 5, 0, 0" Padding="0, 25, 0, 0">
                 <ScrollView HorizontalOptions="Center" Orientation="Vertical">
                     <!--DATABASE-->
                     <ListView ItemsSource="{Binding Orders}" BackgroundColor="LightGray">
@@ -209,11 +209,19 @@
                                         <Label Text="{Binding OrderNumber}" HeightRequest="50" WidthRequest="150"
                                        TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
                                        HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
-                                        <Label Text="{Binding AssignedAssembler}" HeightRequest="50" WidthRequest="250"
+                                        <Label Text="{Binding AssignedAssembler, StringFormat='#{0}'}" HeightRequest="50" WidthRequest="250"
                                        TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
                                        HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
-                                        <Button Text="TAKE"
-                                        VerticalOptions="Center"
+                                        <Button Text="TAKE" HeightRequest="40"
+                                        BackgroundColor="Black"
+                                        TextColor="White"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="Center"
+                                        Clicked="ChooseBike"/>
+                                        <Button Text="CANCEL" HeightRequest="40"
+                                        BackgroundColor="Black"
+                                        TextColor="White"
+                                        VerticalOptions="Start"
                                         HorizontalOptions="Center"
                                         Clicked="ChooseBike"/>
                                     </StackLayout>
