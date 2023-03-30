@@ -16,12 +16,16 @@ public partial class PM_Menu : ContentPage
     /*FCT BUTTON LIST OF ORDERS*/
     private async void OnButton_ListOrders(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Binventory());
     }
 
     /*FCT BUTTON INVENTORY*/
     private async void OnButton_Inventory(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Binventory());
+    }
+    private async void OnButton_Planning(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new Production_Planning());
     }
 }

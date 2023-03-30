@@ -74,6 +74,9 @@
 	  <MauiXaml Update="PM_Menu.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Production_Planning.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="SR_Catalogue.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

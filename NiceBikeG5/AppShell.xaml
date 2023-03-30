@@ -8,7 +8,7 @@
 
     <ShellContent
         
-        ContentTemplate="{DataTemplate local:Binventory}"
+        ContentTemplate="{DataTemplate local:Production_Planning}"
         Route="MainPage" />
 
 </Shell>

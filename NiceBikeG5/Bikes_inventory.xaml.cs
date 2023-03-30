@@ -1,9 +1,5 @@
 namespace NiceBikeG5;
 using System;
-
-
-
-
 using MySql.Data.MySqlClient;
 using Mysqlx.Crud;
 
