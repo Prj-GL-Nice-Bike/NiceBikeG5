@@ -29,7 +29,7 @@ public partial class Summary : ContentPage
 
         if (answer == true)
         {
-            await Navigation.PushAsync(new SR_Catalogue());
+            await Navigation.PushAsync(new SR_Menu());
         }
         else
         { }

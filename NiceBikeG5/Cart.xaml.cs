@@ -46,9 +46,14 @@ namespace NiceBikeG5
 
         }
         // NAVIGATION BUTTONS
-        private async void ReturnPrevious(object sender, EventArgs e)
+        private async void OnButton_Back(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync(nameof(SR_Catalogue));
+            await Navigation.PushAsync(new SR_Catalogue());
+        }
+
+        private async void OnButton_Home(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SR_Catalogue());
         }
 
         private async void GotoClients(object sender, EventArgs e)

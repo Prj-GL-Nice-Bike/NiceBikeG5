@@ -9,6 +9,7 @@
         <viewmodels:SummaryViewModel/>
     </ContentPage.BindingContext>
 
+    <ScrollView>
     <VerticalStackLayout>
         <!--NAVIGATION BAR-->
         <Grid HeightRequest="50"
@@ -134,7 +135,7 @@
                 Text="Confirm Order" FontSize="30"
                 BackgroundColor="#790B29" TextColor="White"
                 Clicked="Confirm"
-                Margin="1200,10,200,0"
+                Margin="800,10,200,0"
                 BorderColor="Black"
                 BorderWidth="2"
                 HeightRequest="60"
@@ -150,4 +151,5 @@
 
 
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

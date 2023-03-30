@@ -6,8 +6,8 @@
 
     <ScrollView>
     <VerticalStackLayout>
-        <!--NAVIGATION BAR-->
-        <Grid HeightRequest="50"
+        <!--NAVIGATION BAR-->        
+            <Grid HeightRequest="60"
                   BackgroundColor="#790B29">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -18,38 +18,39 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <!--IMAGE BACK TO CATALOGUE?-->
+                <!--BUTTON BACK TO MENU-->
                 <ImageButton
                 Source="bouton_back.png"
                 BackgroundColor="#790B29"
                 Grid.Row="0"
                 Grid.Column="0"
-                HeightRequest="50"
+                HeightRequest="60"
                 HorizontalOptions="Start"
-                Margin="-120"
+                VerticalOptions="Center"
+                Margin="0,0,0,0"            
                 Clicked="OnButton_Back"/>
-                
+
                 <!--IMAGE HOME TO CATALOGUE-->
                 <ImageButton 
                 Source="maison.png"
                 BackgroundColor="#790B29"
                 Grid.Row="0"
                 Grid.Column="1"
-                HeightRequest="50"
                 HorizontalOptions="Center"
-                VerticalOptions="Center"/>
+                VerticalOptions="Center"
+                Margin="0,0,100,0"
+                Clicked="OnButton_Home"/>
 
                 <!--IMAGE CART TO CART-->
                 <ImageButton 
                 Source="panier.png"
                 BackgroundColor="#790B29"
-                Grid.Row="0" Grid.Column="2"
-                HeightRequest="50"
-                HorizontalOptions="Start"
+                Grid.Row="0"
+                Grid.Column="1"
+                HorizontalOptions="Center"
                 VerticalOptions="Center"
-                Margin="-20"
-                Clicked="GoToCart"/>
-
+                Margin="100,0,0,0"
+                Clicked="OnButton_CartCatalogue"/>
             </Grid>
 
         <Label  Text="City" x:Name="type"
@@ -88,7 +89,7 @@
         </Border>
 
             <!--LABELS: COLOR, SIZE-->
-            <VerticalStackLayout VerticalOptions="Center" TranslationX="350">
+            <VerticalStackLayout VerticalOptions="Center" TranslationX="100">
                     <Label Text="Color" TextColor="Black" 
                            FontSize="30" FontFamily="Raleway-SemiBold"
                            HorizontalOptions="Start" Margin="20"/>
@@ -97,7 +98,7 @@
                            HorizontalOptions="Start" Margin="20"/>
             </VerticalStackLayout>
  
-            <VerticalStackLayout Spacing="20" Margin="20" VerticalOptions="Center" TranslationX="350">
+            <VerticalStackLayout Spacing="20" Margin="20" VerticalOptions="Center" TranslationX="100">
 
                     <!--PICKER: COLORS-->
                     <Picker x:Name="colorPicker" Title="Select a color"
@@ -143,10 +144,10 @@
                Padding="20,0,30,0"/>
                <Picker
                     x:Name="quantityPicker" Title="Select a quantity"
-                    FontSize="30" TextColor="Black" FontFamily="Raleway-Medium"
+                    FontSize="20" TextColor="Black" FontFamily="Raleway-Medium"
                     HorizontalTextAlignment="Center"
-                    WidthRequest="60" HeightRequest="40"
-                    IsVisible="True" VerticalOptions="Center"
+                    WidthRequest="100" HeightRequest="40"
+                    IsVisible="True" 
                     BackgroundColor="LightGray">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:Int32}">

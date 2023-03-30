@@ -10,7 +10,7 @@ namespace NiceBikeG5
             InitializeComponent();
         }
 
-        private async void BackClicked(object sender, EventArgs e)
+        private async void OnButton_Back(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SRSellers());
         }

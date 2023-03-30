@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NiceBikeG5.SR_Catalogue"
-             Title="SR_Catalogue"
+             Title=""
              BackgroundColor="DarkGray">
     
     
@@ -10,7 +10,7 @@
     <ScrollView Margin="0,0,0,25">
         <!--NAVIGATION BAR-->
         <VerticalStackLayout>
-            <Grid HeightRequest="50"
+            <Grid HeightRequest="60"
                   BackgroundColor="#790B29">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -18,17 +18,30 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
+
+                <!--BUTTON BACK TO MENU-->
+                <ImageButton
+                Source="bouton_back.png"
+                BackgroundColor="#790B29"
+                Grid.Row="0"
+                Grid.Column="0"
+                HeightRequest="60"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Margin="0,0,0,0"            
+                Clicked="OnButton_Back"/>
+
                 <!--IMAGE HOME TO CATALOGUE-->
                 <ImageButton 
                 Source="maison.png"
                 BackgroundColor="#790B29"
                 Grid.Row="0"
-                Grid.Column="0"
-                HorizontalOptions="End"
+                Grid.Column="1"
+                HorizontalOptions="Center"
                 VerticalOptions="Center"
-                Margin="0,0,50,0"/>
+                Margin="0,0,100,0"/>
 
                 <!--IMAGE CART TO CART-->
                 <ImageButton 
@@ -36,23 +49,15 @@
                 BackgroundColor="#790B29"
                 Grid.Row="0"
                 Grid.Column="1"
-                HorizontalOptions="Start"
+                HorizontalOptions="Center"
                 VerticalOptions="Center"
-                Margin="50,0,0,0"
+                Margin="100,0,0,0"
                 Clicked="OnButton_CartCatalogue"/>
             </Grid>
 
 
 
             <HorizontalStackLayout HorizontalOptions="Start">
-                <!--BUTTON BACK TO MENU-->
-                <ImageButton
-                Source="bouton_back.png"
-                BackgroundColor="DarkGray"
-                HeightRequest="160"
-                Margin="0,0,355,0"            
-                Clicked="OnButton_Back"/>
-
                 <!--TITLE PAGE-->
                 <Label
                 Text="NICEBIKE"
@@ -61,7 +66,7 @@
                 FontSize="120"                
                 FontAttributes="Bold"
                 TextDecorations="Underline"               
-                Margin="0,0,300,0"/>
+                Margin="200,0,0,0"/>
             </HorizontalStackLayout>
 
         

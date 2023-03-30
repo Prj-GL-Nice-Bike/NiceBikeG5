@@ -6,9 +6,9 @@ public partial class SRSellers : ContentPage
 	{
 		InitializeComponent();
 	}
-    private async void BackClicked(object sender, EventArgs e)
+    private async void OnButton_Back(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync(nameof(Cart));
+        await Navigation.PushAsync(new Cart());
     }
 
     private async void NewClientClicked(object sender, EventArgs e)

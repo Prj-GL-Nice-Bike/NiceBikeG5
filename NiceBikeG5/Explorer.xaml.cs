@@ -27,10 +27,17 @@ public partial class Explorer : ContentPage
     {
         await Navigation.PushAsync(new SR_Catalogue());
     }
-    private async void GoToCart(object sender, EventArgs e)
+
+    private async void OnButton_Home(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new SR_Catalogue());
+    }
+
+    private async void OnButton_CartCatalogue(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Cart());
     }
+
 
     // ADD BIKE(S) DATA TO CART BUTTON
     private async void AddToCart(object sender, EventArgs e)
