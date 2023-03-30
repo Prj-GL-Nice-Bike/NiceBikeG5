@@ -212,18 +212,30 @@
                                         <Label Text="{Binding AssignedAssembler, StringFormat='#{0}'}" HeightRequest="50" WidthRequest="250"
                                        TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
                                        HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
-                                        <Button Text="TAKE" HeightRequest="40"
-                                        BackgroundColor="Black"
+                                        <Button Text="TAKE" HeightRequest="40" Margin="-60,0,0,0"
+                                        BackgroundColor="#790B29"
+                                        BorderColor="Black"
+                                        BorderWidth="2"
                                         TextColor="White"
                                         VerticalOptions="Start"
                                         HorizontalOptions="Center"
                                         Clicked="ChooseBike"/>
                                         <Button Text="CANCEL" HeightRequest="40"
-                                        BackgroundColor="Black"
+                                        BackgroundColor="#790B29"
+                                        BorderColor="Black"
+                                        BorderWidth="2"
                                         TextColor="White"
                                         VerticalOptions="Start"
                                         HorizontalOptions="Center"
                                         Clicked="CancelBike"/>
+                                        <Button Text="FINISHED" HeightRequest="40"
+                                        TextColor="White"
+                                        BackgroundColor="#790B29"
+                                        BorderColor="Black"
+                                        BorderWidth="2"
+                                        VerticalOptions="Start"
+                                        HorizontalOptions="Center"
+                                        Clicked="OnSendClicked"/>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

@@ -21,16 +21,38 @@ public partial class Assembler_Bikes : ContentPage
     {
         // Récupérer l'objet de données de la ligne correspondante
         var button = sender as Button;
-        var dataObject = button.BindingContext as Client;
+        var dataObject = button.BindingContext as Bike;
 
         // ID de la ligne à mettre à jour
         int id_ligne = dataObject.Id;
+        string assembler_ligne = dataObject.AssignedAssembler;
         string assemblerNumber;
 
         // Nouvelle valeur pour la colonne "Assembler"
-        if (AssemblerConnected.Text == "Connected as ASSEMBLER #1") { assemblerNumber = "1"; }
-        else if (AssemblerConnected.Text == "Connected as ASSEMBLER #2") { assemblerNumber = "2"; }
-        else { assemblerNumber = "3"; }
+        if (AssemblerConnected.Text == "Connected as ASSEMBLER #1") 
+            { 
+                assemblerNumber = "1";
+                if (assembler_ligne == "")
+                {
+                    assembler_ligne = "1";
+                }
+            }
+        else if (AssemblerConnected.Text == "Connected as ASSEMBLER #2") 
+            { 
+                assemblerNumber = "2";
+                if (assembler_ligne == "")
+                {
+                    assembler_ligne = "2";
+                }
+        }
+        else 
+            { 
+                assemblerNumber = "3";
+                if (assembler_ligne == "")
+                {
+                    assembler_ligne = "3";
+                }
+        }
 
         // Chaîne de connexion MySQL
         var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
@@ -45,7 +67,7 @@ public partial class Assembler_Bikes : ContentPage
         using var command = new MySqlCommand(sql, connection);
 
         // Ajouter des paramètres pour la nouvelle valeur de la colonne "Assembler" et l'ID de la ligne
-        command.Parameters.AddWithValue("@Assembler", assemblerNumber);
+        command.Parameters.AddWithValue("@Assembler", assembler_ligne);
         command.Parameters.AddWithValue("@id_ligne", id_ligne);
 
         await connection.OpenAsync();
@@ -62,7 +84,7 @@ public partial class Assembler_Bikes : ContentPage
     {
         // Récupérer l'objet de données de la ligne correspondante
         var button = sender as Button;
-        var dataObject = button.BindingContext as Client;
+        var dataObject = button.BindingContext as Bike;
 
         // ID de la ligne à mettre à jour
         int id_ligne = dataObject.Id;
@@ -122,14 +144,46 @@ public partial class Assembler_Bikes : ContentPage
         string AssemblerName = "ASSEMBLER #" + assemblerNumber;
         await Navigation.PushAsync(new Assembler_Bikes(AssemblerName));
     }
+    private async void OnSendClicked(object sender, EventArgs e)
+    {
+        // Récupérer l'objet de données de la ligne correspondante
+        var button = sender as Button;
+        var dataObject = button.BindingContext as Bike;
+
+        // ID de la ligne à mettre à jour
+        int id_ligne = dataObject.Id;
+        string assignedAssembler = dataObject.AssignedAssembler;
+
+        bool answer = await Application.Current.MainPage.DisplayAlert(
+        "YES",
+        "Do you want to perform this action?",
+        "Yes",
+        "No");
+
+        if (answer == true)
+        {
+            ((Button)sender).BackgroundColor = Color.FromRgb(128, 128, 128);
+            ((Button)sender).IsEnabled = false;
+
+
+            var bike = ((Button)sender).BindingContext as Bike;
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+            using var connection = new MySqlConnection(connectionString);
+            connection.Open();
+
+            var commandText = $"UPDATE bike_pm SET State='FINISH' WHERE idorder='{id_ligne}'";
+            using var command = new MySqlCommand(commandText, connection);
+            await command.ExecuteNonQueryAsync();
+        }
+    }
 }
 public class OrdersViewModel
 {
-    public ObservableCollection<Client> Orders { get; }
+    public ObservableCollection<Bike> Orders { get; }
 
     public OrdersViewModel()
     {
-        Orders = new ObservableCollection<Client>();
+        Orders = new ObservableCollection<Bike>();
         LoadData();
     }
 
@@ -140,7 +194,7 @@ public class OrdersViewModel
         using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync();
 
-        var commandText = "SELECT * FROM bike_pm;";
+        var commandText = "SELECT * FROM bike_pm WHERE State='SEND';";
         using var command = new MySqlCommand(commandText, connection);
         using var reader = command.ExecuteReader();
 
@@ -153,13 +207,13 @@ public class OrdersViewModel
             var bikeColor = reader.GetString("Color");
             var orderNumber = reader.GetString("idorder");
             var assignedAssembler = reader.GetString("Assembler");
-            Orders.Add(new Client { Id = id, BikeType = bikeType, BikeSize = bikeSize, BikeColor = bikeColor, OrderNumber = orderNumber, AssignedAssembler = assignedAssembler });
+            Orders.Add(new Bike { Id = id, BikeType = bikeType, BikeSize = bikeSize, BikeColor = bikeColor, OrderNumber = orderNumber, AssignedAssembler = assignedAssembler });
         }
     }
 }
 
 // PARAMETERS
-public class Client
+public class Bike
 {
     public int Id { get; set; }
     public string BikeType { get; set; }
