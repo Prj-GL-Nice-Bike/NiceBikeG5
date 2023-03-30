@@ -212,6 +212,10 @@
                                         <Label Text="{Binding AssignedAssembler}" HeightRequest="50" WidthRequest="250"
                                        TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
                                        HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
+                                        <Button Text="TAKE"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="Center"
+                                        Clicked="ChooseBike"/>
                                     </StackLayout>
                                 </ViewCell>
                             </DataTemplate>

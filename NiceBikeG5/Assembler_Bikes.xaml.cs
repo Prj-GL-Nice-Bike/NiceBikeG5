@@ -10,25 +10,46 @@ public partial class Assembler_Bikes : ContentPage
 		InitializeComponent();
         BindingContext = new OrdersViewModel();
 
-        AssemblerConnected.Text = $"Connecté en tant que {assemblerName}";
-
-        //Grid ListGrid = (Grid)this.FindByName("ListGrid");
-
-        //RowDefinitionCollection rowDefinitions = new RowDefinitionCollection();
-
-        //// Add the first 2 rows in "List of clients" which contains the title and the header
-        //RowDefinition rowDefinitionTitle = new RowDefinition();
-        //rowDefinitionTitle.Height = new GridLength(60);
-        //RowDefinition rowDefinitionTop = new RowDefinition();
-        //rowDefinitionTop.Height = new GridLength(50);
-        //rowDefinitions.Add(rowDefinitionTitle);
-        //rowDefinitions.Add(rowDefinitionTop);
-
-        //ListGrid.RowDefinitions = rowDefinitions;
+        AssemblerConnected.Text = $"Connected as {assemblerName}";
     }
+
     private async void BackClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new MainPage());
+    }
+    private async void ChooseBike(object sender, EventArgs e)
+    {
+        // ID de la ligne à mettre à jour
+        int id_ligne = 1;
+        string assemblerNumber;
+
+        // Nouvelle valeur pour la colonne "Assembler"
+        if (AssemblerConnected.Text == "Connected as ASSEMBLER #1") { assemblerNumber = "1"; }
+        else if (AssemblerConnected.Text == "Connected as ASSEMBLER #2") { assemblerNumber = "2"; }
+        else { assemblerNumber = "3"; }
+
+        // Chaîne de connexion MySQL
+        var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+
+        // Requête SQL pour mettre à jour la colonne "Assembler" dans la ligne spécifiée
+        string sql = "UPDATE bike_pm SET Assembler = @Assembler WHERE idbike_pm = @id_ligne";
+
+        // Créer un objet de connexion MySQL
+        using var connection = new MySqlConnection(connectionString);
+
+        // Créer un objet de commande MySQL avec la requête SQL et la connexion associée
+        using var command = new MySqlCommand(sql, connection);
+
+        // Ajouter des paramètres pour la nouvelle valeur de la colonne "Assembler" et l'ID de la ligne
+        command.Parameters.AddWithValue("@Assembler", assemblerNumber);
+        command.Parameters.AddWithValue("@id_ligne", id_ligne);
+
+        await connection.OpenAsync();
+
+        // Exécuter la commande MySQL pour mettre à jour la ligne spécifiée
+        int rowsAffected = await command.ExecuteNonQueryAsync();
+
+        connection.Close();
     }
 }
 public class OrdersViewModel
@@ -48,14 +69,14 @@ public class OrdersViewModel
         using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync();
 
-        var commandText = "SELECT * FROM bike_assembler;";
+        var commandText = "SELECT * FROM bike_pm;";
         using var command = new MySqlCommand(commandText, connection);
         using var reader = command.ExecuteReader();
 
         // READS LINE BY LINE IN MYSQL DATABASE
         while (await reader.ReadAsync())
         {
-            var id = reader.GetInt32("idbike_assembler");
+            var id = reader.GetInt32("idbike_pm");
             var bikeType = reader.GetString("Type");
             var bikeSize = reader.GetString("Size");
             var bikeColor = reader.GetString("Color");
