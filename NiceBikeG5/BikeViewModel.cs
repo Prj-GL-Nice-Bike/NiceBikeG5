@@ -55,7 +55,7 @@ namespace NiceBikeG5
                 
                 var id = reader.GetInt32("idstockbikes");
                 var Type = reader.GetString("type");
-                var Size = reader.GetDouble("size");
+                var Size = reader.GetInt32("size");
                 var Color = reader.GetString("color");
                 var Quantity = reader.GetDouble("quantity");
 

@@ -203,22 +203,13 @@ public class OrdersViewModel
         {
             var id = reader.GetInt32("idbike_pm");
             var bikeType = reader.GetString("Type");
-            var bikeSize = reader.GetString("Size");
+            var bikeSize = reader.GetInt32("Size");
             var bikeColor = reader.GetString("Color");
             var orderNumber = reader.GetString("idorder");
             var assignedAssembler = reader.GetString("Assembler");
-            Orders.Add(new Bike { Id = id, BikeType = bikeType, BikeSize = bikeSize, BikeColor = bikeColor, OrderNumber = orderNumber, AssignedAssembler = assignedAssembler });
+            Orders.Add(new Bike { Id = id, Type = bikeType, Size = bikeSize, Color = bikeColor, OrderNumber = orderNumber, AssignedAssembler = assignedAssembler });
         }
     }
 }
 
 // PARAMETERS
-public class Bike
-{
-    public int Id { get; set; }
-    public string BikeType { get; set; }
-    public string BikeSize { get; set; }
-    public string BikeColor { get; set; }
-    public string OrderNumber { get; set; }
-    public string AssignedAssembler { get; set; }
-}
