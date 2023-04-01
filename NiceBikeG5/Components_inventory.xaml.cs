@@ -20,7 +20,7 @@ public partial class Cinventory : ContentPage
     private async void Logout(object sender, EventArgs e)
     {
         Update();
-        await Navigation.PushAsync(new Session_PM());
+        await Navigation.PushAsync(new MainPage());
     }
     private async void BacktoMenu(object sender, EventArgs e)
     {

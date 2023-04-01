@@ -13,7 +13,7 @@ public partial class SR_Menu: ContentPage
     /*FCT BUTTON LOGOUT*/
     private async void OnButton_LogOut(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Session_SR());
+        await Navigation.PushAsync(new MainPage());
     }
 
     /*FCT BUTTON CATALOGUE*/

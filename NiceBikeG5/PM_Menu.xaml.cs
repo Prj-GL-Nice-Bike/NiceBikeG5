@@ -10,7 +10,7 @@ public partial class PM_Menu : ContentPage
     /*FCT BUTTON LOGOUT*/
     private async void OnButton_LogOut(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Session_PM());
+        await Navigation.PushAsync(new MainPage());
     }
 
     /*FCT BUTTON LIST OF ORDERS*/

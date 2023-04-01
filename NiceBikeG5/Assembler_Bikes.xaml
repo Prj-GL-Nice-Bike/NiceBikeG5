@@ -197,13 +197,13 @@
                                         <Label Text="{Binding Id}" HeightRequest="50" WidthRequest="100"
                                        TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
                                        HorizontalTextAlignment="Center" Margin="-10,0,0,0"/>
-                                        <Label Text="{Binding BikeType}" HeightRequest="50" WidthRequest="300"
+                                        <Label Text="{Binding Type}" HeightRequest="50" WidthRequest="300"
                                        TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
                                        HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
-                                        <Label Text="{Binding BikeSize}" HeightRequest="50" WidthRequest="150"
+                                        <Label Text="{Binding Size}" HeightRequest="50" WidthRequest="150"
                                        TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
                                        HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
-                                        <Label Text="{Binding BikeColor}" HeightRequest="50" WidthRequest="250"
+                                        <Label Text="{Binding Color}" HeightRequest="50" WidthRequest="250"
                                        TextColor="Black" FontSize="20" FontFamily="Raleway-SemiBold"
                                        HorizontalTextAlignment="Center" Margin="0,0,0,0"/>
                                         <Label Text="{Binding OrderNumber}" HeightRequest="50" WidthRequest="150"
