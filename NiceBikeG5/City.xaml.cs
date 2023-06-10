@@ -55,7 +55,7 @@ public partial class City : ContentPage
         using var connection = new MySqlConnection(connectionString);
         connection.Open();
         // INSERT NEW BIKE TO THE ORDERS TABLE
-        var commandText = $"INSERT INTO orders_sr (Type, Size, Color, Quantity, Price) VALUES ('{productType}', '{productSize}', '{productColor}', '{productQuantity}', '{productPrice}')";
+        var commandText = $"INSERT INTO bike_sr (Type, Size, Color, Quantity, Price) VALUES ('{productType}', '{productSize}', '{productColor}', '{productQuantity}', '{productPrice}')";
         using var command = new MySqlCommand(commandText, connection);
         command.ExecuteNonQuery();
 

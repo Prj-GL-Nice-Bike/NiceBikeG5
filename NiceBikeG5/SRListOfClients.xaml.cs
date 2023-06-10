@@ -22,11 +22,26 @@ public partial class SRListOfClients : ContentPage
 
     private async void GoToSummary(object sender, SelectedItemChangedEventArgs args)
     {
+        if (args.SelectedItem is Client selectedClient)
+        {
             // Pass the selected client to the Summary page
-            await Navigation.PushAsync(new Summary());
-      
-    }
+            await Navigation.PushAsync(new Summary(selectedClient));
 
+            // Get the selected client's ID
+            int idclients = selectedClient.Id;
+
+            // CONNECTION WITH MYSQL
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+            using var connection = new MySqlConnection(connectionString);
+            await connection.OpenAsync();
+
+            // ASSIGN A CLIENT
+            var commandText = $"UPDATE bike_sr SET idclient = '{idclients}' WHERE idclient IS NULL";
+            using var command = new MySqlCommand(commandText, connection);
+            command.ExecuteNonQuery();
+        }
+
+    }
 
 }
 // VIEW MODEL

@@ -37,7 +37,7 @@ namespace NiceBikeG5
             using var connection = new MySqlConnection(connectionString);
             await connection.OpenAsync();
 
-            var commandText = $"DELETE FROM orders_sr WHERE idorders = {order.Id};";
+            var commandText = $"DELETE FROM bike_sr WHERE idbiketha = {order.Id};";
             using var command = new MySqlCommand(commandText, connection);
             await command.ExecuteNonQueryAsync();
 
@@ -104,14 +104,14 @@ namespace NiceBikeG5
             using var connection = new MySqlConnection(connectionString);
             await connection.OpenAsync();
 
-            var commandText = "SELECT * FROM orders_sr;";
+            var commandText = "SELECT * FROM bike_sr WHERE idorder IS NULL";
             using var command = new MySqlCommand(commandText, connection);
             using var reader = command.ExecuteReader();
 
             // READS LINE BY LINE IN MYSQL DATABASE
             while (await reader.ReadAsync())
             {
-                var id = reader.GetInt32("idorders");
+                var id = reader.GetInt32("idbike");
                 var productName = reader.GetString("Type");
                 var productSize = reader.GetDouble("Size");
                 var productColor = reader.GetString("Color");
