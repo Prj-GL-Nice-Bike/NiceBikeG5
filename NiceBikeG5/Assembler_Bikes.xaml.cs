@@ -177,7 +177,7 @@ public partial class Assembler_Bikes : ContentPage
         }
     }
 }
-public class OrdersViewModel
+public class OrdersViewModel : Order
 {
     public ObservableCollection<Bike> Orders { get; }
 
