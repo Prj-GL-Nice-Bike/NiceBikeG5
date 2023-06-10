@@ -37,7 +37,7 @@ namespace NiceBikeG5
             using var connection = new MySqlConnection(connectionString);
             await connection.OpenAsync();
 
-            var commandText = $"DELETE FROM bike_sr WHERE idbiketha = {order.Id};";
+            var commandText = $"DELETE FROM bike_sr WHERE idbike = {order.Id};";
             using var command = new MySqlCommand(commandText, connection);
             await command.ExecuteNonQueryAsync();
 
