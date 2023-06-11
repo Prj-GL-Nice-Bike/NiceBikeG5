@@ -1,12 +1,9 @@
 using Microsoft.Maui.Controls;
 using MySql.Data.MySqlClient;
-using Mysqlx.Crud;
 using System;
 using System.Collections.ObjectModel;
-using System.Runtime.CompilerServices;
 using System.ComponentModel;
-
-
+using System.Runtime.CompilerServices;
 
 namespace NiceBikeG5
 {
@@ -19,7 +16,7 @@ namespace NiceBikeG5
             InitializeComponent();
             BindingContext = new CartViewModel();
 
-            //REFRESHES THE PAGE 
+            // Refreshes the page
             _orders = ((CartViewModel)BindingContext).Orders;
         }
 
@@ -29,7 +26,7 @@ namespace NiceBikeG5
             // SENDER
             var button = (ImageButton)sender;
 
-            // RETREIVES ORDER ASSOCIATED WITH BUTTON
+            // RETRIEVES ORDER ASSOCIATED WITH BUTTON
             var order = (Order)button.BindingContext;
 
             // CONNECTION WITH MYSQL
@@ -41,10 +38,14 @@ namespace NiceBikeG5
             using var command = new MySqlCommand(commandText, connection);
             await command.ExecuteNonQueryAsync();
 
+            commandText = $"DELETE FROM bike_pm WHERE Type = '{order.ProductName}' AND Size = {order.ProductSize} AND Color = '{order.ProductColor}' LIMIT {(int)order.ProductQuantity};";
+            command.CommandText = commandText;
+            await command.ExecuteNonQueryAsync();
+
             ((CartViewModel)BindingContext).Orders.Remove(order);
             ((CartViewModel)BindingContext).UpdateTotal();
-
         }
+
         // NAVIGATION BUTTONS
         private async void OnButton_Back(object sender, EventArgs e)
         {
@@ -60,7 +61,6 @@ namespace NiceBikeG5
         {
             await Shell.Current.GoToAsync(nameof(SRSellers));
         }
-
     }
 
     // VIEW MODEL
@@ -70,25 +70,29 @@ namespace NiceBikeG5
         public ObservableCollection<Order> Orders
         {
             get { return _orders; }
-            set { if (_orders != value)
-                    {
-                        _orders = value;
-                        OnPropertyChanged();
-                        UpdateTotal();
-                    }
-                }   
+            set
+            {
+                if (_orders != value)
+                {
+                    _orders = value;
+                    OnPropertyChanged();
+                    UpdateTotal();
+                }
+            }
         }
 
         private double _total;
         public double Total
         {
             get => _total;
-            set { if (value != _total)
-                    {
-                        _total = value;
-                        OnPropertyChanged();
-                    }
+            set
+            {
+                if (value != _total)
+                {
+                    _total = value;
+                    OnPropertyChanged();
                 }
+            }
         }
 
         public CartViewModel()
@@ -117,10 +121,9 @@ namespace NiceBikeG5
                 var productColor = reader.GetString("Color");
                 var productQuantity = reader.GetDouble("Quantity");
                 var productPrice = reader.GetDouble("Price");
-                Orders.Add(new Order { Id = id, ProductName = productName, ProductSize = productSize, ProductColor = productColor, ProductQuantity = productQuantity, ProductPrice = productPrice});
+                Orders.Add(new Order { Id = id, ProductName = productName, ProductSize = productSize, ProductColor = productColor, ProductQuantity = productQuantity, ProductPrice = productPrice });
             }
             UpdateTotal();
-            
         }
 
         public void UpdateTotal()
@@ -132,6 +135,7 @@ namespace NiceBikeG5
             }
             Total = totalPrice;
         }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void Order_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -169,11 +173,10 @@ namespace NiceBikeG5
                 }
             }
         }
+
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
-
-

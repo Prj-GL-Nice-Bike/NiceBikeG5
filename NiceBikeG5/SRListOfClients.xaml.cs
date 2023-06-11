@@ -39,6 +39,12 @@ public partial class SRListOfClients : ContentPage
             var commandText = $"UPDATE bike_sr SET idclient = '{idclients}' WHERE idclient IS NULL";
             using var command = new MySqlCommand(commandText, connection);
             command.ExecuteNonQuery();
+
+            // INSERT INTO order_pm TABLE
+            commandText = $"INSERT INTO order_pm (idclient) VALUES ('{idclients}')";
+            using var command_pm = new MySqlCommand(commandText, connection);
+            command_pm.ExecuteNonQuery();
+
         }
 
     }

@@ -37,10 +37,12 @@ public partial class Summary : ContentPage
         "YES",
         "NO");
 
-        if (answer == true)
+        if (answer)
         {
+            // GOES BACK TO MENU PAGE
             await Navigation.PushAsync(new SR_Menu());
 
+            // ASSIGNS ID ORDER NUMBER TO BIKES
             // CONNECTION WITH MYSQL
             var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
             using var connection = new MySqlConnection(connectionString);
@@ -57,27 +59,39 @@ public partial class Summary : ContentPage
                 newIdOrder = Convert.ToInt32(maxIdOrderObj) + 1;
             }
 
-            // UPDATE
+            // UPDATE bike_sr
             var updateCommandText = "UPDATE bike_sr SET idorder = @newIdOrder WHERE idorder IS NULL";
             using var updateCommand = new MySqlCommand(updateCommandText, connection);
             updateCommand.Parameters.AddWithValue("@newIdOrder", newIdOrder);
-
             var affectedRows = await updateCommand.ExecuteNonQueryAsync();
 
-            if (affectedRows > 0)
+            // UPDATE bike_pm
+            var updateCommandText_pm = "UPDATE bike_pm SET idorder = @newIdOrder_pm WHERE idorder IS NULL";
+            using var updateCommand_pm = new MySqlCommand(updateCommandText_pm, connection);
+            updateCommand_pm.Parameters.AddWithValue("@newIdOrder_pm", newIdOrder.ToString());
+            var affectedRows_pm = await updateCommand_pm.ExecuteNonQueryAsync();
+
+            // UPDATE order_pm
+            var updateCommandText_order = "UPDATE order_pm SET idorder_pm = @newIdOrder_order WHERE idorder_pm IS NULL";
+            using var updateCommand_order = new MySqlCommand(updateCommandText_order, connection);
+            updateCommand_order.Parameters.AddWithValue("@newIdOrder_order", newIdOrder);
+            var affectedRows_order = await updateCommand_order.ExecuteNonQueryAsync();
+
+            if (affectedRows > 0 || affectedRows_pm > 0 || affectedRows_order > 0)
             {
                 // UPDATE COUNTER
                 var updateCounterCommandText = "UPDATE counter_sr SET counter = @newIdOrder";
                 using var updateCounterCommand = new MySqlCommand(updateCounterCommandText, connection);
                 updateCounterCommand.Parameters.AddWithValue("@newIdOrder", newIdOrder + 1);
                 await updateCounterCommand.ExecuteNonQueryAsync();
+
+                var updateCounterCommandText_pm = "UPDATE counter_pm SET counter = @newIdOrder_pm";
+                using var updateCounterCommand_pm = new MySqlCommand(updateCounterCommandText_pm, connection);
+                updateCounterCommand_pm.Parameters.AddWithValue("@newIdOrder_pm", newIdOrder + 1);
+                await updateCounterCommand_pm.ExecuteNonQueryAsync();
             }
         }
-        else
-        { }
     }
-    
-    
 }
 
 public class SummaryViewModel : INotifyPropertyChanged
