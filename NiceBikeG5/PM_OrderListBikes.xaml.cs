@@ -35,6 +35,7 @@ public partial class PM_OrderListBikes: ContentPage
     /*FCT BUTTON INVENTORY*/
     private async void OnButton_Inventory(object sender, EventArgs e)
     {
+        await Navigation.PushAsync(new Binventory());
     }
 
     /*FCT BUTTON DELIVERY*/
@@ -46,6 +47,7 @@ public partial class PM_OrderListBikes: ContentPage
     /*FCT BUTTON PLANNING*/
     private async void OnButton_Planning(object sender, EventArgs e)
     {
+        await Navigation.PushAsync(new Production_Planning());
     }
 
     /*FCT BUTTON HISTORY*/
@@ -95,24 +97,34 @@ public partial class PM_OrderListBikes: ContentPage
     }
 
 
-    /*FCT BUTTON SEND -BIKE'S STATE "NULL"-->"SEND"*/
-    private async void OnButton_SendToAssembler(object sender, EventArgs e)
+    /*FCT BUTTON SEND ALL -BIKE'S STATE "NULL"-->"SEND"*/
+    private async void OnButton_SendAll(object sender, EventArgs e)
     {
-        var bike= ((Button)sender).BindingContext as Bike;
+        var bikes = listView.ItemsSource.OfType<Bike>().ToList();
+        foreach (var bike in bikes)
+        {
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+            using var connection = new MySqlConnection(connectionString);
+            connection.Open();
 
-        var connectionString= "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
-        using var connection= new MySqlConnection(connectionString);
-        connection.Open();
-
-        var commandText= $"UPDATE bike_pm SET State='SEND' WHERE idorder='{bike.IdOrder}' AND Type='{bike.Type}' AND Size='{bike.Size}' AND Color='{bike.Color}'";
-        using var command= new MySqlCommand(commandText, connection);
-        await command.ExecuteNonQueryAsync();
-
-
-        await DisplayAlert("BIKE SENT", "The bike has been sent to the assemblers", "OK");
+            var commandText = $"UPDATE bike_pm SET State='SEND' WHERE idorder='{bike.IdOrder}' AND Type='{bike.Type}' AND Size='{bike.Size}' AND Color='{bike.Color}'";
+            using var command = new MySqlCommand(commandText, connection);
+            await command.ExecuteNonQueryAsync();
+        }
+        await DisplayAlert("BIKES SENT", "The bikes have been sent to the assemblers", "OK");
         ((Button)sender).BackgroundColor= Color.FromRgb(128, 128, 128);
         ((Button)sender).IsEnabled= false;
+
+
+        // Refresh the data source
+        LoadData(OrderNumber);
+        LoadData2(OrderNumber);
     }
+
+
+
+
+
 
 
 
@@ -197,11 +209,4 @@ public partial class PM_OrderListBikes: ContentPage
             await command.ExecuteNonQueryAsync();
         }
     }
-
-
-
-    //private async void ASSEMBLERPAGE(object sender, EventArgs e)
-    //{
-    //    await Navigation.PushAsync(new ASSEMBLER_PAGE());
-    //}
 }

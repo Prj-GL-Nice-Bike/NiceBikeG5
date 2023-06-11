@@ -32,7 +32,8 @@ public partial class PM_ListOrders: ContentPage
 
     /*FCT BUTTON INVENTORY*/
     private async void OnButton_Inventory(object sender, EventArgs e)
-    {        
+    {
+        await Navigation.PushAsync(new Binventory());
     }
 
     /*FCT BUTTON DELIVERY*/
@@ -43,7 +44,8 @@ public partial class PM_ListOrders: ContentPage
 
     /*FCT BUTTON PLANNING*/
     private async void OnButton_Planning(object sender, EventArgs e)
-    {        
+    {
+        await Navigation.PushAsync(new Production_Planning());
     }
 
     /*FCT BUTTON HISTORY*/

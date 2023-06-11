@@ -177,6 +177,21 @@
                         Margin="0"/>
                     </HorizontalStackLayout>
                 </Border>
+
+                <Button 
+                x:Name="sendButton"
+                Text="SEND ALL" 
+                BackgroundColor="#890AC0"
+                TextColor="White"
+                FontSize="40"
+                FontFamily="Raleway-Light"
+                BorderColor="Black"
+                BorderWidth="5"
+                CornerRadius="20"
+                HeightRequest="70"
+                Padding="5"
+                Margin="25,5,0,5"
+                Clicked="OnButton_SendAll"/>
             </HorizontalStackLayout>
 
 
@@ -222,19 +237,6 @@
                                         Margin="0"/>
                                     </HorizontalStackLayout>
                                 </Border>
-
-                                <Button 
-                                Text="SEND" 
-                                BackgroundColor="#790B29"
-                                TextColor="White"
-                                FontFamily="Raleway-Light"
-                                FontSize="40"                                   
-                                BorderColor="Black"
-                                BorderWidth="5"
-                                CornerRadius="0"                                
-                                Padding="5,0,5,-5"
-                                Margin="15,5,0,5"
-                                Clicked="OnButton_SendToAssembler"/>
                             </HorizontalStackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -244,7 +246,7 @@
 
 
 
-           <!--PART2: IN PROCESS-->
+            <!--PART2: IN PROCESS-->
             <!--TITLE UNDERLINE WITH BULLET-->
             <Label
             TextColor="Black"
@@ -491,18 +493,6 @@
             Margin="1150,50,0,5"
             Padding="5,0,5,0"
             Clicked="OnButton_FinalizeOrder"/>
-
-
-
-            <!--<Button
-            Text="ASSEMBLER"
-            TextColor="Black"
-            FontSize="60"
-            BackgroundColor="DodgerBlue"                        
-            WidthRequest="500"
-            HeightRequest="100"
-            Margin="10,50,50,50"
-            Clicked="ASSEMBLERPAGE"/>-->
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
