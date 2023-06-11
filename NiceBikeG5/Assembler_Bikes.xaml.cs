@@ -13,73 +13,58 @@ public partial class Assembler_Bikes : ContentPage
         AssemblerConnected.Text = $"Connected as {assemblerName}";
     }
 
+
+    /*FCT BUTTON BACK*/
     private async void BackClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new MainPage());
+        await Navigation.PushAsync(new Session_Assembler());
     }
+
+
+    /*FCT BUTTON TAKE*/
     private async void ChooseBike(object sender, EventArgs e)
     {
-        // Récupérer l'objet de données de la ligne correspondante
         var button = sender as Button;
         var dataObject = button.BindingContext as Bike;
 
-        // ID de la ligne à mettre à jour
         int id_ligne = dataObject.Id;
         string assembler_ligne = dataObject.AssignedAssembler;
-        string assemblerNumber;
 
-        // Nouvelle valeur pour la colonne "Assembler"
+        string assemblerNumber;
         if (AssemblerConnected.Text == "Connected as ASSEMBLER #1") 
-            { 
-                assemblerNumber = "1";
-                if (assembler_ligne == "")
-                {
-                    assembler_ligne = "1";
-                }
-            }
+            {assemblerNumber = "1";
+        }
         else if (AssemblerConnected.Text == "Connected as ASSEMBLER #2") 
-            { 
-                assemblerNumber = "2";
-                if (assembler_ligne == "")
-                {
-                    assembler_ligne = "2";
-                }
+            {assemblerNumber = "2";
         }
         else 
-            { 
-                assemblerNumber = "3";
-                if (assembler_ligne == "")
-                {
-                    assembler_ligne = "3";
-                }
+            {assemblerNumber = "3";
         }
 
-        // Chaîne de connexion MySQL
-        var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+        var connectionString= "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+        string sql = $"UPDATE bike_pm SET Assembler = '{assemblerNumber}' WHERE idbike_pm = @id_ligne";
 
-        // Requête SQL pour mettre à jour la colonne "Assembler" dans la ligne spécifiée
-        string sql = "UPDATE bike_pm SET Assembler = @Assembler WHERE idbike_pm = @id_ligne";
 
-        // Créer un objet de connexion MySQL
         using var connection = new MySqlConnection(connectionString);
-
-        // Créer un objet de commande MySQL avec la requête SQL et la connexion associée
         using var command = new MySqlCommand(sql, connection);
 
-        // Ajouter des paramètres pour la nouvelle valeur de la colonne "Assembler" et l'ID de la ligne
         command.Parameters.AddWithValue("@Assembler", assembler_ligne);
         command.Parameters.AddWithValue("@id_ligne", id_ligne);
 
         await connection.OpenAsync();
-
-        // Exécuter la commande MySQL pour mettre à jour la ligne spécifiée
-        int rowsAffected = await command.ExecuteNonQueryAsync();
+        int rowsAffected= await command.ExecuteNonQueryAsync();
 
         connection.Close();
 
         string AssemblerName = "ASSEMBLER #" + assemblerNumber;
         await Navigation.PushAsync(new Assembler_Bikes(AssemblerName));
     }
+
+
+
+
+
+    /*FCT BUTTON CANCEL*/
     private async void CancelBike(object sender, EventArgs e)
     {
         // Récupérer l'objet de données de la ligne correspondante
@@ -92,37 +77,27 @@ public partial class Assembler_Bikes : ContentPage
         string assembler_ligne = dataObject.AssignedAssembler;
         string assemblerNumber;
 
-        // Nouvelle valeur pour la colonne "Assembler"
-        if (AssemblerConnected.Text == "Connected as ASSEMBLER #1") 
-            { 
-                assemblerNumber = "1";
-                if (assembler_ligne == "1")
-                {
-                    assembler_ligne = "";
-                }
-            }
-        else if (AssemblerConnected.Text == "Connected as ASSEMBLER #2") 
-            { 
-                assemblerNumber = "2";
-                if (assembler_ligne == "2")
-                {
-                    assembler_ligne = "";
-                }
+
+        
+        if (AssemblerConnected.Text == "Connected as ASSEMBLER #1")
+        {
+            assemblerNumber = "1";
         }
-        else 
-            { 
-                assemblerNumber = "3";
-                if (assembler_ligne == "3")
-                {
-                    assembler_ligne = "";
-                }
+        else if (AssemblerConnected.Text == "Connected as ASSEMBLER #2")
+        {
+            assemblerNumber = "2";
+        }
+        else
+        {
+            assemblerNumber = "3";
         }
 
         // Chaîne de connexion MySQL
         var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
 
+
         // Requête SQL pour mettre à jour la colonne "Assembler" dans la ligne spécifiée
-        string sql = "UPDATE bike_pm SET Assembler = @Assembler WHERE idbike_pm = @id_ligne";
+        string sql = $"UPDATE bike_pm SET Assembler = ' ' WHERE idbike_pm = @id_ligne";
 
         // Créer un objet de connexion MySQL
         using var connection = new MySqlConnection(connectionString);
@@ -144,6 +119,10 @@ public partial class Assembler_Bikes : ContentPage
         string AssemblerName = "ASSEMBLER #" + assemblerNumber;
         await Navigation.PushAsync(new Assembler_Bikes(AssemblerName));
     }
+
+
+
+
     private async void OnSendClicked(object sender, EventArgs e)
     {
         // Récupérer l'objet de données de la ligne correspondante
@@ -177,6 +156,12 @@ public partial class Assembler_Bikes : ContentPage
         }
     }
 }
+
+
+
+
+
+
 public class OrdersViewModel
 {
     public ObservableCollection<Bike> Orders { get; }
@@ -206,7 +191,7 @@ public class OrdersViewModel
             var bikeSize = reader.GetInt32("Size");
             var bikeColor = reader.GetString("Color");
             var orderNumber = reader.GetString("idorder");
-            var assignedAssembler = reader.GetString("Assembler");
+            var assignedAssembler = reader.IsDBNull(reader.GetOrdinal("Assembler")) ? null : reader.GetString("Assembler");
             Orders.Add(new Bike { Id = id, Type = bikeType, Size = bikeSize, Color = bikeColor, OrderNumber = orderNumber, AssignedAssembler = assignedAssembler });
         }
     }
