@@ -3,13 +3,11 @@ using Microsoft.Maui.Controls;
 using MySql.Data.MySqlClient;
 using System.Collections.ObjectModel;
 
-
-
-public partial class PM_ArchiveDetails: ContentPage
+public partial class SR_OrderListBikes : ContentPage
 {
-	public PM_ArchiveDetails(string orderNumber)
-	{
-		InitializeComponent();
+    public SR_OrderListBikes(string orderNumber)
+    {
+        InitializeComponent();
         LoadData(orderNumber);
         LoadData2(orderNumber);
         orderNumberLabel.Text= $"ORDER N°{orderNumber}";
@@ -19,40 +17,8 @@ public partial class PM_ArchiveDetails: ContentPage
     /*FCT BUTTON BACK*/
     private async void OnButton_Back(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new PM_ArchiveOrders());
+        await Navigation.PushAsync(new SR_ListOrders());
     }
-
-    /*FCT BUTTON LIST OF ORDERS*/
-    private async void OnButton_ListOrders(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new PM_ListOrders());
-    }
-
-    /*FCT BUTTON INVENTORY*/
-    private async void OnButton_Inventory(object sender, EventArgs e)
-    {
-    }
-
-    /*FCT BUTTON DELIVERY*/
-    private async void OnButton_Delivery(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new PM_DeliveryOrders());
-    }
-
-    /*FCT BUTTON PLANNING*/
-    private async void OnButton_Planning(object sender, EventArgs e)
-    {
-    }
-
-    /*FCT BUTTON HISTORY*/
-    private async void OnButton_History(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new PM_ArchiveOrders());
-    }
-
-
-
-
 
 
 
@@ -144,5 +110,5 @@ public partial class PM_ArchiveDetails: ContentPage
             clients.Add(new Client {Id= id, ClientName= clientName, ClientAddress= clientAddress, ClientPhone= clientPhone, ClientEmail= clientEmail, ClientTVA= clientTVA });
         }
         listView2.ItemsSource= clients;
-    }
+    }  
 }
