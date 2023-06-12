@@ -107,11 +107,221 @@
             x:Name="orderNumberLabel" 
             Text="Type" 
             TextColor="Black"                
+            FontSize="100"
             FontAttributes="Bold" 
-            FontSize="120"
             TextDecorations="Underline"
             Padding="0"
             Margin="40,0,0,0"/>
+
+
+            <!--CLIENT'S DETAILS-->
+            <!--TITLE CLIENT-->
+            <Label 
+            Text="Client's Details"
+            TextColor="Black"
+            FontSize="50"
+            FontAttributes="Bold" 
+            Padding="0"
+            Margin="40,0,0,0"/>
+
+            <!--CLIENT'S DETAILS WITH DATABASE-->
+            <ListView x:Name="listView2" Margin="0" SeparatorColor="DarkGray" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <HorizontalStackLayout>
+                                <Border  
+                                WidthRequest="800"
+                                HeightRequest="225"
+                                Stroke="#790B29" 
+                                StrokeThickness="5" 
+                                StrokeShape="Rectangle"
+                                HorizontalOptions="Start" 
+                                Margin="30,0,0,0" 
+                                BackgroundColor="LightGray">
+                                    <VerticalStackLayout>
+                                        
+
+                                        <Label 
+                                        Text="{Binding ClientName, StringFormat='Name:  {0}'}"                                  
+                                        TextColor="Black"  
+                                        FontSize="25" 
+                                        HeightRequest="40"
+                                        HorizontalTextAlignment="Start"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="15,10,0,0"/>
+
+                                        <Label
+                                        Text="{Binding ClientAddress, StringFormat='Address:  {0}'}"
+                                        TextColor="Black"  
+                                        FontSize="25"
+                                        HeightRequest="40"
+                                        HorizontalTextAlignment="Start"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="15,0,0,0"/>
+
+                                        <Label
+                                        Text="{Binding ClientPhone, StringFormat='Phone:  {0}'}"
+                                        TextColor="Black"  
+                                        FontSize="25" 
+                                        HeightRequest="40"
+                                        HorizontalTextAlignment="Start"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="15,0,0,0"/>
+
+                                        <Label
+                                        Text="{Binding ClientEmail, StringFormat='Email:  {0}'}"
+                                        TextColor="Black"  
+                                        FontSize="25" 
+                                        HeightRequest="40"
+                                        HorizontalTextAlignment="Start"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="15,0,0,0"/>
+
+                                        <Label
+                                        Text="{Binding ClientTVA, StringFormat='TVA:  {0}'}"
+                                        TextColor="Black"  
+                                        FontSize="25" 
+                                        HeightRequest="40"
+                                        HorizontalTextAlignment="Start"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="15,0,0,0"/>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </HorizontalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+
+
+
+            <!--BIKES OF THE ORDER-->
+            <!--TITLE BIKES-->
+            <Label 
+            Text="Bikes"
+            TextColor="Black"
+            FontSize="50"
+            FontAttributes="Bold" 
+            Padding="0"
+            Margin="40,15,0,0"/>
+
+            
+            <!--TITLE COLUMNS-->
+            <HorizontalStackLayout Margin="45,0,0,0">
+                <Border
+                Stroke="Black"
+                StrokeThickness="5"
+                StrokeShape="Rectangle">
+
+                    <HorizontalStackLayout>
+                        <Label 
+                        Text="Type" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="40"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="280"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+
+                        <Label 
+                        Text="Size" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="40"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="280"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+
+                        <Label 
+                        Text="Color" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="40"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="280"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+
+                        <Label 
+                        Text="Quantity" 
+                        BackgroundColor="#790B29"
+                        TextColor="White"
+                        FontSize="40"
+                        FontAttributes="Bold"                                                  
+                        WidthRequest="280"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"                        
+                        Margin="0"/>
+                    </HorizontalStackLayout>
+                </Border>
+            </HorizontalStackLayout>
+
+
+            <!--LIST OF BIKES WITH DATABASE-->
+            <ListView x:Name="listView" Margin="0" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <HorizontalStackLayout>
+                                <Border
+                                Stroke="Black"
+                                StrokeThickness="4"
+                                StrokeShape="Rectangle"
+                                Margin="35,-10,0,0" 
+                                BackgroundColor="LightGray">
+                                    <HorizontalStackLayout>
+
+                                        <Label 
+                                        Text="{Binding Type}"                                  
+                                        TextColor="Black"  
+                                        FontSize="30" 
+                                        WidthRequest="280"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+
+                                        <Label
+                                        Text="{Binding Size}"
+                                        TextColor="Black"  
+                                        FontSize="30" 
+                                        WidthRequest="280"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+
+                                        <Label
+                                        Text="{Binding Color}"
+                                        TextColor="Black"  
+                                        FontSize="30" 
+                                        WidthRequest="280"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+
+                                        <Label
+                                        Text="{Binding Quantity}"
+                                        TextColor="Black"  
+                                        FontSize="30" 
+                                        WidthRequest="277"
+                                        HorizontalTextAlignment="Center"                     
+                                        VerticalTextAlignment="Center" 
+                                        Margin="0"/>
+                                    </HorizontalStackLayout>
+                                </Border>
+                            </HorizontalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
