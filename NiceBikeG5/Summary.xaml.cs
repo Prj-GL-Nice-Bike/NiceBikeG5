@@ -72,7 +72,7 @@ public partial class Summary : ContentPage
             var affectedRows_pm = await updateCommand_pm.ExecuteNonQueryAsync();
 
             // UPDATE order_pm
-            var updateCommandText_order = "UPDATE order_pm SET idorder_pm = @newIdOrder_order WHERE idorder_pm IS NULL";
+            var updateCommandText_order = "UPDATE order_pm SET idorder_pm = @newIdOrder_order, Priority = 4 WHERE idorder_pm IS NULL";
             using var updateCommand_order = new MySqlCommand(updateCommandText_order, connection);
             updateCommand_order.Parameters.AddWithValue("@newIdOrder_order", newIdOrder);
             var affectedRows_order = await updateCommand_order.ExecuteNonQueryAsync();
