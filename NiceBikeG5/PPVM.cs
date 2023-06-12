@@ -32,7 +32,7 @@ namespace NiceBikeG5
             using var connection = new MySqlConnection(connectionString);
             await connection.OpenAsync();
 
-            var commandText = "SELECT * FROM orderspr_pm order by Priority;";
+            var commandText = "SELECT * FROM order_pm order by Priority;";
 
             using var command = new MySqlCommand(commandText, connection);
             using var reader = command.ExecuteReader();
@@ -41,7 +41,7 @@ namespace NiceBikeG5
             while (await reader.ReadAsync())
             {
 
-                var id = reader.GetInt32("idorderspr");
+                var id = reader.GetInt32("idorder");
                 var priority = reader.GetInt32("Priority");
                 var color = Color.FromHex("#A9A9A9");
                 if (priority == 1)
@@ -69,13 +69,13 @@ namespace NiceBikeG5
             using var connection = new MySqlConnection(connectionString);
             await connection.OpenAsync();
 
-            var commandText = "SELECT * FROM orderspr_pm order by Priority;";
+            var commandText = "SELECT * FROM order_pm order by Priority;";
 
             using var command = new MySqlCommand(commandText, connection);
 
             foreach (PriOrder order in Priorders)
             {
-                var commandText1 = "UPDATE `nicebike`.`orderspr_pm` SET `Priority` = @Priority WHERE (`idorderspr` = @Id);";
+                var commandText1 = "UPDATE `nicebike`.`order_pm` SET `Priority` = @Priority WHERE (`idorder` = @Id);";
                 using var commande = new MySqlCommand(commandText1, connection);
                 commande.Parameters.AddWithValue("@Priority", order.Priority);
                 commande.Parameters.AddWithValue("@Id", order.Id);

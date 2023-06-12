@@ -101,17 +101,97 @@ public partial class PM_OrderListBikes: ContentPage
     private async void OnButton_SendAll(object sender, EventArgs e)
     {
         var bikes = listView.ItemsSource.OfType<Bike>().ToList();
+        var bikesent = 0;
+        var bikenotsent = 0;
+        var compo = 0.0;
         foreach (var bike in bikes)
         {
             var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
             using var connection = new MySqlConnection(connectionString);
             connection.Open();
 
-            var commandText = $"UPDATE bike_pm SET State='SEND' WHERE idorder='{bike.IdOrder}' AND Type='{bike.Type}' AND Size='{bike.Size}' AND Color='{bike.Color}'";
-            using var command = new MySqlCommand(commandText, connection);
-            await command.ExecuteNonQueryAsync();
+          
+
+            var selectQuantitybCommandText = $"SELECT Quantity FROM nicebike.stockbikes_pm WHERE type = '{bike.Type}' AND size = '{bike.Size}' AND color = '{bike.Color}'";
+            using var selectQuantitybCommand = new MySqlCommand(selectQuantitybCommandText, connection);
+            var quantityb = (double)await selectQuantitybCommand.ExecuteScalarAsync();
+
+            var selectQuantitycCommandText = $"SELECT Quantity FROM nicebike.stockcomponents_pm WHERE {bike.Type} > 0 ";
+            using var selectQuantitycCommand = new MySqlCommand(selectQuantitycCommandText, connection);
+            var quantities = new List<double>();
+            using var reader = selectQuantitycCommand.ExecuteReader();
+            {
+                while (reader.Read())
+                {
+                    var quantity = reader.GetDouble("Quantity");
+                    quantities.Add(quantity);
+                }
+            }
+            reader.Close();
+
+            var selectTypeCommandText = $"SELECT {bike.Type} FROM nicebike.stockcomponents_pm WHERE {bike.Type} > 0 ";
+            using var selectTypeCommand = new MySqlCommand(selectTypeCommandText, connection);
+            var Types = new List<double>();
+            using var readertype = selectTypeCommand.ExecuteReader();
+            {
+                while (readertype.Read())
+                {
+                    var Type = readertype.GetDouble(bike.Type);
+                    Types.Add(Type);
+                }
+            }
+            readertype.Close();
+
+            if (quantityb > 0 )
+            {
+                var bike_stock_command = $"UPDATE nicebike.stockbikes_pm SET Quantity = Quantity - 1 WHERE type = '{bike.Type}' and size ='{bike.Size}'and color ='{bike.Color}';";
+                using var command_bike = new MySqlCommand(bike_stock_command, connection);
+                await command_bike.ExecuteNonQueryAsync();
+
+                var commandText = $"UPDATE bike_pm SET State='SEND' WHERE idorder='{bike.IdOrder}' AND Type='{bike.Type}' AND Size='{bike.Size}' AND Color='{bike.Color}'";
+                using var command = new MySqlCommand(commandText, connection);
+                await command.ExecuteNonQueryAsync();
+                bikesent++;
+
+            }
+            else
+            {
+                var Stock = "sufficient";
+                
+                var counter = 0;
+                foreach (var item in quantities)
+                {
+                    if (item > Types[counter])
+                    {
+                        counter++;
+                    }
+                    else
+                    {
+                        Stock = "insufficient" ;
+                        compo += Types[counter] - item;
+                        break;
+                    }
+                }
+                if (Stock == "sufficient")
+                {
+                    var component_stock_command = $"UPDATE nicebike.stockcomponents_pm SET Quantity = Quantity - {bike.Type} WHERE {bike.Type} > 0;";
+                    using var command_component = new MySqlCommand(component_stock_command, connection);
+                    await command_component.ExecuteNonQueryAsync();
+
+                    var commandText = $"UPDATE bike_pm SET State='SEND' WHERE idorder='{bike.IdOrder}' AND Type='{bike.Type}' AND Size='{bike.Size}' AND Color='{bike.Color}'";
+                    using var command = new MySqlCommand(commandText, connection);
+                    await command.ExecuteNonQueryAsync();
+                    bikesent++;
+                }
+                if (Stock == "insufficient")
+                {
+                    bikenotsent++;
+                    
+                }
+                
+            }
         }
-        await DisplayAlert("BIKES SENT", "The bikes have been sent to the assemblers", "OK");
+        await DisplayAlert( "Summary" , bikesent + " SENT and " + bikenotsent + " NOT SENT DUE TO " + compo + " components missing ", "OK");
         ((Button)sender).BackgroundColor= Color.FromRgb(128, 128, 128);
         ((Button)sender).IsEnabled= false;
 

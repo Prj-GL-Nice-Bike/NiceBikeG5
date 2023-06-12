@@ -20,18 +20,25 @@ public partial class Binventory : ContentPage
     }
     private async void Logout(object sender, EventArgs e)
     {
-        Update();
+        
         await Navigation.PushAsync(new MainPage());
     }
     private async void BacktoMenu(object sender, EventArgs e)
     {
-        Update();
+        
         await Navigation.PushAsync(new PM_Menu());
     }
     private async void Gotocomponents(object sender, EventArgs e)
     {
-        Update();
+        
         await Navigation.PushAsync(new Cinventory());
     }
-   
+    private async void Apply(object sender, EventArgs e)
+    {
+        Update();
+        var button = (Button)sender;
+        button.BackgroundColor = Color.FromHex("#818181");
+        button.TextColor = Color.FromHex("#000000");
+    }
+
 }
