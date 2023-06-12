@@ -189,6 +189,24 @@
 
 
             </StackLayout>
+            <Button Grid.Column="2"
+                    Text="Apply Changes"
+                    FontSize="25" 
+                    BackgroundColor="DarkRed" 
+                    TextColor="White" 
+                    FontAttributes="Bold" 
+                    BorderWidth="2"
+                    BorderColor="Black" 
+                    CornerRadius="0" 
+                    WidthRequest="210"
+                    HeightRequest="60" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Margin="-5,0,0,0"
+                    Clicked="Apply"
+                    />
+
+
         </Grid>
 
 

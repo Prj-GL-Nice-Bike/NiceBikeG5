@@ -42,7 +42,7 @@ public partial class Production_Planning : ContentPage
     private void SetLowP(object sender, EventArgs e)
     {
         var gray = Color.FromHex("#A9A9A9");
-        var white = Color.FromHex("#EEEEEE");
+        var white = Color.FromHex("#CCCCCC");
         var button = (Button)sender;
         var order = (PriOrder)button.BindingContext;
 
@@ -62,7 +62,7 @@ public partial class Production_Planning : ContentPage
     }
     private void SetNormalP(object sender, EventArgs e)
     {
-        var green = Color.FromHex("#00FF00");
+        var green = Color.FromHex("#00AA00");
         var gray = Color.FromHex("#A9A9A9");
         var button = (Button)sender;
         var order = (PriOrder)button.BindingContext;
@@ -79,7 +79,7 @@ public partial class Production_Planning : ContentPage
     }
     public void SetHighP(object sender, EventArgs e)
     {
-        var red = Color.FromHex("#FF0000");
+        var red = Color.FromHex("#CC0000");
         var gray = Color.FromHex("#A9A9A9");
         var button = (Button)sender;
         var order = (PriOrder)button.BindingContext;
