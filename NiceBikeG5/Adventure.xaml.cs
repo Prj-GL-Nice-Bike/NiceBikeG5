@@ -54,11 +54,18 @@ public partial class Adventure : ContentPage
         var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
         using var connection = new MySqlConnection(connectionString);
         connection.Open();
-        // INSERT NEW BIKE TO THE ORDERS TABLE
-        var commandText = $"INSERT INTO orders_sr (Type, Size, Color, Quantity, Price) VALUES ('{productType}', '{productSize}', '{productColor}', '{productQuantity}', '{productPrice}')";
+        // INSERT BIKE TO bike_sr
+        var commandText = $"INSERT INTO bike_sr (Type, Size, Color, Quantity, Price) VALUES ('{productType}', '{productSize}', '{productColor}', '{productQuantity}', '{productPrice}')";
         using var command = new MySqlCommand(commandText, connection);
         command.ExecuteNonQuery();
 
+        // INSERT BIKES TO bike_pm
+        for (int i = 0; i < productQuantity; i++)
+        {
+            var commandText_pm = $"INSERT INTO bike_pm (Type, Size, Color) VALUES ('{productType}', '{productSize}', '{productColor}')";
+            using var command_pm = new MySqlCommand(commandText_pm, connection);
+            command_pm.ExecuteNonQuery();
+        }
         await DisplayAlert("Added to cart", "", "OK");
     }
 

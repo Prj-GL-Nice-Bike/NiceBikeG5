@@ -9,9 +9,12 @@ public partial class Summary : ContentPage
 {
     private Client _client;
 
-    public Summary()
+    public Summary(Client client)
     {
         InitializeComponent();
+        _client = client;
+        BindingContext = new SummaryViewModel();
+        (BindingContext as SummaryViewModel)?.LoadData(client.Id);
     }
 
     // BUTTONS
@@ -19,24 +22,75 @@ public partial class Summary : ContentPage
     {
         await Shell.Current.GoToAsync(nameof(SRSellers));
     }
+    private async void LogOut(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new SRSellers());
+    }
+
+
     private async void Confirm(object sender, EventArgs e)
     {
+        
         bool answer = await Application.Current.MainPage.DisplayAlert(
         "ARE YOU SURE?",
         "This action confirms the order and sends it to the PM.",
         "YES",
         "NO");
 
-        if (answer == true)
+        if (answer)
         {
+            // GOES BACK TO MENU PAGE
             await Navigation.PushAsync(new SR_Menu());
+
+            // ASSIGNS ID ORDER NUMBER TO BIKES
+            // CONNECTION WITH MYSQL
+            var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
+            using var connection = new MySqlConnection(connectionString);
+            await connection.OpenAsync();
+
+            // MAX IDORDER + 1
+            var selectMaxIdOrderCommandText = "SELECT MAX(idorder) FROM bike_sr";
+            using var selectMaxIdOrderCommand = new MySqlCommand(selectMaxIdOrderCommandText, connection);
+            var maxIdOrderObj = await selectMaxIdOrderCommand.ExecuteScalarAsync();
+            // If MAX IDORDER = NULL
+            int newIdOrder = 1;
+            if (maxIdOrderObj != null && maxIdOrderObj != DBNull.Value)
+            {
+                newIdOrder = Convert.ToInt32(maxIdOrderObj) + 1;
+            }
+
+            // UPDATE bike_sr
+            var updateCommandText = "UPDATE bike_sr SET idorder = @newIdOrder WHERE idorder IS NULL";
+            using var updateCommand = new MySqlCommand(updateCommandText, connection);
+            updateCommand.Parameters.AddWithValue("@newIdOrder", newIdOrder);
+            var affectedRows = await updateCommand.ExecuteNonQueryAsync();
+
+            // UPDATE bike_pm
+            var updateCommandText_pm = "UPDATE bike_pm SET idorder = @newIdOrder_pm WHERE idorder IS NULL";
+            using var updateCommand_pm = new MySqlCommand(updateCommandText_pm, connection);
+            updateCommand_pm.Parameters.AddWithValue("@newIdOrder_pm", newIdOrder.ToString());
+            var affectedRows_pm = await updateCommand_pm.ExecuteNonQueryAsync();
+
+            // UPDATE order_pm
+            var updateCommandText_order = "UPDATE order_pm SET idorder_pm = @newIdOrder_order WHERE idorder_pm IS NULL";
+            using var updateCommand_order = new MySqlCommand(updateCommandText_order, connection);
+            updateCommand_order.Parameters.AddWithValue("@newIdOrder_order", newIdOrder);
+            var affectedRows_order = await updateCommand_order.ExecuteNonQueryAsync();
+
+            if (affectedRows > 0 || affectedRows_pm > 0 || affectedRows_order > 0)
+            {
+                // UPDATE COUNTER
+                var updateCounterCommandText = "UPDATE counter_sr SET counter = @newIdOrder";
+                using var updateCounterCommand = new MySqlCommand(updateCounterCommandText, connection);
+                updateCounterCommand.Parameters.AddWithValue("@newIdOrder", newIdOrder + 1);
+                await updateCounterCommand.ExecuteNonQueryAsync();
+
+                var updateCounterCommandText_pm = "UPDATE counter_pm SET counter = @newIdOrder_pm";
+                using var updateCounterCommand_pm = new MySqlCommand(updateCounterCommandText_pm, connection);
+                updateCounterCommand_pm.Parameters.AddWithValue("@newIdOrder_pm", newIdOrder + 1);
+                await updateCounterCommand_pm.ExecuteNonQueryAsync();
+            }
         }
-        else
-        { }
-    }
-    private async void LogOut(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new SRSellers());
     }
 }
 
@@ -75,19 +129,20 @@ public class SummaryViewModel : INotifyPropertyChanged
     {
         Clients = new ObservableCollection<Client>();
         Orders = new ObservableCollection<Order>();
-        LoadData();
         LoadData2();
     }
 
-    public async void LoadData()
+    public async void LoadData(int clientId)
     {
         // CONNECTION WITH MYSQL
         var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
         using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync();
 
-        var commandText = "SELECT * FROM clients_sr ORDER BY idclients DESC LIMIT 1;";
+        // READS SELECTED CLIENT DATA
+        var commandText = "SELECT * FROM clients_sr WHERE idclients = @clientId;";
         using var command = new MySqlCommand(commandText, connection);
+        command.Parameters.AddWithValue("@clientId", clientId);
         using var reader = command.ExecuteReader();
 
         // READS LINE BY LINE IN MYSQL DATABASE
@@ -96,7 +151,7 @@ public class SummaryViewModel : INotifyPropertyChanged
             var id = reader.GetInt32("idclients");
             var clientName = reader.GetString("Name");
             var clientAddress = reader.GetString("Address");
-            var clientPhone= reader.GetString("Phone");
+            var clientPhone = reader.GetString("Phone");
             var clientEmail = reader.GetString("Email");
             var clientTVA = reader.GetString("TVA");
             Clients.Add(new Client { Id = id, ClientName = clientName, ClientAddress = clientAddress, ClientPhone = clientPhone, ClientEmail = clientEmail, ClientTVA = clientTVA });
@@ -114,6 +169,7 @@ public class SummaryViewModel : INotifyPropertyChanged
         public string ClientTVA { get; set; }
 
     }
+
     public async void LoadData2()
     {
         // CONNECTION WITH MYSQL
@@ -121,14 +177,14 @@ public class SummaryViewModel : INotifyPropertyChanged
         using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync();
 
-        var commandText = "SELECT * FROM orders_sr;";
+        var commandText = "SELECT * FROM bike_sr WHERE idorder IS NULL;";
         using var command = new MySqlCommand(commandText, connection);
         using var reader = command.ExecuteReader();
 
         // READS LINE BY LINE IN MYSQL DATABASE
         while (await reader.ReadAsync())
         {
-            var id = reader.GetInt32("idorders");
+            var id = reader.GetInt32("idbike");
             var productName = reader.GetString("Type");
             var productSize = reader.GetDouble("Size");
             var productColor = reader.GetString("Color");

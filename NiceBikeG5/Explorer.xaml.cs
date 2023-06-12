@@ -42,28 +42,36 @@ public partial class Explorer : ContentPage
     // ADD BIKE(S) DATA TO CART BUTTON
     private async void AddToCart(object sender, EventArgs e)
     {
-        // TYPE, SIZE, COLOR AND QUANTITY FROM THE PICKERS
+        // TYPE, SIZE, COLOR, AND QUANTITY FROM THE PICKERS
         string productType = "Explorer";
         double productSize = double.Parse(sizePicker.SelectedItem.ToString());
         string productColor = colorPicker.SelectedItem.ToString();
         double productQuantity = double.Parse(quantityPicker.SelectedItem.ToString());
-        // PRICE 
-        double productPrice = CalculateTotalPrice(productSize, productQuantity);
 
         // CONNECTION WITH MYSQL
         var connectionString = "Server=pat.infolab.ecam.be;Port=63320;Database=nicebike;Uid=newuser;Pwd=pa$$word;";
         using var connection = new MySqlConnection(connectionString);
         connection.Open();
-        // INSERT NEW BIKE TO THE ORDERS TABLE
-        var commandText = $"INSERT INTO orders_sr (Type, Size, Color, Quantity, Price) VALUES ('{productType}', '{productSize}', '{productColor}', '{productQuantity}', '{productPrice}')";
+
+        // INSERT BIKES TO bike_sr
+        var commandText = $"INSERT INTO bike_sr (Type, Size, Color, Quantity, Price) VALUES ('{productType}', '{productSize}', '{productColor}', '{productQuantity}', '{CalculateTotalPrice(productSize, productQuantity)}')";
         using var command = new MySqlCommand(commandText, connection);
         command.ExecuteNonQuery();
+
+        // INSERT BIKES TO bike_pm
+        for (int i = 0; i < productQuantity; i++)
+        {
+            var commandText_pm = $"INSERT INTO bike_pm (Type, Size, Color) VALUES ('{productType}', '{productSize}', '{productColor}')";
+            using var command_pm = new MySqlCommand(commandText_pm, connection);
+            command_pm.ExecuteNonQuery();
+        }
 
         await DisplayAlert("Added to cart", "", "OK");
     }
 
-    // TOTAL CALCULATION METHOD
-    private double CalculateTotalPrice(double size, double quantity)
+
+// TOTAL CALCULATION METHOD
+private double CalculateTotalPrice(double size, double quantity)
     {
         if (size == 26)
         {
