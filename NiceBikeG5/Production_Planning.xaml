@@ -8,103 +8,104 @@
     <ContentPage.BindingContext>
         <local:PPVM/>
     </ContentPage.BindingContext>
+    <ScrollView>
+        <VerticalStackLayout>
+            <Grid ColumnDefinitions="200,*,200" Padding="10">
 
-    <VerticalStackLayout>
-        <Grid ColumnDefinitions="200,*,200" Padding="10">
-
-            <Button ImageSource="bouton_back.png"
-                    Grid.Column="0"
-                    HeightRequest="120"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Center"
-                    BackgroundColor="DarkGray"
-                    BorderWidth="0"
-                    CornerRadius="0" 
+                <Button ImageSource="bouton_back.png"
+                        Grid.Column="0"
+                        HeightRequest="120"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        BackgroundColor="DarkGray"
+                        BorderWidth="0"
+                        CornerRadius="0" 
                     
-                    Clicked="BacktoMenu" />
+                        Clicked="BacktoMenu" />
 
-            <Label  Text="Production Planning"
-                    HorizontalTextAlignment="Center"
-                    VerticalTextAlignment="Center"
-                    FontSize="40"
-                    Grid.Column="1"
-                    TextDecorations="Underline"
-                    HorizontalOptions="Center"
-                    FontAttributes="Bold"
-                    FontFamily="Raleway-Light"
-                    TextColor="Black"
-                    Padding="0"
-                    Margin="-20"/>
+                <Label  Text="Production Planning"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        FontSize="40"
+                        Grid.Column="1"
+                        TextDecorations="Underline"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        FontFamily="Raleway-Light"
+                        TextColor="Black"
+                        Padding="0"
+                        Margin="-20"/>
 
-            <StackLayout Grid.Column="2"
-                         HorizontalOptions="End">
-                <Border BackgroundColor="Purple"
-                        WidthRequest="100"
-                        HeightRequest="60">
+                <StackLayout Grid.Column="2"
+                             HorizontalOptions="End">
+                    <Border BackgroundColor="Purple"
+                            WidthRequest="100"
+                            HeightRequest="60">
 
-                    <Label Text="Production Manager"
-                           HorizontalTextAlignment="Center"
-                           VerticalTextAlignment="Center"
-                           FontSize="15"/>
+                        <Label Text="Production Manager"
+                               HorizontalTextAlignment="Center"
+                               VerticalTextAlignment="Center"
+                               FontSize="15"/>
 
+                    </Border>
+
+                    <Button Text="Log out"
+                            WidthRequest="100"
+                            HeightRequest="40"
+                            TextColor="White"
+                            BackgroundColor="DarkRed" 
+                            BorderWidth="2"
+                            CornerRadius="0" 
+                            BorderColor="Black"
+                            Padding="0"
+                            Clicked="Logout"/>
+
+                </StackLayout>
+            </Grid>
+
+            <Grid ColumnDefinitions="140,0.4*,160"  Margin="20,0,0,0">
+                <Border 
+                        Grid.Column="1"
+                        BackgroundColor="DarkRed"
+                        HeightRequest="40"
+                        Margin="0,0,-2,0">
+                    <Grid>
+                        <Label x:Name="L"
+                            Text="Orders"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"  
+                           TextColor="White"
+                           FontSize="20"/>
+                    </Grid>
                 </Border>
 
-                <Button Text="Log out"
-                        WidthRequest="100"
-                        HeightRequest="40"
-                        TextColor="White"
-                        BackgroundColor="DarkRed" 
-                        BorderWidth="2"
-                        CornerRadius="0" 
-                        BorderColor="Black"
-                        Padding="0"
-                        Clicked="Logout"/>
+            </Grid>
+         
+                <CollectionView ItemsSource="{Binding Priorders}" BackgroundColor="DarkGray" >
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid ColumnDefinitions="140,0.4*,160"  Padding="-2,-11,1,-3" Margin="0,10,0,0">
+                                <Border Grid.Column="1" BackgroundColor="{Binding Color}" Padding="0" Margin="2,0,-3,2">
+                                    <Label x:Name="lab" Text="{Binding Id, StringFormat='Order n°{0}'}" Margin="0,0,0,0" Grid.Column="1" BackgroundColor="{Binding Color}"  TextColor="Black" FontSize="30" VerticalOptions="Center" HorizontalOptions="Center" />
+                                </Border>
 
-            </StackLayout>
-        </Grid>
+                                <Grid Grid.Column="2">
+                                    <HorizontalStackLayout x:Name="HS" Margin="5">
 
-        <Grid ColumnDefinitions="140,0.4*,160"  Margin="20,0,0,0">
-            <Border 
-                    Grid.Column="1"
-                    BackgroundColor="DarkRed"
-                    HeightRequest="40"
-                    Margin="0,0,-2,0">
-                <Grid>
-                    <Label x:Name="L"
-                        Text="Orders"
-                       VerticalOptions="Center"
-                       HorizontalOptions="Center"  
-                       TextColor="White"
-                       FontSize="20"/>
-                </Grid>
-            </Border>
+                                        <Button x:Name="SL" VerticalOptions="Center" HeightRequest="50" WidthRequest="50" Clicked="SetLowP"  ImageSource="white_flag.jfif"  Padding="0" BorderColor="DarkGray"/>
+                                        <Button x:Name="SN" VerticalOptions="Center" HeightRequest="50" WidthRequest="50" Clicked="SetNormalP" ImageSource="green_flag.jpg" Padding="0" BorderColor="DarkGray"/>
+                                        <Button x:Name="SH" VerticalOptions="Center" HeightRequest="50" WidthRequest="50" Clicked="SetHighP" ImageSource="red_flag.jpg" Padding="0,0,-11,0" BorderColor="DarkGray"/>
 
-        </Grid>
-        <ScrollView Margin="20,-2,0,0" >
-            <CollectionView ItemsSource="{Binding Priorders}" BackgroundColor="DarkGray" >
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid ColumnDefinitions="140,0.4*,160"  Padding="-2,-11,1,-3" Margin="0,10,0,0">
-                            <Border Grid.Column="1" BackgroundColor="{Binding Color}" Padding="0" Margin="2,0,-3,2">
-                                <Label x:Name="lab" Text="{Binding Id, StringFormat='Order n°{0}'}" Margin="0,0,0,0" Grid.Column="1" BackgroundColor="{Binding Color}"  TextColor="Black" FontSize="30" VerticalOptions="Center" HorizontalOptions="Center" />
-                            </Border>
+                                    </HorizontalStackLayout>
 
-                            <Grid Grid.Column="2">
-                                <HorizontalStackLayout x:Name="HS" Margin="5">
-
-                                    <Button x:Name="SL" VerticalOptions="Center" HeightRequest="50" WidthRequest="50" Clicked="SetLowP"  ImageSource="white_flag.jfif"  Padding="0" BorderColor="DarkGray"/>
-                                    <Button x:Name="SN" VerticalOptions="Center" HeightRequest="50" WidthRequest="50" Clicked="SetNormalP" ImageSource="green_flag.jpg" Padding="0" BorderColor="DarkGray"/>
-                                    <Button x:Name="SH" VerticalOptions="Center" HeightRequest="50" WidthRequest="50" Clicked="SetHighP" ImageSource="red_flag.jpg" Padding="0,0,-11,0" BorderColor="DarkGray"/>
-
-                                </HorizontalStackLayout>
-
+                                </Grid>
                             </Grid>
-                        </Grid>
 
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </ScrollView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+        
+        </VerticalStackLayout>
+    </ScrollView>
 
-    </VerticalStackLayout>
 </ContentPage>

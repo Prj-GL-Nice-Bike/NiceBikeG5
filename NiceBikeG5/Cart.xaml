@@ -126,7 +126,7 @@
                 <!--TOTAL-->
                 <Border BackgroundColor="#790B29" Stroke="Black" StrokeThickness="8" Margin="3" WidthRequest="150">
                 <Label Text="{Binding Total, StringFormat='{0} €'}"
-                       WidthRequest="150" HorizontalTextAlignment="Center"
+                       WidthRequest="80" HorizontalTextAlignment="Center"
                        TextColor="White" FontSize="25" FontFamily="Raleway-Bold"/>
                 </Border>
                 </VerticalStackLayout>
