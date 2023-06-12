@@ -68,7 +68,7 @@
             </StackLayout>
         </Grid>
 
-        <Grid ColumnDefinitions="0.3*,*,0.1*"  Margin="20,0,150,0">
+        <Grid ColumnDefinitions="0.6*,*,0.4*"  Margin="20,0,150,0">
             <Border 
                     Grid.Column="0"
                     BackgroundColor="DarkRed"
@@ -91,12 +91,9 @@
                          Grid.Column="1"
                      Margin="0,0,-2.5,0"
 >
-                <Grid ColumnDefinitions="*,*,*,*,*"  VerticalOptions="Center" >
-                    <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="City" FontSize="20"  Padding="5" Grid.Column="0" TextColor="White"/>
-                    <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Explorer" FontSize="20"  Padding="5" Grid.Column="1" TextColor="White"/>
-                    <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Adventure" FontSize="20"  Padding="5" Grid.Column="2" TextColor="White"/>
-                    <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Size"  FontSize="20" Padding="5" Grid.Column="3" TextColor="White"/>
-                    <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Color" FontSize="20" Padding="5"  Grid.Column="4" TextColor="White"/>
+                <Grid ColumnDefinitions="*,*"  VerticalOptions="Center" >
+                    <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Size"  FontSize="20" Padding="5" Grid.Column="0" TextColor="White"/>
+                    <Label HorizontalOptions="Center"  VerticalOptions="Center"  Text="Color" FontSize="20" Padding="5"  Grid.Column="1" TextColor="White"/>
                 </Grid>
             </Border>
             <Border  BackgroundColor="DarkRed"
@@ -115,7 +112,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <Grid ColumnDefinitions="*,150">
-                                <Grid ColumnDefinitions="0.3*,*,0.1*"  Padding="-2,-11,-2,-2" Margin="0,8,0,0">
+                                <Grid ColumnDefinitions="0.6*,*,0.4*"  Padding="-2,-11,-2,-2" Margin="0,8,0,0">
                                     <Border Grid.Column="0" BackgroundColor="DarkGray" Padding="0" Margin="2,0,-3,2">
                                         <Grid ColumnDefinitions="0.2*,*" >
                                             <Border Margin="-1,-1,0,-1" >
@@ -126,12 +123,9 @@
 
                                     </Border>
                                     <Border Grid.Column="1" BackgroundColor="DarkGray" Margin="0.5,0,-2.5,2">
-                                        <Grid ColumnDefinitions="*,*,*,*,*"  VerticalOptions="Center">
-                                            <Label Text="{Binding City}" Grid.Column="0" TextColor="Black" FontSize="15"  Padding="5" HorizontalOptions="Center"  VerticalOptions="Center"/>
-                                            <Label Text="{Binding Explorer}" Grid.Column="1" TextColor="Black" FontSize="15"  Padding="5" HorizontalOptions="Center"  VerticalOptions="Center"/>
-                                            <Label Text="{Binding Adventure}" Grid.Column="2" TextColor="Black" FontSize="15"  Padding="5" HorizontalOptions="Center"  VerticalOptions="Center"/>
-                                            <Label Text="{Binding Size}" Grid.Column="3"  TextColor="Black" FontSize="15" Padding="5" HorizontalOptions="Center"  VerticalOptions="Center"/>
-                                            <Label Text="{Binding Color}" Grid.Column="4"  TextColor="Black" FontSize="15"  Padding="5" HorizontalOptions="Center"  VerticalOptions="Center"/>
+                                        <Grid ColumnDefinitions="*,*"  VerticalOptions="Center">
+                                            <Label Text="{Binding Size}" Grid.Column="0"  TextColor="Black" FontSize="15" Padding="5" HorizontalOptions="Center"  VerticalOptions="Center"/>
+                                            <Label Text="{Binding Color}" Grid.Column="1"  TextColor="Black" FontSize="15"  Padding="5" HorizontalOptions="Center"  VerticalOptions="Center"/>
                                         </Grid>
                                     </Border>
                                     <Border Grid.Column="2" BackgroundColor="DarkGray" Margin="0,0,2,2">
@@ -190,7 +184,7 @@
 
             </StackLayout>
             <Button Grid.Column="2"
-                    Text="Apply Changes"
+                    Text="Order"
                     FontSize="25" 
                     BackgroundColor="DarkRed" 
                     TextColor="White" 
@@ -198,7 +192,7 @@
                     BorderWidth="2"
                     BorderColor="Black" 
                     CornerRadius="0" 
-                    WidthRequest="210"
+                    WidthRequest="120"
                     HeightRequest="60" 
                     HorizontalOptions="Center"
                     VerticalOptions="Center"

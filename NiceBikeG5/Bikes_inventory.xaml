@@ -183,20 +183,20 @@
                     </StackLayout>
 
                     <Button Text="Order"
-                                    Padding="0"
-                                    TextColor="White"
-                                    BackgroundColor="DarkRed" 
-                                    BorderWidth="2"
-                                    CornerRadius="0" 
-                                    BorderColor="Black"
-                                    FontAttributes="Bold" 
-                       
-                                    FontSize="25"
-                                    WidthRequest="120"
-                                    HeightRequest="60" 
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center"
-                                Grid.Column="2"/>
+                            Padding="0"
+                            TextColor="White"
+                            BackgroundColor="DarkRed" 
+                            BorderWidth="2"
+                            CornerRadius="0" 
+                            BorderColor="Black"
+                            FontAttributes="Bold" 
+                            FontSize="25"
+                            WidthRequest="120"
+                            HeightRequest="60" 
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Grid.Column="2"
+                            Clicked="Apply"/>
 
                 </Grid>     
 
