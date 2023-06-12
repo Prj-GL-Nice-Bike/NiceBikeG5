@@ -23,6 +23,6 @@ public partial class SR_Menu: ContentPage
     }
     private async void ListOrder(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new Cart());
+        await Navigation.PushAsync(new SR_ListOrders());
     }
 }

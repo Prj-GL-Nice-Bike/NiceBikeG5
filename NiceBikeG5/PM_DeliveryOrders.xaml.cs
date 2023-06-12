@@ -123,24 +123,9 @@ public partial class PM_DeliveryOrders: ContentPage
             var commandText= $"UPDATE order_pm SET State='DELIVERED' WHERE idorder_pm='{OrderNumber}'";
             using var command= new MySqlCommand(commandText, connection);
             await command.ExecuteNonQueryAsync();
+
+            _items.Clear();
+            LoadData();
         }
     }
 }
-
-
-
-
-//private async void OnButtonChanged(object sender, EventArgs e)
-//{
-//    Button button = (Button)sender;
-//    clickCount++;
-
-//    if (clickCount == 2)
-//    {
-//        button.IsEnabled = false;
-//        ((Button)sender).BackgroundColor = Color.FromRgb(128, 128, 128);
-//        clickCount = 0;
-//    }
-
-//    button.Text = "DELIVERED";
-//}
