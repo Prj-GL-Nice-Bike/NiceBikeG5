@@ -10,7 +10,7 @@ public partial class MainPage : ContentPage
 
     //BUTTONS LEADING TO SESSION OF USER'S PROFILE
 
-	private async void Session_SR(object sender, EventArgs e)
+    private async void Session_SR(object sender, EventArgs e)
 	{
         await Navigation.PushAsync(new Session_SR());
     }
