@@ -77,19 +77,19 @@ public partial class Summary : ContentPage
             updateCommand_order.Parameters.AddWithValue("@newIdOrder_order", newIdOrder);
             var affectedRows_order = await updateCommand_order.ExecuteNonQueryAsync();
 
-            if (affectedRows > 0 || affectedRows_pm > 0 || affectedRows_order > 0)
-            {
-                // UPDATE COUNTER
-                var updateCounterCommandText = "UPDATE counter_sr SET counter = @newIdOrder";
-                using var updateCounterCommand = new MySqlCommand(updateCounterCommandText, connection);
-                updateCounterCommand.Parameters.AddWithValue("@newIdOrder", newIdOrder + 1);
-                await updateCounterCommand.ExecuteNonQueryAsync();
+            //if (affectedRows > 0 || affectedRows_pm > 0 || affectedRows_order > 0)
+            //{
+            //    // UPDATE COUNTER
+            //    var updateCounterCommandText = "UPDATE counter_sr SET counter = @newIdOrder";
+            //    using var updateCounterCommand = new MySqlCommand(updateCounterCommandText, connection);
+            //    updateCounterCommand.Parameters.AddWithValue("@newIdOrder", newIdOrder + 1);
+            //    await updateCounterCommand.ExecuteNonQueryAsync();
 
-                var updateCounterCommandText_pm = "UPDATE counter_pm SET counter = @newIdOrder_pm";
-                using var updateCounterCommand_pm = new MySqlCommand(updateCounterCommandText_pm, connection);
-                updateCounterCommand_pm.Parameters.AddWithValue("@newIdOrder_pm", newIdOrder + 1);
-                await updateCounterCommand_pm.ExecuteNonQueryAsync();
-            }
+            //    var updateCounterCommandText_pm = "UPDATE counter_pm SET counter = @newIdOrder_pm";
+            //    using var updateCounterCommand_pm = new MySqlCommand(updateCounterCommandText_pm, connection);
+            //    updateCounterCommand_pm.Parameters.AddWithValue("@newIdOrder_pm", newIdOrder + 1);
+            //    await updateCounterCommand_pm.ExecuteNonQueryAsync();
+            //}
         }
     }
 }
